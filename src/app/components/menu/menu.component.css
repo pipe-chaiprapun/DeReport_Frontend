@@ -10,11 +10,13 @@ body
 }
 
 
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+/* @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css); */
 
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+/* @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300); */
 
-
+.logo{
+  
+}
 
 .settings {
   
@@ -29,6 +31,7 @@ font-size:20px;
 font-family: 'Strait', sans-serif;
 
 }
+
 
 
 
@@ -77,6 +80,8 @@ background-color: #BFBFBF;
 /* Scrollbar End */ 
 
 
+
+
 .fa-lg {
 font-size: 1em;
   
@@ -95,18 +100,18 @@ font-size:20px;
 
 
 .main-menu:hover, nav.main-menu.expanded {
-width:150px;
+width:250px;
 overflow:hidden;
 opacity:1;
+
 }
 
 .main-menu {
-/* background:#F7F7F7; */
-background:rgba(255, 255, 255, 0.7);
-position: fixed;
+background:#F7F7F7;
+position:absolute;
 top:0;
 bottom:0;
-height:50%;
+height:100%;
 left:0;
 width:55px;
 overflow:hidden;
@@ -114,11 +119,11 @@ overflow:hidden;
 transition:width .2s linear;
 -webkit-transform:translateZ(0) scale(1,1);
 box-shadow: 1px 0 15px rgba(0, 0, 0, 0.07);
-  opacity: 0.5;
+  opacity:1;
 }
 
 .main-menu>ul {
-margin:70px 0;
+margin:7px 0;
 
 }
 
@@ -144,7 +149,7 @@ text-decoration:none;
 -webkit-transition:all .14s linear;
 transition:all .14s linear;
 font-family: 'Strait', sans-serif;
-border-top:1px solid #f2f2f2;
+/* border-top:1px solid #f2f2f2; */
 
 text-shadow: 1px 1px 1px  #fff;  
 }

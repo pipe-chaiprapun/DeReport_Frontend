@@ -1,0 +1,15 @@
+.box {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    right: 30px;
+    background: red;
+    color: white;
+    padding: 20px;
+    transform: translateY(-50%);
+    resize: vertical;
+    overflow: auto;
+    height: 100px;
+    width: 300px;
+    opacity:0.5;
+}
