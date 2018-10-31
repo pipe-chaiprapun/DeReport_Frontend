@@ -11,12 +11,10 @@ export class IntroComponent implements OnInit {
   constructor(private globals: Globals) { }
 
   ngOnInit() {
-    alert(this.globals.intro);
-    this.globals.intro = false;
+    
   }
 
   gotoHome() {
-    
-    
+    sessionStorage.setItem("Intro", "false");
   }
 }

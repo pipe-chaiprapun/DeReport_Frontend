@@ -10,13 +10,17 @@ import { Globals } from './models/globals';
 export class AppComponent {
   title = 'deweb';
 
-  constructor(private globals: Globals) {}
+  constructor(private globals: Globals) { }
 
 
   public get isIntro(): boolean {
-    if (this.globals.intro == true) {
+    if (sessionStorage.getItem("Intro") == "true" || sessionStorage.getItem("Intro") == null) {
+      
       return false;
     }
+    // if (this.globals.intro == true) {
+    //   return false;
+    // }
     return true;
   }
 }
