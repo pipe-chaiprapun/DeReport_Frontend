@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.text-alg {
+    text-align: center;
+}
+
+.img-full-page { 
+    position: absolute;
+    /* The image used */
+    /* background-image: url("./assets/images/img.jpg"); */
+    /* Full height */
+     width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+    width: 500px;
+    height: 300px;
+    background-color: rgba(251, 249, 249, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px 10px 10px 10px;
+    transition: 0.3s;
+}
+
+.btn {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px 5px 5px 5px;
+}

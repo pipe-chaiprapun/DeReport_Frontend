@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Globals } from './models/globals';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'deweb';
+
+  constructor(private globals: Globals) {}
+
+
+  public get isIntro(): boolean {
+    if (this.globals.intro == true) {
+      return false;
+    }
+    return true;
+  }
 }
