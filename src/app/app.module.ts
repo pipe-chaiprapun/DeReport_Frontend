@@ -13,7 +13,7 @@ import { IntroComponent } from './components/intro/intro.component';
 import { Globals } from './models/globals';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/intro', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'intro', component: IntroComponent },
   { path: 'home', component: HomeComponent },
   { path: 'app', component: AppComponent },

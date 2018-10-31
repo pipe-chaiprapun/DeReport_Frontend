@@ -14,7 +14,9 @@ export class IntroComponent implements OnInit {
     
   }
 
-  gotoHome() {
-    sessionStorage.setItem("Intro", "false");
+  goHome() {
+    alert("before" + sessionStorage.getItem("Intro"));
+    sessionStorage.setItem("Intro", "true");
+    alert("after" + sessionStorage.getItem("Intro"));
   }
 }

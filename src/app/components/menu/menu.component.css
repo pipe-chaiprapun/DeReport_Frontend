@@ -108,10 +108,9 @@ opacity:1;
 
 .main-menu {
 background:#F7F7F7;
-position:absolute;
+position: absolute;
 top:0;
 bottom:0;
-height:100%;
 left:0;
 width:55px;
 overflow:hidden;
@@ -119,7 +118,7 @@ overflow:hidden;
 transition:width .2s linear;
 -webkit-transform:translateZ(0) scale(1,1);
 box-shadow: 1px 0 15px rgba(0, 0, 0, 0.07);
-  opacity:1;
+  opacity:0.5;
 }
 
 .main-menu>ul {

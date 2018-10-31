@@ -14,11 +14,7 @@ export class AppComponent {
 
 
   public get isIntro(): boolean {
-    if (sessionStorage.getItem("Intro") == "true" || sessionStorage.getItem("Intro") == null) {
-      
-      return false;
-    }
-    // if (this.globals.intro == true) {
+    // if (sessionStorage.getItem("Intro") == "true" || sessionStorage.getItem("Intro") == null) {
     //   return false;
     // }
     return true;
