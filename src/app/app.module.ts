@@ -15,6 +15,8 @@ import { IntroComponent } from './components/intro/intro.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ReportComponent } from './components/report/report.component';
 
+import { ChartJS } from './../assets/app/chartjs';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'intro', component: IntroComponent },

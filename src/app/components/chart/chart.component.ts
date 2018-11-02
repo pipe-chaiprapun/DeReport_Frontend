@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { AppserverService } from '../../services/appserver.service';
-import { chartJS } from '../../../assets/app/chartJS';
 
 @Component({
   selector: 'app-chart',
@@ -16,37 +15,71 @@ export class ChartComponent implements OnInit {
   labels: any = [];
   datas: any = [];
 
-  constructor(private resAPI: AppserverService, private ) { }
+  constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
-    
+
   }
 
 
   onSubmit(value) {
+
+
     this.resAPI.getBranch(value).subscribe(result => {
-      this.branchs = JSON.parse(JSON.stringify(result).replace(/"([^"]+)":/g, function($0,$1){return ('"'+$1.toLowerCase()+'":');}));
+      this.branchs = JSON.parse(JSON.stringify(result).replace(/"([^"]+)":/g, function ($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
     })
+
 
     this.resAPI.getChart(value).subscribe(result => {
-      this.charts = JSON.parse(JSON.stringify(result).replace(/"([^"]+)":/g, function($0,$1){return ('"'+$1.toLowerCase()+'":');}));
+      this.charts = JSON.parse(JSON.stringify(result).replace(/"([^"]+)":/g, function ($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
+
+      for (var i = 0, len = this.charts.length; i < len; i++) {
+        this.labels[i] = this.charts[i]['mm'];
+        this.datas[i] = this.charts[i]['sale_amt'];
+      }
+      this.onCreateChart();
     })
 
-    //console.log(this.charts['mm'].value);
 
-    for (var i = 0, len = this.charts.length; i < len; i++) {
-      this.labels[i] = this.charts[i]['mm'];
-      this.datas[i] = this.charts[i]['sale_amt'];
-      
-      console.log(this.charts[i]['mm']);
-    }
 
-    console.log(this.labels);
-    console.log(this.datas);
-  
+    // for (var i = 0, len = this.charts.length; i < len; i++) {
+    //   console.log[" ทดสอบ : " + i];
 
-    //this.onCreateChart();
-    
+    //   this.labels[i] = this.charts[i]['mm'];
+    //   this.datas[i] = this.charts[i]['sale_amt'];
+
+    //   //console.log(this.labels[i]);
+    //   console.log(this.datas[i]);
+    // }
+
+
+    // var promise = new Promise((resolve, reject) => {
+    //   resolve(this.charts);
+    // });
+
+
+    // promise.then((data: []) => {
+    //   for (var i = 0, len = data.length; i < len; i++) {
+    //     this.labels[i] = data[i]['mm'];
+    //     this.datas[i] = this.charts[i]['sale_amt'];
+
+    //   }
+    // });
+
+
+
+
+
+
+
+
+
+    // console.log(this.labels);
+    // console.log(this.datas);
+
+
+    // this.onCreateChart();
+    // this.chart.lineChart(this.labels, this.datas);
   }
 
 
