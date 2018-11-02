@@ -18,7 +18,7 @@ body
   
 }
 
-.settings {
+/* .settings {
   
   height:73px; 
   float:left;
@@ -30,7 +30,7 @@ body
 font-size:20px;
 font-family: 'Strait', sans-serif;
 
-}
+} */
 
 
 
@@ -209,7 +209,7 @@ overflow:visible;
 
 /* Logo Hover Property */
 
-
+/* 
 .settings:hover, settings:focus {   
   background:url( https://s17.postimg.org/74cl7s05b/logo_hover.jpg);
   -webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
@@ -224,7 +224,7 @@ transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
 -moz-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
 -o-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
 transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0; 
-}
+} */
 
 
 a:hover,a:focus {

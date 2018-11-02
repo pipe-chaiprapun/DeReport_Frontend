@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -10,7 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { IntroComponent } from './components/intro/intro.component';
-import { Globals } from './models/globals';
+import { ChartComponent } from './components/chart/chart.component';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,6 +21,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'app', component: AppComponent },
   { path: 'card', component: CardComponent },
+  { path: 'report', component: ReportComponent },
+  { path: 'chart', component: ChartComponent },
   { path: 'login', component: LoginComponent }
 ];
 
@@ -31,13 +36,17 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     CardComponent,
-    IntroComponent
+    IntroComponent,
+    ChartComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [Globals],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

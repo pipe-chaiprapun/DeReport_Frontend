@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Globals } from '../../models/globals';
 
 @Component({
   selector: 'app-intro',
@@ -8,7 +7,7 @@ import { Globals } from '../../models/globals';
 })
 export class IntroComponent implements OnInit {
 
-  constructor(private globals: Globals) { }
+  constructor() { }
 
   ngOnInit() {
     

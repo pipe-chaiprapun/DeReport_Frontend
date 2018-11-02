@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Globals } from './models/globals';
 
 
 @Component({
@@ -10,7 +9,7 @@ import { Globals } from './models/globals';
 export class AppComponent {
   title = 'deweb';
 
-  constructor(private globals: Globals) { }
+  constructor() { }
 
 
   public get isIntro(): boolean {
