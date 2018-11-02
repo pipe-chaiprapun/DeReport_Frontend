@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { AppserverService } from '../../services/appserver.service';
+import { chartJS } from '../../../assets/app/chartJS';
 
 @Component({
   selector: 'app-chart',
@@ -15,7 +16,7 @@ export class ChartComponent implements OnInit {
   labels: any = [];
   datas: any = [];
 
-  constructor(private resAPI: AppserverService) { }
+  constructor(private resAPI: AppserverService, private ) { }
 
   ngOnInit() {
     
@@ -44,7 +45,8 @@ export class ChartComponent implements OnInit {
     console.log(this.datas);
   
 
-    this.onCreateChart();
+    //this.onCreateChart();
+    
   }
 
 
