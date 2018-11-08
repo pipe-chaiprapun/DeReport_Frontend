@@ -1,0 +1,9 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <input ngModel name="brh_id" type="text" placeholder="สาขา">
+    <button type="submit">OK</button>
+</form> -->
+
+<div *ngFor="let branch of branchs">
+    รหัส : {{branch.brh_id}}
+    ชื่อ : {{branch.brh_name}}
+</div>
