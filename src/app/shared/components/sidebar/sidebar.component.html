@@ -1,0 +1,15 @@
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" width="48" height="48" src="https://by3302files.storage.live.com/y4pC2CDgabXQDbRxbN-e29tU6ZBKZerNXoW9bgTUOW1bZ2w7CCGyFha40zQAt8J1rOMXa7TkzrXDLHFjeNWBEt40oHM5RNFm_PwfBvtCAahLMyQh4cd9Awg-v1IY3z8HWyIyPMAY-f6woyOb_P8_K3EV463uRH4K8sYyQOZWsOT9TRiGnRfzz_WB81PYYAjKBmt?psid=2&width=248&height=248" alt="User Image">
+    <div>
+      <p class="app-sidebar__user-name">ปลาชะโด</p>
+      <p class="app-sidebar__user-designation">Backend Developer</p>
+    </div>
+  </div>
+  <ul class="app-menu">
+    <li><a class="app-menu__item active" [routerLink]="['/', Url.Summary]"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">รายงานสรุป</span></a></li>
+    <li><a class="app-menu__item" [routerLink]="['/', Url.Report]"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">รายละเอียดการดำเนินงาน</span></a></li>
+    <li><a class="app-menu__item" [routerLink]="['/', Url.Chart]"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">รายงานนำเสนอแบบแผนภูมิ</span></a></li>
+  </ul>
+</aside>
