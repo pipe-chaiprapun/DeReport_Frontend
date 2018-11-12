@@ -19,6 +19,7 @@ import { ChartJS } from './../assets/app/chartjs';
 import { AppRouting } from './app.routing';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SharedModule } from './shared/shared.module';
+import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,7 +45,8 @@ import { SharedModule } from './shared/shared.module';
     IntroComponent,
     ChartComponent,
     ReportComponent,
-    SummaryComponent
+    SummaryComponent,
+    ExamChartComponent
   ],
   imports: [
     AppRouting,
