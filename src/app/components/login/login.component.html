@@ -1,36 +1,47 @@
-<!-- <div class="box">
-  <div class="nav-text">Login</div>
-  <div class="nav-text"> 
-      ID <input type="text">
+<section class="material-half-bg">
+  <div class="cover"></div>
+</section>
+<section class="login-content">
+  <div class="logo">
+    <h1>ระบบรายงานสารสนเทศเพื่อการตัดสินใจ</h1>
   </div>
-  <div class="nav-text">
-    Password <input type="text">
+  <div class="login-box">
+    <form class="login-form" action="index.html">
+      <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>เข้าสู่ระบบ</h3>
+      <div class="form-group">
+        <label class="control-label">ชื่อผู้ใช้</label>
+        <input class="form-control" type="text" autofocus>
+      </div>
+      <div class="form-group">
+        <label class="control-label">รหัสผ่าน</label>
+        <input class="form-control" type="password">
+      </div>
+      <!-- <div class="form-group">
+        <div class="utility">
+          <div class="animated-checkbox">
+            <label>
+              <input type="checkbox"><span class="label-text">Stay Signed in</span>
+            </label>
+          </div>
+          <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p>
+        </div>
+      </div> -->
+      <div class="form-group btn-container">
+        <button class="btn btn-primary btn-block" [routerLink]="['/', Url.Summary]"><i class="fa fa-sign-in fa-lg fa-fw"></i>เข้าสู่ระบบ</button>
+      </div>
+    </form>
+    <form class="forget-form" action="index.html">
+      <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
+      <div class="form-group">
+        <label class="control-label">EMAIL</label>
+        <input class="form-control" type="text" placeholder="Email">
+      </div>
+      <div class="form-group btn-container">
+        <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>RESET</button>
+      </div>
+      <div class="form-group mt-3">
+        <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> Back to Login</a></p>
+      </div>
+    </form>
   </div>
-</div> -->
-
-<div class="card">
-  <img src="../../../assets/images/avatar.png" alt="Avatar" style="width:100%">
-  <div class="container">
-    <h2><b>John Doe</b></h2>
-    <button type="submit">แก้ไข</button>
-    <p>โปรแกรมเมอร์</p>
-  </div>
-</div>
-
-<!-- <div class="card">
-  <img class="card-hor-inner" src="../../../assets/images/avatar.png" alt="Avatar" style="width:100%">
-  <div class="card-hor-inner">
-    <h2><b>John Doe</b></h2>
-    <button type="submit">แก้ไข</button>
-    <p>โปรแกรมเมอร์</p> 
-  </div>
-</div> -->
-<br>
-<div class="card-hor">
-  <img src="../../../assets/images/avatar.png" alt="Avatar" style="float: left; width: 200px;">
-
-  <div class="card-hor-inner">
-    <h2><b>John Doe</b></h2>
-    <p>โปรแกรมเมอร์</p>
-  </div>
-</div>
+</section>
