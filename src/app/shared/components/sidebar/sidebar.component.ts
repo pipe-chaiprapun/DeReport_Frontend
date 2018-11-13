@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AppUrl } from 'src/app/app.url';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SidebarComponent implements OnInit {
 
   constructor() { }
 

@@ -1,22 +1,36 @@
-<h1>
-  Charts
-</h1>
-
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
-  <input ngModel name="brh_id" type="text" placeholder="สาขา">
-  <button type="submit">OK</button>
-</form> -->
-
-<div *ngFor="let branch of branchs">
-  {{branch.brh_name}}
-</div>
-
-<div *ngFor="let chart of charts">
-  {{chart.mm}} {{chart.tar_amt}} {{chart.sale_amt}}
-</div>
-
-
-<div style="width: 640px;">
-  <!-- ขนาดความกว้างและสูงของแผนภูมิ-->
-  <canvas id="lineChart"></canvas> <!-- ใช้ id ในการอ้างอิงเพื่อนำแสงผลที่ได้ทำการสร้างไว้ในหน้า app.component.ts -->
-</div>
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+          <h1><i class="fa fa-dashboard"></i> รายงานนำเสนอแบบแผนภูมิ</h1>
+          <p>รายงานนำเสนอแบบแผนภูมิ</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">รายงานนำเสนอแบบแผนภูมิ</a></li>
+        </ul>
+      </div>
+    <h1>
+        Charts
+      </h1>
+      
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <input ngModel name="brh_id" type="text" placeholder="สาขา">
+        <button type="submit">OK</button>
+      </form> -->
+      
+      <div *ngFor="let branch of branchs">
+        {{branch.brh_name}}
+      </div>
+      
+      <div *ngFor="let chart of charts">
+        {{chart.mm}} {{chart.tar_amt}} {{chart.sale_amt}}
+      </div>
+      
+      
+      <div style="width: 640px;">
+        <!-- ขนาดความกว้างและสูงของแผนภูมิ-->
+        <canvas id="lineChart"></canvas> <!-- ใช้ id ในการอ้างอิงเพื่อนำแสงผลที่ได้ทำการสร้างไว้ในหน้า app.component.ts -->
+      </div>
+</main>

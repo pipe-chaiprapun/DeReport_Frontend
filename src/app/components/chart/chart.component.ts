@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { AppserverService } from '../../services/appserver.service';
-
+declare const App:any;
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -18,7 +18,7 @@ export class ChartComponent implements OnInit {
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
-
+    App.initLoadJquery();
   }
 
 

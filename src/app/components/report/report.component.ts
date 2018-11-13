@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
-
+declare const App: any;
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -12,6 +12,7 @@ export class ReportComponent implements OnInit {
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
+    App.initLoadJquery();
   }
 
   onSubmit(value) {
