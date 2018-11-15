@@ -9,12 +9,12 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  private baseUrl = `http://localhost:1150`;  // don't use local in case of cross domain or ip address
+  private baseUrl = `http://localhost:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   private loginUrl = `${this.apiUrl}/login`;
   private logoutUrl = `${this.apiUrl}/logout`;
-  private branchUrl = `${this.baseUrl}/branch`;
-  private chartUrl = `${this.baseUrl}/chart`;
+  private branchUrl = `${this.baseUrl}/api/information/getBranch`;
+  private chartUrl = `${this.baseUrl}/api/information/getSaleInfo`;
   private pathUrl = `${this.apiUrl}/path`;
   private reportUrl = `${this.apiUrl}/report`;
 
