@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
+import { AppserverService } from '../../services/appserver.service';
+import constant from '../../services/color.js'
 declare const $;
 declare const Chart;
 declare const App;
+
 @Component({
   selector: 'app-exam-chart',
   templateUrl: './exam-chart.component.html',
   styleUrls: ['./exam-chart.component.css']
 })
 export class ExamChartComponent implements OnInit {
-
-  constructor() { }
+  private tarAmt: string;
+  private saleAmt: string;
+  private diffTarAmt: string;
+  private payAmt: string;
+  private accTarAmt: string;
+  private accSaleAmt: string;
+  private losPdoAmt: string;
+  private pdoAmt: string;
+  private summary: string;
+  constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
     this.initialLoadChart();
@@ -18,6 +29,88 @@ export class ExamChartComponent implements OnInit {
   }
   private initialLoadChart() {
 
+    function devideMillion(data:number){
+      return (data/1000000).toFixed(2);
+    }
+
+    this.resAPI.getMonthlyMeeting().subscribe(result => {
+      console.log('----------- monthly meeting --------------------')
+      console.log(result.data)
+      this.tarAmt = devideMillion(result.data[0].TAR_AMT);
+      this.saleAmt = devideMillion(result.data[0].SALE_AMT);
+     // this.diffTarAmt = devideMillion(result.data[0].DIF_TAR_AMT);
+      this.diffTarAmt = devideMillion(result.data[0].SALE_AMT-result.data[0].TAR_AMT);
+      this.payAmt = devideMillion(result.data[0].PAY_AMT);     
+      this.accTarAmt = devideMillion(result.data[0].ACC_TAR_AMT);
+      this.accSaleAmt = devideMillion(result.data[0].ACC_SALE_AMT);
+      this.summary = devideMillion(result.data[0].ACC_TAR_AMT-result.data[0].ACC_SALE_AMT);
+      this.losPdoAmt = devideMillion(result.data[0].LOS_PDO_AMT);
+      this.pdoAmt = devideMillion(result.data[0].PDO_AMT);
+    })
+
+    this.resAPI.getSaleInfo().subscribe(result => {
+      console.log('---------- get sale info --------------------')
+      console.log(result.data);
+      var labels = [];
+      var targetAmt = [];
+      var saleAmt = [];
+      var payAmt = [];
+      var pdoAmt = [];
+      result.data.forEach(element => {
+        labels.push(element.BRH_ID);
+      });
+      result.data.forEach(element => {
+        targetAmt.push(element.TAR_AMT);
+      })
+      result.data.forEach(element => {
+        saleAmt.push(element.SALE_AMT);
+      })
+      result.data.forEach(element => {
+        payAmt.push(element.PAY_AMT);
+      })
+      result.data.forEach(element => {
+        pdoAmt.push(element.PDO_AMT);
+      })
+      // ['#F7464A', '#46BFBD', '#FDB45C']
+      const bdata = {
+        labels: labels, //['สาขา02', 'สาขา03', 'สาขา04', 'สาขา05', 'สาขา06', 'สาขา07', 'สาขา08', 'สาขา09', 'สาขา10', 'สาขา11', 'สาขา12', 'สาขา'],
+        datasets: [
+          {
+            label: 'ยอดเป้าหมาย',
+            backgroundColor: constant.tarAmt.background,//'rgba(220,220,220,0.2)',
+            borderColor: constant.tarAmt.border,
+            borderWidth: 2,
+            data: targetAmt //[65, 59, 80, 81, 56, 86, 90, 83, 89, 56, 12, 45]
+          },
+          {
+            label: 'ยอดขาย',
+            backgroundColor: constant.saleAmt.background,//'rgba(151,187,205,0.2)',
+            borderColor: constant.saleAmt.border,
+            borderWidth: 2,
+            data: saleAmt //[60, 48, 85, 75, 60, 84, 56, 34, 25, 56, 76, 56]
+          }, 
+          {
+            label: 'ขาดยอด/เกินยอด',
+            backgroundColor: constant.payAmt.background,
+            borderColor: constant.payAmt.border,
+            borderWidth: 2,
+            data: payAmt //[-10, 50, 80, 50, -20, 75, 57, 34, 25, 67, 45, 67]
+          },
+          {
+            label: 'PDO',
+            backgroundColor: constant.pdoAmt.background,
+            borderColor: constant.pdoAmt.border,
+            borderWidth: 2,
+            data: pdoAmt //[-10, 50, 80, 50, -20, 75, 57, 34, 25, 67, 45, 67]
+          }
+        ]
+      };
+      const ctxb = $('#barChartDemo').get(0).getContext('2d');
+      const barChart = new Chart(ctxb, {
+        type: 'bar',
+        data: bdata,
+      });
+    })
     // Data for Line Chart
     const data = {
       labels: ['January', 'February', 'March', 'April', 'May'],
@@ -46,25 +139,31 @@ export class ExamChartComponent implements OnInit {
     };
 
     // Data for Bar Chart
-    const bdata = {
-      labels: ['January', 'February', 'March', 'April', 'May'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          backgroundColor: 'rgba(220,220,220,0.2)',
-          borderColor: 'rgba(220,220,220,1)',
-          borderWidth: 2,
-          data: [65, 59, 80, 81, 56]
-        },
-        {
-          label: 'My Second dataset',
-          backgroundColor: 'rgba(151,187,205,0.2)',
-          borderColor: 'rgba(151,187,205,1)',
-          borderWidth: 2,
-          data: [28, 48, 40, 19, 86]
-        }
-      ]
-    };
+    // const bdata = {
+    //   labels: ['สาขา02', 'สาขา03', 'สาขา04', 'สาขา05', 'สาขา06', 'สาขา07', 'สาขา08', 'สาขา09', 'สาขา10','สาขา11','สาขา12','สาขา'],
+    //   datasets: [
+    //     {
+    //       label: 'ยอดเป้าหมาย',
+    //       backgroundColor: 'rgba(220,220,220,0.2)',
+    //       borderColor: 'rgba(220,220,220,1)',
+    //       borderWidth: 2,
+    //       data: [65, 59, 80, 81, 56,86,90,83,89,56,12,45]
+    //     },
+    //     {
+    //       label: 'ยอดขาย',
+    //       backgroundColor: 'rgba(151,187,205,0.2)',
+    //       borderColor: 'rgba(151,187,205,1)',
+    //       borderWidth: 2,
+    //       data: [60, 48, 85, 75, 60,84,56,34,25,56,76,56]
+    //     },{
+    //       label: 'ขาดยอด/เกินยอด',
+    //       backgroundColor: '#8e5ea2',
+    //       borderColor: 'rgba(151,187,205,1)',
+    //       borderWidth: 2,
+    //       data: [-10, 50, 80, 50, -20,75,57,34,25,67,45,67]
+    //     }
+    //   ]
+    // };
 
     // Data for Horizontal Bar Chart
     const hbdata = {
@@ -184,11 +283,11 @@ export class ExamChartComponent implements OnInit {
       data: data,
     });
 
-    const ctxb = $('#barChartDemo').get(0).getContext('2d');
-    const barChart = new Chart(ctxb, {
-      type: 'bar',
-      data: bdata,
-    });
+    // const ctxb = $('#barChartDemo').get(0).getContext('2d');
+    // const barChart = new Chart(ctxb, {
+    //   type: 'bar',
+    //   data: bdata,
+    // });
 
     const ctxr = $('#radarChartDemo').get(0).getContext('2d');
     const radarChart = new Chart(ctxr, {
@@ -223,13 +322,13 @@ export class ExamChartComponent implements OnInit {
           display: true,
           text: 'Predicted world population (millions) in 2050'
         }, scales: {
-          yAxes: [ {
+          yAxes: [{
             scaleLabel: {
               display: true,
               labelString: 'Happiness'
             }
           }],
-          xAxes: [ {
+          xAxes: [{
             scaleLabel: {
               display: true,
               labelString: 'GDP (PPP)'
