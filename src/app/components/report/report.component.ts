@@ -16,8 +16,8 @@ export class ReportComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.resAPI.getBranch(value).subscribe(result => {
-      this.branchs = JSON.parse(JSON.stringify(result).replace(/"([^"]+)":/g, function($0,$1){return ('"'+$1.toLowerCase()+'":');}));
+    this.resAPI.getBranch(value.brh_id).subscribe(result => {
+      this.branchs = JSON.parse(JSON.stringify(result.data).replace(/"([^"]+)":/g, function($0,$1){return ('"'+$1.toLowerCase()+'":');}));
       console.log(result);
     })
   }
