@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
 import { AppserverService } from '../../services/appserver.service';
+import { Chart } from 'chart.js';
 import constant from '../../services/color.js'
 declare const $;
-declare const Chart;
+// declare const Chart;
 declare const App;
 
 @Component({
@@ -24,33 +25,28 @@ export class ExamChartComponent implements OnInit {
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
-    this.initialLoadChart();
     App.initLoadJquery();
+    this.initialLoadChart(); 
+  }
+
+  private devideMillion(data:number){
+    return (data/1000000).toFixed(2);
   }
   private initialLoadChart() {
-
-    function devideMillion(data:number){
-      return (data/1000000).toFixed(2);
-    }
-
     this.resAPI.getMonthlyMeeting().subscribe(result => {
-      console.log('----------- monthly meeting --------------------')
-      console.log(result.data)
-      this.tarAmt = devideMillion(result.data[0].TAR_AMT);
-      this.saleAmt = devideMillion(result.data[0].SALE_AMT);
+      this.tarAmt = this.devideMillion(result.data[0].TAR_AMT);
+      this.saleAmt = this.devideMillion(result.data[0].SALE_AMT);
      // this.diffTarAmt = devideMillion(result.data[0].DIF_TAR_AMT);
-      this.diffTarAmt = devideMillion(result.data[0].SALE_AMT-result.data[0].TAR_AMT);
-      this.payAmt = devideMillion(result.data[0].PAY_AMT);     
-      this.accTarAmt = devideMillion(result.data[0].ACC_TAR_AMT);
-      this.accSaleAmt = devideMillion(result.data[0].ACC_SALE_AMT);
-      this.summary = devideMillion(result.data[0].ACC_TAR_AMT-result.data[0].ACC_SALE_AMT);
-      this.losPdoAmt = devideMillion(result.data[0].LOS_PDO_AMT);
-      this.pdoAmt = devideMillion(result.data[0].PDO_AMT);
+      this.diffTarAmt = this.devideMillion(result.data[0].SALE_AMT-result.data[0].TAR_AMT);
+      this.payAmt = this.devideMillion(result.data[0].PAY_AMT);     
+      this.accTarAmt = this.devideMillion(result.data[0].ACC_TAR_AMT);
+      this.accSaleAmt = this.devideMillion(result.data[0].ACC_SALE_AMT);
+      this.summary = this.devideMillion(result.data[0].ACC_TAR_AMT-result.data[0].ACC_SALE_AMT);
+      this.losPdoAmt = this.devideMillion(result.data[0].LOS_PDO_AMT);
+      this.pdoAmt = this.devideMillion(result.data[0].PDO_AMT);
     })
 
     this.resAPI.getSaleInfo().subscribe(result => {
-      console.log('---------- get sale info --------------------')
-      console.log(result.data);
       var labels = [];
       var targetAmt = [];
       var saleAmt = [];

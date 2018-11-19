@@ -12,14 +12,15 @@ import { LoginComponent } from './components/login/login.component';
 // import { HomeComponent } from './components/home/home.component';
 // import { CardComponent } from './components/card/card.component';
 import { IntroComponent } from './components/intro/intro.component';
-import { ChartComponent } from './components/chart/chart.component';
-import { ReportComponent } from './components/report/report.component';
+import { SaleInfoComponent } from './components/sale-info/sale-info.component';
+import { BranchComponent } from './components/branch/branch.component';
 
 import { ChartJS } from './../assets/app/chartjs';
 import { AppRouting } from './app.routing';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SharedModule } from './shared/shared.module';
 import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
+import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -43,10 +44,11 @@ import { ExamChartComponent } from './components/exam-chart/exam-chart.component
     // HomeComponent,
     // CardComponent,
     IntroComponent,
-    ChartComponent,
-    ReportComponent,
+    SaleInfoComponent,
+    BranchComponent,
     SummaryComponent,
-    ExamChartComponent
+    ExamChartComponent,
+    MonthlyMeetingComponent
   ],
   imports: [
     AppRouting,
