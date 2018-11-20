@@ -1,0 +1,35 @@
+.app-title {
+    margin-bottom: 10px;
+}
+#targetAmt {
+    background-color: #FF9EB3;
+    border-color: #FF4D73;
+    color:black;
+}
+#saleAmt {
+    background-color: #82CDFF;
+    border-color: #24A7FF;
+    color:black;
+}
+#diffAmt {
+    background-color: #FFE099;
+    border-color: #FFD574;
+    color:black;
+}
+#pdo {
+    background-color: #73E8E8;
+    border-color:#5BFBFB;
+    color:black;
+}
+label#targetAmt.btn.btn-primary.active {
+    background-color: #FF4D73;
+}
+label#saleAmt.btn.btn-primary.active {
+    background-color: #24A7FF;
+}
+label#diffAmt.btn.btn-primary.active {
+    background-color: #FFD574;
+}
+label#pdo.btn.btn-primary.active {
+    background-color: #5BFBFB;
+}

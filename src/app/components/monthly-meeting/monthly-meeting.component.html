@@ -15,11 +15,28 @@
     <div class="col-md-12">
       <div class="tile">
         <h3 style="text-align: center">รายงานยอดขายสินค้า ยอดการเก็บเงิน และยอดหนี้ PDO</h3>
-        <h3 style="text-align:center">ประจำเดือนตุลาคม 2561</h3><br><br>
-        <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา <select class="form-control" #selectBrh id="exampleSelect1"
+        <h3 style="text-align:center">ประจำเดือน{{month}} 2561</h3><br><br>
+       <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา <!--<select class="form-control" #selectBrh id="exampleSelect1"
             (change)="onChange($event.target.value)">
             <option *ngFor="let branch of branches">{{branch.BRH_ID}}</option>
-          </select> โดยคุณ {{mgrsName}}
+          </select> โดยคุณ {{mgrsName}} -->
+          <div class="input-group">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]" (click)="decrease(branchId)">
+                  <i class="material-icons">
+                    keyboard_arrow_left
+                    </i>
+                </button>
+            </span>
+            <input type="text" id="branchId" #branchId class="form-control input-number" onfocus="this.select();" (change)="selectBranch(branchId)">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" (click)="increase(branchId)">
+                  <i class="material-icons">
+                    keyboard_arrow_right
+                    </i>
+                </button>
+            </span>
+        </div> โดยคุณ {{mgrsName}}
         </h5>
         
         <div class="table-responsive">

@@ -42,3 +42,21 @@ input#exampleInputAmount.form-control {
 #first-title {
     margin-bottom: -40px;
 }
+input#branchId.form-control.input-number {
+    vertical-align: middle;
+    width: 45px;
+    text-align: center;
+    height: 1.5rem;
+    font-size: 1.0rem;
+}
+button.btn.btn-success.btn-number {
+    height: 24px;
+    margin-left: -3px;
+}
+button.btn.btn-danger.btn-number {
+    height: 24px;
+    margin-right: -3px;
+}
+i.material-icons {
+    margin-top:-7px;
+}
