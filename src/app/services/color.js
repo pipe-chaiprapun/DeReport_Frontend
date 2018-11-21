@@ -1,7 +1,7 @@
 export default {
-    'tarAmt': {
-        'background': '#FF9EB3',
-        'border': '#FF6E8E'
+    'tarAmt': {     
+        'background': '#A5DFDF',
+        'border': '#74E0E0'
     },
     'saleAmt': {
         'background': '#82CDFF',
@@ -12,7 +12,7 @@ export default {
         'border': '#FFC233'
     },
     'pdoAmt': {
-        'background': '#A5DFDF',
-        'border': '#74E0E0'
+        'background': '#FF9EB3',
+        'border': '#FF6E8E'
     }
 }
