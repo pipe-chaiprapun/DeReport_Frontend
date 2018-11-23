@@ -3,8 +3,8 @@ import { AppserverService } from '../../services/appserver.service';
 import { noUndefined } from '@angular/compiler/src/util';
 declare const App;
 declare const $;
-const monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษพาคม", "มิถุนายน",
-  "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+const monthNames = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษพาคม', 'มิถุนายน',
+  'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
 ];
 @Component({
   selector: 'app-monthly-meeting',
@@ -12,32 +12,32 @@ const monthNames = ["มกราคม", "กุมภาพันธ์", "ม
   styleUrls: ['./monthly-meeting.component.css']
 })
 export class MonthlyMeetingComponent implements OnInit {
-  private tarAmt: string;
-  private saleAmt: string;
+  public tarAmt: string;
+  public saleAmt: string;
   private diffTarAmt: string;
-  private payAmt: string;
-  private accTarAmt: string;
-  private accSaleAmt: string;
-  private losPdoAmt: string;
-  private pdoAmt: string;
+  public payAmt: string;
+  public accTarAmt: string;
+  public accSaleAmt: string;
+  public losPdoAmt: string;
+  public pdoAmt: string;
   private summary: string;
-  private mgrsName: string;
-  private numDiffTarAmt: number;
-  private numSummary: number;
-  private oCustPDOAMT: string;
-  private nCustPDOAMT: string;
-  private pdoAmtPercent: string;
+  public mgrsName: string;
+  public numDiffTarAmt: number;
+  public numSummary: number;
+  public oCustPDOAMT: string;
+  public nCustPDOAMT: string;
+  public pdoAmtPercent: string;
   private branches = [];
   private branchInput: HTMLInputElement;
-  private branchIndex: number = 0;
+  private branchIndex = 0;
   private branchNum: number;
-  private month: string;
+  public month: string;
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
     App.initLoadJquery();
     this.initialLoadChart();
-    let today = new Date(Date.now());
+    const today = new Date(Date.now());
     this.month = monthNames[today.getMonth() - 1];
   }
   private devideMillion(data: number) {
@@ -47,7 +47,7 @@ export class MonthlyMeetingComponent implements OnInit {
     this.resAPI.getMonthlyMeeting().subscribe(result => {
       this.branches = result.data;
       this.branchNum = this.branches.length;
-      this.branchInput = document.getElementById("branchId") as HTMLInputElement;
+      this.branchInput = document.getElementById('branchId') as HTMLInputElement;
       this.branchInput.value = this.branches[0].BRH_ID;
       this.mgrsName = result.data[0].MGRS_NAME;
       this.tarAmt = this.devideMillion(result.data[0].TAR_AMT);
@@ -65,11 +65,11 @@ export class MonthlyMeetingComponent implements OnInit {
       this.oCustPDOAMT = this.devideMillion(result.data[0].OCUST_PDO_AMT);
       this.nCustPDOAMT = this.devideMillion(result.data[0].NCUST_PDO_AMT);
       this.pdoAmtPercent = ((result.data[0].PDO_AMT / result.data[0].FREMAIN_AMT) * 100).toFixed(2);
-    })
+    });
   }
   private newRenderChart(brh) {
-    this.branchIndex = this.branches.findIndex(element => element.BRH_ID == brh);
-    let branch = this.branches.filter(element => element.BRH_ID == brh)[0];
+    this.branchIndex = this.branches.findIndex(element => element.BRH_ID === brh);
+    const branch = this.branches.filter(element => element.BRH_ID === brh)[0];
     if (noUndefined(branch)) {
       this.branchInput.value = branch.BRH_ID;
       this.mgrsName = branch.MGRS_NAME;
@@ -94,7 +94,7 @@ export class MonthlyMeetingComponent implements OnInit {
     this.newRenderChart(deviceValue);
   }
   increase(data) {
-    this.nextItem()
+    this.nextItem();
     // var inputBranch = document.getElementById("branchId") as HTMLInputElement;
     // let branchId = parseInt(inputBranch.value);
   }
@@ -102,7 +102,7 @@ export class MonthlyMeetingComponent implements OnInit {
     this.newRenderChart(data.value);
   }
   decrease(data) {
-    this.prevItem()
+    this.prevItem();
   }
   nextItem() {
     this.branchIndex++; // increase i by one

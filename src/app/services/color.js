@@ -1,13 +1,17 @@
 export default {
     'tarAmt': {     
-        'background': '#A5DFDF',
-        'border': '#74E0E0'
+        'background': '#d7dde2',//'#A5DFDF',
+        'border': '#a1a9af'
     },
     'saleAmt': {
         'background': '#82CDFF',
         'border': '#44B4FF'
     },
     'payAmt': {
+        'background': '#CCB2FF',
+        'border': '#915AFF'
+    },
+    'diffTarAmt': {
         'background': '#FFE099',
         'border': '#FFC233'
     },

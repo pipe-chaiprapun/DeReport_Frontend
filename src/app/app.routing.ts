@@ -5,7 +5,7 @@ import { BranchComponent } from './components/branch/branch.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SaleInfoComponent } from './components/sale-info/sale-info.component';
 import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
-import { MonthlyMeetingComponent } from  './components/monthly-meeting/monthly-meeting.component';
+import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 
 const RouteList: Routes = [
     { path: '', redirectTo: AppUrl.Login, pathMatch: 'full' },
