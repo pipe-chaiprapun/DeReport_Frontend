@@ -4,5 +4,6 @@ export const AppUrl = {
     Branch: 'branch',
     SaleInfo: 'saleInfo',
     ExamChart: 'exchart',
-    MonthlyMeeting: 'monthlyMeeting'
+    MonthlyMeeting: 'monthlyMeeting',
+    NewsManagement: 'newsManagement'
 };

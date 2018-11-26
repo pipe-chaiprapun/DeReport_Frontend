@@ -6,6 +6,7 @@ import { SummaryComponent } from './components/summary/summary.component';
 import { SaleInfoComponent } from './components/sale-info/sale-info.component';
 import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
+import { NewsManagementComponent } from './components/news-management/news-management.component';
 
 const RouteList: Routes = [
     { path: '', redirectTo: AppUrl.Login, pathMatch: 'full' },
@@ -14,7 +15,8 @@ const RouteList: Routes = [
     { path: AppUrl.Summary, component: SummaryComponent },
     { path: AppUrl.SaleInfo, component: SaleInfoComponent },
     { path: AppUrl.ExamChart, component: ExamChartComponent },
-    { path: AppUrl.MonthlyMeeting, component: MonthlyMeetingComponent}
+    { path: AppUrl.MonthlyMeeting, component: MonthlyMeetingComponent},
+    { path: AppUrl.NewsManagement, component: NewsManagementComponent}
 ];
 
 export const AppRouting = RouterModule.forRoot(RouteList);

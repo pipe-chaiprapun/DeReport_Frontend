@@ -21,6 +21,7 @@ import { SummaryComponent } from './components/summary/summary.component';
 import { SharedModule } from './shared/shared.module';
 import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
+import { NewsManagementComponent } from './components/news-management/news-management.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -48,7 +49,8 @@ import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-me
     BranchComponent,
     SummaryComponent,
     ExamChartComponent,
-    MonthlyMeetingComponent
+    MonthlyMeetingComponent,
+    NewsManagementComponent
   ],
   imports: [
     AppRouting,

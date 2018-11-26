@@ -364,7 +364,6 @@ export class SaleInfoComponent implements OnInit {
       });
       result.data.forEach(e => {
         this.targetAmt.push(this.devideMillion(e.TAR_AMT));
-        this.test[0].push(this.devideMillion(e.TAR_AMT));
       });
       result.data.forEach(e => {
         this.saleAmt.push(this.devideMillion(e.SALE_AMT));
