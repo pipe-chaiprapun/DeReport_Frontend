@@ -11,12 +11,12 @@ export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private baseUrl = `http://192.168.1.129:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
-  private loginUrl = `${this.apiUrl}/login`;
-  private logoutUrl = `${this.apiUrl}/logout`;
+  // private loginUrl = `${this.apiUrl}/login`;
+  // private logoutUrl = `${this.apiUrl}/logout`;
   private branchUrl = `${this.baseUrl}/api/information/getBranch`;
   private saleInfoUrl = `${this.baseUrl}/api/information/getSaleInfo`;
-  private pathUrl = `${this.apiUrl}/path`;
-  private reportUrl = `${this.apiUrl}/report`;
+  // private pathUrl = `${this.apiUrl}/path`;
+  // private reportUrl = `${this.apiUrl}/report`;
   private getMonthylyMeeting = `${this.baseUrl}/api/information/getMonthlyMeeting`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
 
