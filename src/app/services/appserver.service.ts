@@ -19,6 +19,7 @@ export class AppserverService {
   // private reportUrl = `${this.apiUrl}/report`;
   private getMonthylyMeeting = `${this.baseUrl}/api/information/getMonthlyMeeting`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
+  private getnews = `${this.baseUrl}/api/news/getNews`;
 
 
   constructor(private http: HttpClient) { }
@@ -50,9 +51,14 @@ export class AppserverService {
     return this.http.post<any>(this.createNews, data, {headers: this.headers});
   }
 
+  getNews(): Observable<any> {
+    return this.http.get<any[]>(this.getnews, { headers: this.headers });
+  }
+
   getMonthlyMeeting(): Observable<any> {
     console.log(this.getMonthylyMeeting);
     return this.http.get<any[]>(this.getMonthylyMeeting, { headers: this.headers });
   }
+
 
 }
