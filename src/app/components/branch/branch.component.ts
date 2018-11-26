@@ -3,10 +3,10 @@ import { AppserverService } from '../../services/appserver.service';
 declare const App: any;
 @Component({
   selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  templateUrl: './branch.component.html',
+  styleUrls: ['./branch.component.css']
 })
-export class ReportComponent implements OnInit {
+export class BranchComponent implements OnInit {
   branchs:any = [];
 
   constructor(private resAPI: AppserverService) { }

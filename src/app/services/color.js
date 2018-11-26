@@ -1,18 +1,22 @@
 export default {
-    'tarAmt': {
-        'background': '#F7464A',
-        'border': 'rgba(220,220,220,1)'
+    'tarAmt': {     
+        'background': '#d7dde2',//'#A5DFDF',
+        'border': '#a1a9af'
     },
     'saleAmt': {
-        'background': '#46BFBD',
-        'border': 'rgba(220,220,220,1)'
+        'background': '#82CDFF',
+        'border': '#44B4FF'
     },
     'payAmt': {
-        'background': '#FDB45C',
-        'border': 'rgba(220,220,220,1)'
+        'background': '#CCB2FF',
+        'border': '#915AFF'
+    },
+    'diffTarAmt': {
+        'background': '#FFE099',
+        'border': '#FFC233'
     },
     'pdoAmt': {
-        'background': 'rgba(193,46,12,1)',
-        'border': 'rgba(151,187,205,1)'
+        'background': '#FF9EB3',
+        'border': '#FF6E8E'
     }
 }

@@ -9,7 +9,6 @@ import { AppUrl } from 'src/app/app.url';
 export class SidebarComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit() {
   }
   Url = AppUrl;
