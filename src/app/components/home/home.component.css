@@ -1,3 +1,4 @@
+/* ชื่อและโลโก้บริษัท */
 .headertext {
     position: absolute;
     padding-top: 1.3%;
@@ -25,6 +26,14 @@
     background-size: cover; 
 }
 
+/* ทำให้ไม่มี gap */
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+    padding-bottom:0;
+    padding-top:0;
+  }
+
 
 /* ส่วนหัวข้อข่าว */
 .bgnews {
@@ -43,7 +52,7 @@
     padding-left: 4%
  }
 
-  #newstextlogo {
+#newstextlogo {
     padding-top:0.6%;
     color: rgb(250, 250, 250,1);
     padding-left:8.5%;
@@ -51,14 +60,23 @@
     position: absolute;
 }
 
-  #newsheader {
+#newsheader {
     text-align: center;
 }
 
 #newscontent {
     padding-top:8%;
     padding-bottom: 5%;
-    padding-left:8%
+}
+
+#newscard {
+    display: inline-flex;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+#newscard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /* ส่วนหัวข้ออัลบั้ม */
@@ -88,11 +106,9 @@
 
 /* ส่วนหัวข้อ Monday Menu */
 .bgmondaymenu {
-    height: 100%;
     background: darkgreen; /* For browsers that do not support gradients */ 
     background: linear-gradient(to bottom right, rgb(0,174,57), rgb(0,26,9)); 
-    border: #000;
-    border-width: 2%;   
+    width: 100%;
 }
 
 #bgmondaymenulogo {
@@ -110,3 +126,41 @@
     font-size: 394%;
     position: absolute;
 }
+
+#monday {
+    display:inline-flex;
+    background-color: rgb(255, 255, 255,0.1);
+    font-size:130%;
+    color:whitesmoke
+  }
+
+  #monday:hover {
+    display:inline-flex;
+    background-color: rgb(216, 248, 7);
+    font-size:130%;
+    color:rgb(10, 34, 24)
+  }
+
+  
+
+
+
+/* gallery card effect */
+#gallerycard {
+    display:inline-flex;
+    background-color: rgb(255, 255, 255,0.1);
+    font-size:130%;
+    color:whitesmoke;
+    text-align:center;
+  }
+  
+  #gallerycard:hover {
+    display:inline-flex;
+    background-color: rgb(255, 255, 255,0.5);
+    font-size:130%;
+    color:rgb(10, 34, 24)
+  }
+
+
+
+
