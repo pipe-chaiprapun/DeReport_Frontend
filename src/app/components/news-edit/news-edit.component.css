@@ -1,0 +1,10 @@
+a.card-link {
+    margin-right:1.25rem;
+    margin-left:0px;  
+    color:#009688;
+}
+
+
+a.card-link:hover {
+    cursor: pointer;
+}
