@@ -21,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
 import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 import { NewsManagementComponent } from './components/news-management/news-management.component';
+import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import 'hammerjs';
 
@@ -52,6 +53,7 @@ import 'hammerjs';
     ExamChartComponent,
     MonthlyMeetingComponent,
     NewsManagementComponent,
+    NewsEditComponent,
     HomeComponent
   ],
   imports: [
