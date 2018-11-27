@@ -8,9 +8,10 @@ import { ExamChartComponent } from './components/exam-chart/exam-chart.component
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 import { NewsManagementComponent } from './components/news-management/news-management.component';
 import { NewsEditComponent } from './components/news-edit/news-edit.component';
+import { HomeComponent } from './components/home/home.component';
 
 const RouteList: Routes = [
-    { path: '', redirectTo: AppUrl.Login, pathMatch: 'full' },
+    { path: '', redirectTo: AppUrl.Home, pathMatch: 'full' },
     { path: AppUrl.Login, component: LoginComponent },
     { path: AppUrl.Branch, component: BranchComponent },
     { path: AppUrl.Summary, component: SummaryComponent },
@@ -18,7 +19,8 @@ const RouteList: Routes = [
     { path: AppUrl.ExamChart, component: ExamChartComponent },
     { path: AppUrl.MonthlyMeeting, component: MonthlyMeetingComponent },
     { path: AppUrl.NewsManagement, component: NewsManagementComponent },
-    { path: AppUrl.NewsEdit, component: NewsEditComponent }
+    { path: AppUrl.NewsEdit, component: NewsEditComponent },
+    { path: AppUrl.Home, component: HomeComponent}
 ];
 
 export const AppRouting = RouterModule.forRoot(RouteList);

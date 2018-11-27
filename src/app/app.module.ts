@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 // import { MenuComponent } from './components/menu/menu.component';
 // import { HeaderComponent } from './components/header/header.component';
@@ -23,6 +22,8 @@ import { ExamChartComponent } from './components/exam-chart/exam-chart.component
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 import { NewsManagementComponent } from './components/news-management/news-management.component';
 import { NewsEditComponent } from './components/news-edit/news-edit.component';
+import { HomeComponent } from './components/home/home.component';
+import 'hammerjs';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -52,7 +53,8 @@ import { NewsEditComponent } from './components/news-edit/news-edit.component';
     ExamChartComponent,
     MonthlyMeetingComponent,
     NewsManagementComponent,
-    NewsEditComponent
+    NewsEditComponent,
+    HomeComponent
   ],
   imports: [
     AppRouting,
@@ -60,7 +62,7 @@ import { NewsEditComponent } from './components/news-edit/news-edit.component';
     FormsModule,
     HttpClientModule,
     // RouterModule.forRoot(routes),
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
