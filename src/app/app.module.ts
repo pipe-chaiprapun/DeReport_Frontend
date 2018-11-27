@@ -24,6 +24,7 @@ import { NewsManagementComponent } from './components/news-management/news-manag
 import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import 'hammerjs';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -63,6 +64,7 @@ import 'hammerjs';
     HttpClientModule,
     // RouterModule.forRoot(routes),
     SharedModule,
+    NgxGalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
