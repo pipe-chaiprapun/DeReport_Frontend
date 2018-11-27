@@ -12,6 +12,76 @@
     </ul>
   </div>
   <div class="row">
-    
+    <div *ngFor="let news of newsCard" id="{{news._id}}" #card class="col-lg-4 col-md-6" style="margin-bottom:8px;">
+      <div class="bs-component">
+        <div class="card">
+          <h4 class="card-header">{{news.title}}</h4>
+          <!-- <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+          </div> -->
+          <img style="height: 200px; width: 100%; display: block;" src="http://192.168.1.129:8042/img/{{news.image}}" alt="Card image">
+          <div class="card-body">
+            <p class="card-text">{{news.content}}</p>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <a class="card-link" (click)="edit(card)" data-toggle="modal" data-target="#exampleModalCenter">แก้ไขข่าว</a>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <a class="card-link" (click)="delete(card)">ลบข่าว</a>
+          </div>
+          <div class="card-footer text-muted">{{news.created_date}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">แก้ไขข่าวสาร</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tile-body">
+          <form>
+            <div class="form-group">
+              <label class="control-label">หัวข้อ</label>
+              <input class="form-control" id='title' type="text" #newsTitle value="{{title}}">
+            </div>
+            <div class="form-group">
+              <label class="control-label">เนื้อหา</label>
+              <textarea class="form-control" id='content' rows="10" #newsContent>{{content}}</textarea>
+            </div>
+            <div class="form-group">
+              <label for="category" class="control-label">ประเภทของข่าว</label>
+              <select class="form-control" id="category" #category>
+                <option *ngFor="let data of categoryName">{{data.name}}</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="control-label">เริ่มประกาศ</label>
+                <input class="form-control" id="startDate" #startDate type="text" placeholder="Select Date">
+              </div>
+              <div class="col-md-6">
+                <label class="control-label">สิ้นสุด</label>
+                <input class="form-control" id="endDate" #endDate type="text" placeholder="Select Date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">อัพโหลดภาพ</label>
+              <input class="form-control" id='image' type="file" #newsImage accept="image/*">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
