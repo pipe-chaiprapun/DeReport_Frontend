@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-university" aria-hidden="true"></i>ข้อมูลสาขา</h1>
+            <p>ข้อมูลสาขา</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="#">ข้อมูลสาขา</a></li>
+        </ul>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+        <input ngModel name="brh_id" type="text" placeholder="สาขา">
+        <button type="submit">OK</button>
+    </form> -->
+
+    <div *ngFor="let branch of branchs">
+        รหัส : {{branch.brh_id}}
+        ชื่อ : {{branch.brh_name}}
+    </div>
+</main>

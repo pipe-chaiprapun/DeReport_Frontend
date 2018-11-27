@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-newspaper-o"></i> หน้าจัดการเนื้อหาสำหรับผู้ดูแล</h1>
+      <p>หน้าจัดการเนื้อหาสำหรับผู้ดูแล</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-newspaper-o"></i></li>
+      <li class="breadcrumb-item"><a href="#">หน้าจัดการเนื้อหาสำหรับผู้ดูแล</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="tile">
+        <h3 class="tile-title">จัดการข่าวสาร</h3>
+        <div class="tile-body">
+          <form>
+            <div class="form-group">
+              <label class="control-label">หัวข้อ</label>
+              <input class="form-control" id='title' type="text" #newsTitle>
+            </div>
+            <div class="form-group">
+              <label class="control-label">เนื้อหา</label>
+              <textarea class="form-control" id='content' rows="10" #newsContent></textarea>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Identity Proof</label>
+              <input class="form-control" id='image' type="file" #newsImage accept="image/*">
+            </div>
+          </form>
+        </div>
+        <div class="tile-footer">
+          <button class="btn btn-primary" type="button" (click)="saveNews(newsTitle, newsContent, newsImage)"><i class="fa fa-fw fa-lg fa-check-circle"></i>บันทึก</button>
+          &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" (click)="clearNews()"><i class="fa fa-fw fa-lg fa-times-circle"></i>ยกเลิก</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
