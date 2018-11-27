@@ -5,5 +5,6 @@ export const AppUrl = {
     SaleInfo: 'saleInfo',
     ExamChart: 'exchart',
     MonthlyMeeting: 'monthlyMeeting',
-    NewsManagement: 'newsManagement'
+    NewsManagement: 'newsManagement',
+    NewsEdit: 'newsEdit'
 };
