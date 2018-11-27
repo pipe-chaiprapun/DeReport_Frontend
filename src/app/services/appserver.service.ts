@@ -34,8 +34,7 @@ export class AppserverService {
   //   return this.http.post<any>(url, brh_id, { headers: this.headers });
   // }
   getSaleInfo(): Observable<any> {
-    const url = this.saleInfoUrl;
-    return this.http.get<any[]>(url, { headers: this.headers });
+    return this.http.get<any[]>(this.saleInfoUrl, { headers: this.headers });
   }
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;
@@ -43,8 +42,7 @@ export class AppserverService {
   }
 
   getChart(brh_id: string): Observable<any> {
-    const url = this.saleInfoUrl;
-    return this.http.post<any>(url, brh_id, { headers: this.headers });
+    return this.http.post<any>(this.saleInfoUrl, brh_id, { headers: this.headers });
   }
 
   addNews(data: any): Observable<any> {
@@ -56,7 +54,6 @@ export class AppserverService {
   }
 
   getMonthlyMeeting(): Observable<any> {
-    console.log(this.getMonthylyMeeting);
     return this.http.get<any[]>(this.getMonthylyMeeting, { headers: this.headers });
   }
 
