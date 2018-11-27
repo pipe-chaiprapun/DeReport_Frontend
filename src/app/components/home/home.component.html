@@ -1,0 +1,88 @@
+<!-- Header -->
+<div class="row">
+  <div class="headerlogo">
+    <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" style="width:auto;height:100%;">
+  </div>
+  <div class="headertext">
+    <h1 class="display-3">DOMESTIC</h1>
+  </div>
+</div>
+<!-- EndHeader -->
+
+<!-- Content -->
+<div class="main">
+  <!-- NEWS -->
+  <div style="padding-top:3%">
+    <div class="container-fluid  bgnews">
+      <div class="row">
+        <i class="fa fa-slack" style="position: absolute;;font-size:66px;color:rgb(250, 250, 250,1);padding-top: 1.3%;padding-left: 4%"></i>
+        <div style="padding-top:0.6%;color: rgb(250, 250, 250,1);padding-left:8.5%;font-size: 394%;position: absolute;">
+          NEWS
+        </div>
+      </div>
+
+      <div class="container-fluid" style="padding-top:8%;padding-bottom: 5%;padding-left:8%">
+        <div class="row">
+          <!-- ประกาศข่าว -->
+          <div class="col-12">
+              <div class="row">
+                <div *ngFor="let item of cardData">
+                  <div class="col-3" style="padding-top: 4%">
+                    <div class="card mb" style="display: inline-flex;">
+                      <img class="card-img-top" src='http://192.168.1.129:8042/img/{{item.image}}' alt="Card image cap" style="width:285px;height:165px">
+                      <div class="card-body mb">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.content}}</p>
+                        <button type="button" class="btn btn-primary mb">button</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- จบประกาศข่าว   -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- EndNEWS  -->
+
+  <!-- Gallary -->
+  <div style="padding-top:3%">
+    <div class="container-fluid  bggallery">
+      <div class="row">
+        <i class="fa fa-instagram" style="position: absolute;;font-size:66px;color:rgb(250, 250, 250,1);padding-top: 1.3%;padding-left: 4%"></i>
+        <div style="padding-top:0.6%;color: rgb(250, 250, 250,1);padding-left:8.5%;font-size: 394%;position: absolute;">
+          GALLERY
+        </div>
+      </div>
+
+      <div class="container-fluid" style="padding-top:8%;padding-bottom: 5%;padding-left:8%">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- EndGallary -->
+
+  <!-- Monday Menu -->
+  <div style="padding-top:3%">
+    <div class="container-fluid  bgmondaymenu">
+      <div class="row">
+        <i class="fa fa-heart-o" style="position: absolute;;font-size:66px;color:rgb(250, 250, 250,1);padding-top: 1.3%;padding-left: 4%"></i>
+        <div style="padding-top:0.6%;color: rgb(250, 250, 250,1);padding-left:8.5%;font-size: 394%;position: absolute;">
+          Monday Menu
+        </div>
+      </div>
+
+      <div class="container-fluid" style="padding-top:8%;padding-bottom: 5%;padding-left:8%">
+        <div class="row">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- EndMonday Menu -->
+</div>
+<!-- End Content -->
