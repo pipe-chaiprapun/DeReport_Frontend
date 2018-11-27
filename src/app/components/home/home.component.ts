@@ -11,7 +11,7 @@ import 'hammerjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public cardData= [];
+  public cardData = [];
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService) { }
@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
-      console.log(result)
+      console.log(result);
       this.cardData = result.data;
-      console.log(this.cardData)
+      console.log(this.cardData);
     });
   }
 
