@@ -15,9 +15,11 @@ export class NewsEditComponent implements OnInit {
   public categoryName = [];
   public startDate;
   public endDate;
+  public url;
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
+    this.url = this.resAPI.baseUrl;
     this.resAPI.getNews().subscribe(result => {
       this.newsCard = result.data;
     });
