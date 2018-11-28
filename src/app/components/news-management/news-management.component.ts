@@ -20,12 +20,12 @@ export class NewsManagementComponent implements OnInit {
     });
     App.initLoadJquery();
     $('#startDate').datepicker({
-      format: 'yyyy-mm-dd',
+      format: 'dd/mm/yyyy',
       autoclose: true,
       todayHighlight: true
     });
     $('#endDate').datepicker({
-      format: 'yyyy-mm-dd',
+      format: 'dd/mm/yyyy',
       autoclose: true,
       todayHighlight: true
     });
@@ -34,15 +34,15 @@ export class NewsManagementComponent implements OnInit {
     console.log(title.value);
     console.log(content.value);
     console.log(cate.value);
-    console.log(startDate.value);
-    console.log(endDate.value);
+    console.log(startDate.value.split('/').reverse().join('-'));
+    console.log(endDate.value.split('/').reverse().join('-'));
     console.log(image.files[0]);
     const news = {
       title: title.value,
       content: content.value,
       category: cate.value,
-      startDate: startDate.value,
-      endDate: endDate.value,
+      startDate: startDate.value.split('/').reverse().join('-'),
+      endDate: endDate.value.split('/').reverse().join('-'),
       image: image.value,
       creator: 'admin'
     };
