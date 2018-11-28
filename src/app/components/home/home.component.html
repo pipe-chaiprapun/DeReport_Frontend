@@ -1,21 +1,21 @@
-<!-- Header -->
-<div class="row">
-  <div class="headerlogo">
-    <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" style="width:auto;height:100%;">
-  </div>
-  <div class="headertext">
-    <h1 class="display-3">DOMESTIC</h1>
-  </div>
-</div>
-<!-- EndHeader -->
-
 <!-- Content -->
 <div class="main">
+
+  <!-- Header -->
+  <div class="row">
+    <div class="headerlogo">
+      <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" style="width:auto;height:100%;">
+    </div>
+    <div class="headertext">
+      <h1 class="display-3">DOMESTIC</h1>
+    </div>
+  </div>
+  <!-- EndHeader -->
 
   <!-- Slide Show -->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12  padding-0">
+      <div class="col-12  padding-0" id="slidetop">
         <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
       </div>
     </div>
@@ -25,208 +25,188 @@
   <!-- NEWS -->
   <div style="padding-top:3%">
     <div class="container-fluid  bgnews">
-      <div class="row">
-        <i class="fa fa-slack" id="newslogo"></i>
-        <div id="newstextlogo">
-          NEWS
+
+      <div class="container-fluid">
+        <div class="row">
+          <i class="fa fa-slack" id="newslogo"></i>
+          <div id="newstextlogo">
+            NEWS
+          </div>
         </div>
       </div>
+
 
       <div class="container-fluid" id="newscontent">
-          <!-- ประกาศข่าว -->
-            <div class="row justify-content-center">
-              <div *ngFor="let item of cardData">
-                <div class="col-3" style="padding-top: 4%">
-                    <div id="newscard" class="card text-center bg-light">
-                        <div class="card-header">
-                            {{item.title}}
-                        </div>
-                        <div class="card-body">
-                            <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap"
-                            style="width:240px;height:165px">
-                          <p class="card-text">{{item.content}}</p>
-                        </div>
-                        <div class="card-footer text-muted">
-                          2 days ago
-                        </div>
-                      </div>
+        <!-- ประกาศข่าว -->
+        <div class="row justify-content-center">
+          <div *ngFor="let item of cardData">
+            <div class="col-3" style="padding-top: 4%">
+              <div id="newscard" class="card text-center rounded-top">
+                <div class="card-header" style="background-color:darkgreen;color:white">
+                  <b>{{item.title}}</b>
+                </div>
+                <div class="card-body" style="background-color:rgba(11, 105, 44, 0.3);color:black">
+                  <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap" style="width:240px;height:165px;object-fit: cover;">
+                  <p class="card-text" style="padding-top:8%">{{item.content}}</p>
+                </div>
+                <div class="card-footer" style="background-color:darkgreen;color:white">
+                  ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}
+                </div>
               </div>
             </div>
+          </div>
           <!-- จบประกาศข่าว   -->
         </div>
-    </div>
-  </div>
-  <!-- EndNEWS  -->
-
-  <!-- Gallary -->
-  <div style="padding-top:3%">
-    <div class="container-fluid  bggallery">
-      <div class="row">
-        <i class="fa fa-instagram" id="bggallerylogo"></i>
-        <div id="bggallerytextlogo">
-          GALLERY
-        </div>
-      </div>
-
-      <div class="container-fluid" style="padding-top:8%;padding-bottom: 5%;">
-        <div class="row justify-content-center">
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
-              </div>
-              <p class="card-text">กิจกรรมวันเกิดท่านประธาน 2018</p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-              </div>
-              <p class="card-text">แข่งขันฟุตบอลเสียงตามสาย</p>
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-              </div>
-              <p class="card-text">ประชุมสมาคมกีฬา</p>
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-              </div>
-              <p class="card-text">ประชุมสมาคมกีฬา</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-content-center" style="padding-top:2%">
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
-              </div>
-              <p class="card-text">กิจกรรมวันเกิดท่านประธาน 2018</p>
-            </div>
-          </div>
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-              </div>
-              <p class="card-text">แข่งขันฟุตบอลเสียงตามสาย</p>
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-              </div>
-              <p class="card-text">ประชุมสมาคมกีฬา</p>
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div id="gallerycard" class="card" style="width:100%">
-              <div class="card-header" style="display:inline-flex;">
-                <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-              </div>
-              <p class="card-text">ประชุมสมาคมกีฬา</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-  <!-- EndGallary -->
+    <!-- EndNEWS  -->
 
-  <!-- Monday Menu -->
-  <div style="padding-top:3%">
-    <div class="container-fluid  bgmondaymenu">
-      <div class="row">
-        <i class="fa fa-heart-o" id="bgmondaymenulogo"></i>
-        <div id="bgmondaymenutextlogo">
-          Monday Menu
+    <!-- Gallary -->
+    <div style="padding-top:3%">
+      <div class="container-fluid  bggallery">
+        <div class="row">
+          <i class="fa fa-instagram" id="bggallerylogo"></i>
+          <div id="bggallerytextlogo">
+            GALLERY
+          </div>
+        </div>
+
+        <div class="container-fluid" style="padding-top:2%;padding-bottom: 5%;">
+          <div class="row justify-content-center">
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center" style="padding-top:2%">
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div id="gallerycard" class="card" style="width:100%">
+                <div class="card-header" style="display:inline-flex;">
+                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                </div>
+                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+    <!-- EndGallary -->
 
-      <div style="padding-top:8%;padding-bottom: 5%;text-align: center;">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-6">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <img src="../../../assets/images/food/yum.JPG" style="width:255px;height:190px;">
-                      </div>
-                      <p class="card-text">ยำสามกรอบ</p>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                      </div>
-                      <p class="card-text">แข่งขันฟุตบอลเสียงตามสาย</p>
-                    </div>
-                  </div>
+    <!-- Monday Menu -->
+    <div style="padding-top:3%">
+      <div class="container-fluid  bgmondaymenu">
+        <div class="row">
+          <i class="fa fa-heart-o" id="bgmondaymenulogo"></i>
+          <div id="bgmondaymenutextlogo">
+            Monday Menu
+          </div>
+        </div>
+
+        <div style="padding-top:8%;padding-bottom: 5%;text-align: center;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/yum.JPG" alt="Card image cap">
+                  <p class="card-text">ยำสามกรอบ</p>
                 </div>
-                <div class="row" style="padding-top:2%">
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
-                      </div>
-                      <p class="card-text">กิจกรรมวันเกิดท่านประธาน 2018</p>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                      </div>
-                      <p class="card-text">แข่งขันฟุตบอลเสียงตามสาย</p>
-                    </div>
-                  </div>
+              </div>
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/eeg.JPG" alt="Card image cap">
+                  <p class="card-text">ไข่ดาวลูกเขย</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/mara.jpg" alt="Card image cap">
+                  <p class="card-text">ต้มมะระกระดูกหมู</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/ped.jpg" alt="Card image cap">
+                  <p class="card-text">คั่วกลิ้งหมู</p>
                 </div>
               </div>
             </div>
 
-
-            <div class="col-6">
-              <div class="cotainer-fluid">
-                <div class="row">
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
-                      </div>
-                      <p class="card-text">กิจกรรมวันเกิดท่านประธาน 2018</p>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div id="monday" class="card" style="width:100%">
-                      <div class="card-header" style="display:inline-flex;">
-                        <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                      </div>
-                      <p class="card-text">แข่งขันฟุตบอลเสียงตามสาย</p>
-                    </div>
-                  </div>
+            <div class="row" style="padding-top:2%">
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/orange].jpg" alt="Card image cap">
+                  <p class="card-text">น้ำส้ม</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div id="monday" class="card">
+                  <img id="mondaypic" class="card-img-top" src="../../../assets/images/food/lookjak.jpg" alt="Card image cap">
+                  <p class="card-text">ลูกจากลอยแก้ว</p>
                 </div>
               </div>
             </div>
           </div>
 
-          
+
+
         </div>
       </div>
     </div>
