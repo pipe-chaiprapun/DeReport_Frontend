@@ -10,6 +10,7 @@ declare const $;
 export class NewsEditComponent implements OnInit {
   public newsCard = [];
   public title;
+  private id;
   public content;
   public categoryName = [];
   public startDate;
@@ -48,10 +49,22 @@ export class NewsEditComponent implements OnInit {
       }
     });
   }
-  delete(data) {
+  confirm(data) {
     const div = data as HTMLElement;
+    this.newsCard.forEach(element => {
+      if (element._id === div.id) {
+        this.id = div.id;
+        this.title = element.title;
+        this.content = element.content;
+        this.startDate = element.startDate;
+        this.endDate = element.endDate;
+      }
+    });
+  }
+  delete() {
+    // const div = data as HTMLElement;
     const send = {
-      id: div.id
+      id: this.id
     };
     this.resAPI.deleteNews(send).subscribe(result => {
       if (result.status = 'SUCCESS') {
