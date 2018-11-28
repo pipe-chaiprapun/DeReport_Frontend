@@ -53,6 +53,7 @@ export class NewsManagementComponent implements OnInit {
         console.log(result);
         if (result.status === 'SUCCESS') {
           alert('บันทึกข้อมูลสำเร็จ');
+          this.clearNews();
         } else {
           alert('บันทึกข้อมูลไม่สำเร็จ! + ' + result.desc);
         }
