@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService) { }
 
-  url =  this.__appserverservice.baseUrl
+  url =  this.__appserverservice.baseUrl;
 
 
   ngOnInit() {
