@@ -20,13 +20,13 @@
             <h5 class="card-title">Special title treatment</h5>
             <h6 class="card-subtitle text-muted">Support card subtitle</h6>
           </div> -->
-          <img style="height: 200px; width: 100%; display: block;" src="http://192.168.1.129:8042/img/{{news.image}}" alt="Card image">
+          <img style="height: 200px; width: 100%; display: block;" src="http://192.168.1.58:8042/img/{{news.image}}" alt="Card image">
           <div class="card-body">
             <p class="card-text">{{news.content}}</p>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <a class="card-link" (click)="edit(card)" data-toggle="modal" data-target="#exampleModalCenter">แก้ไขข่าว</a>
+            <a class="card-link" (click)="edit(card)" data-toggle="modal" data-target="#modalEdit">แก้ไขข่าว</a>
             <i class="fa fa-trash" aria-hidden="true"></i>
-            <a class="card-link" (click)="delete(card)">ลบข่าว</a>
+            <a class="card-link" (click)="confirm(card)" data-toggle="modal" data-target="#modalDelete">ลบข่าว</a>
           </div>
           <div class="card-footer text-muted">{{news.created_date}}</div>
         </div>
@@ -34,8 +34,8 @@
     </div>
   </div>
 </main>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Modal Edit -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -81,6 +81,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Delete -->
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ยืนยันการลบ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        คุณต้องการลบข่าว {{title}} ใช่หรือไม่?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete()">ยืนยัน</button>
       </div>
     </div>
   </div>

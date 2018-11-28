@@ -1,5 +1,5 @@
 export const AppUrl = {
-    Login: 'login',
+    Login: 'backoffice',
     Summary: 'summary',
     Branch: 'branch',
     SaleInfo: 'saleInfo',
