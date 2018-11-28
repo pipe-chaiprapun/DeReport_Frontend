@@ -22,6 +22,7 @@ export class AppserverService {
   private getnews = `${this.baseUrl}/api/news/getNews`;
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
+  private updateNews = `${this.baseUrl}/api/news/editNews`;
 
 
   constructor(private http: HttpClient) { }
@@ -57,6 +58,10 @@ export class AppserverService {
 
   deleteNews(data: any): Observable<any> {
     return this.http.post<any>(this.delNews, data, { headers: this.headers });
+  }
+
+  editNews(data: any): Observable<any> {
+    return this.http.post<any>(this.updateNews, data, { headers: this.headers });
   }
 
   getCategory(): Observable<any> {
