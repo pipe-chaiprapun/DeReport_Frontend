@@ -15,7 +15,7 @@
     <div *ngFor="let news of newsCard" id="{{news._id}}" #card class="col-lg-4 col-md-6" style="margin-bottom:10px;">
       <div class="bs-component">
         <div class="card">
-          <h4 class="card-header">{{news.title}}</h4>
+          <h6 class="card-header">{{news.title}}</h6>
           <!-- <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
             <h6 class="card-subtitle text-muted">Support card subtitle</h6>
@@ -28,7 +28,16 @@
             <i class="fa fa-trash" aria-hidden="true"></i>
             <a class="card-link" (click)="confirm(card)" data-toggle="modal" data-target="#modalDelete">ลบข่าว</a>
           </div>
-          <div class="card-footer text-muted">{{news.created_date}}</div>
+          <div class="card-footer text-muted">
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-lg-6">
+ {{news.created_date}}
+              </div>
+              <div class="col-sm-6 col-md-6 col-lg-6" style="text-align: right">
+                 {{news.category}}
+                </div>
+            </div>          
+          </div>
         </div>
       </div>
     </div>

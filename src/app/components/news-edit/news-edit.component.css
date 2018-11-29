@@ -13,4 +13,35 @@ p.card-text {
     overflow-y: auto;
 }
 
+.scrollbar {
+    background-color: #F5F5F5;
+    float: left;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    width:65px;
+    overflow-y: scroll;
+}
 
+.card-header {
+    padding: 0.40rem 0.8rem;
+    height: 3rem;
+    overflow-y: hidden;
+}
+
+.card-footer {
+    padding: 0.30rem 0.60rem;
+}
+
+#style-2
+{
+	background-color: #F5F5F5;
+    float: left;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    width: 65px;
+    overflow-y: scroll;
+}

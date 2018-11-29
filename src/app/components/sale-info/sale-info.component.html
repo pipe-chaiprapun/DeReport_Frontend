@@ -3,18 +3,23 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <div class="row justify-content-md-center justify-content-lg-center">
-        <div class="col-lg-12 col-md-12">
-          <div class="row justify-content-md-center justify-content-lg-center">
-              <div class="col-lg-5 col-md-5">
-                  <div class="bs-component" style="margin-bottom: 10px;">
-                    <div class="btn-group" role="group" aria-label="Basic example" #selectSort>
+      <div class="row">
+        <!-- <div class="col-lg-12 col-md-12">
+          <div class="row justify-content-md-center justify-content-lg-center"> -->
+        <div class="col-md-6">
+          <div class="bs-component" style="margin-bottom: 10px;">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
+                <input type="radio" name="options" autocomplete="off">{{data}}
+              </label>
+            </div>
+            <!-- <div class="btn-group" role="group" aria-label="Basic example" #selectSort>
                       <button *ngFor="let data of sort" class="btn btn-secondary" 
-                      type="button" (click)="sortBy($event, selectSort)">{{data}}</button>
-                    </div>
-                  </div>
-                </div>
-            <!-- <div class="col-lg-5 col-md-5">
+                      type="button" (click)="sortBy($event, selectSort)">{{data}}</button> -->
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="col-lg-5 col-md-5">
               <div class="bs-component" style="margin-bottom: 10px;">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label *ngFor="let data of allDataSets" class="btn btn-primary active" id='selectData' #selectData
@@ -24,13 +29,13 @@
                 </div>
               </div>
             </div> -->
-            <div class="col-lg-7 col-md-7">
-              <div class="bs-component" style="margin-bottom: 10px;">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label *ngFor="let branch of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
-                    (click)="onChange($event, selectBranch)">
-                    <input type="checkbox" autocomplete="off" checked>{{branch.BRH_ID}}</label>
-                  <!-- <label class="btn btn-primary">
+      <div class="col-md-6">
+        <div class="bs-component" style="margin-bottom: 10px;">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label *ngFor="let branch of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
+              (click)="onChange($event, selectBranch)">
+              <input type="checkbox" autocomplete="off" checked>{{branch.BRH_ID}}</label>
+            <!-- <label class="btn btn-primary">
                     <input type="checkbox" autocomplete="off"> 02
                   </label>
                   <label class="btn btn-primary">
@@ -67,13 +72,13 @@
                     <input type="checkbox" autocomplete="off"> 14
                   </label> -->
 
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      <!-- <div class="row justify-content-md-center justify-content-lg-center">
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+    <!-- <div class="row justify-content-md-center justify-content-lg-center">
         <div class="col-lg-12 col-md-12">
           <div class="row justify-content-md-center justify-content-lg-center">
             <div class="col-lg-6 col-md-6">
@@ -89,7 +94,7 @@
           </div>
         </div>
       </div> -->
-    </div>
+  </div>
   </div>
   <div class="row justify-content-md-center justify-content-lg-center">
     <div class="col-md-12 col-lg-12">
