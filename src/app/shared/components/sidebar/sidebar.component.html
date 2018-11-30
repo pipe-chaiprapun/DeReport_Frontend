@@ -18,11 +18,23 @@
           class="app-menu__label">รายงานสรุป</span></a></li>
     <li><a class="app-menu__item" [routerLink]="['/', Url.ExamChart]"><i class="app-menu__icon fa fa-pie-chart"></i><span
           class="app-menu__label">ตัวอย่างแผนภูมิ</span></a></li>
-    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label">จัดการข่าว</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" [routerLink]="['/', Url.NewsManagement]"><i class="icon fa fa-plus-square"></i> เพิ่มข่าวใหม่</a></li>
-            <li><a class="treeview-item" [routerLink]="['/', Url.NewsEdit]"><i class="icon fa fa-pencil-square-o"></i> แก้ไขข่าว</a></li>
-          </ul>
-      </li>
+    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-newspaper-o"></i><span
+          class="app-menu__label">จัดการข่าว</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        <li><a class="treeview-item" [routerLink]="['/', Url.NewsManagement]"><i class="icon fa fa-plus-square"></i>
+            เพิ่มข่าวใหม่</a></li>
+        <li><a class="treeview-item" [routerLink]="['/', Url.NewsEdit]"><i class="icon fa fa-pencil-square-o"></i>
+            แก้ไขข่าว</a></li>
+      </ul>
+    </li>
+    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-picture-o"></i><span
+          class="app-menu__label">จัดการรูป</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        <li><a class="treeview-item" [routerLink]="['/', Url.Thumbnail]"><i class="icon fa fa-thumb-tack"></i>
+          Thumbnail</a></li>
+        <li><a class="treeview-item" [routerLink]="['/', Url.Gallery]"><i class="icon fa fa-camera-retro"></i>
+          Gallery</a></li>
+      </ul>
+    </li>
   </ul>
 </aside>

@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://192.168.1.47:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://192.168.1.56:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
@@ -23,6 +23,7 @@ export class AppserverService {
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
+  private addThumbnail = `${this.baseUrl}/api/new/album`;
 
 
   constructor(private http: HttpClient) { }
@@ -72,5 +73,10 @@ export class AppserverService {
     return this.http.get<any[]>(this.getMonthylyMeeting, { headers: this.headers });
   }
 
+  addImgThumbnail(data: any): Observable<any> {
+    console.log('---------------------- send data --------------------');
+    console.log(data);
+    return this.http.post<any>(this.addThumbnail, data, { headers: this.headers });
+  }
 
 }
