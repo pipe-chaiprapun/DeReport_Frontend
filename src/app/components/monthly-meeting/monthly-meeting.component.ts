@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
 import { noUndefined } from '@angular/compiler/src/util';
+import { Routes, RouterModule, Router } from '@angular/router';
+import { HomeComponent } from '../home/home.component';
 declare const App;
 declare const $;
 const monthNames = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษพาคม', 'มิถุนายน',
@@ -32,7 +34,7 @@ export class MonthlyMeetingComponent implements OnInit {
   private branchIndex = 0;
   private branchNum: number;
   public month: string;
-  constructor(private resAPI: AppserverService) { }
+  constructor(private resAPI: AppserverService, private router: Router) { }
 
   ngOnInit() {
     App.initLoadJquery();
@@ -103,6 +105,12 @@ export class MonthlyMeetingComponent implements OnInit {
   }
   decrease(data) {
     this.prevItem();
+    // const RouteList: Routes = [
+    //   { path: 'home', component: HomeComponent, data: {test: 'test'}},
+    // ];
+    // RouterModule.forChild(RouteList);
+    window.open(`home?title=${this.saleAmt}&content=รับสมัครเจ้าหน้าที่ฝ่ายการตลาดและฝ่ายติด&category=ข่าวทั่วไป
+    &image=d07ccceb-797d-59e7-bbbf-118987dd83bd.png`);
   }
   nextItem() {
     this.branchIndex++; // increase i by one

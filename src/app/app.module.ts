@@ -4,12 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-// import { MenuComponent } from './components/menu/menu.component';
-// import { HeaderComponent } from './components/header/header.component';
-// import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-// import { HomeComponent } from './components/home/home.component';
-// import { CardComponent } from './components/card/card.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { SaleInfoComponent } from './components/sale-info/sale-info.component';
 import { BranchComponent } from './components/branch/branch.component';
@@ -25,6 +20,8 @@ import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -55,7 +52,9 @@ import { NgxGalleryModule } from 'ngx-gallery';
     MonthlyMeetingComponent,
     NewsManagementComponent,
     NewsEditComponent,
-    HomeComponent
+    HomeComponent,
+    ThumbnailComponent,
+    GalleryComponent
   ],
   imports: [
     AppRouting,
