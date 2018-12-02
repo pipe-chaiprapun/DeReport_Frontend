@@ -30,13 +30,13 @@
           </div>
           <div class="card-footer text-muted">
             <div class="row">
-              <div class="col-sm-6 col-md-6 col-lg-6">
- {{news.created_date}}
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                {{news.created_date}}
               </div>
-              <div class="col-sm-6 col-md-6 col-lg-6" style="text-align: right">
-                 {{news.category}}
-                </div>
-            </div>          
+              <div class="col-sm-8 col-md-8 col-lg-8" style="text-align: right">
+                {{news.category}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,7 +44,8 @@
   </div>
 </main>
 <!-- Modal Edit -->
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,8 +90,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" 
-        (click)="saveNews(newsTitle, newsContent, category, startDate, endDate, newsImage)">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="saveNews(newsTitle, newsContent, category, startDate, endDate, newsImage)">Save
+          changes</button>
       </div>
     </div>
   </div>
