@@ -4,97 +4,41 @@
   <div class="app-title">
     <div>
       <div class="row">
-        <!-- <div class="col-lg-12 col-md-12">
-          <div class="row justify-content-md-center justify-content-lg-center"> -->
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="bs-component" style="margin-bottom: 10px;">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
+                    <input type="radio" name="options" autocomplete="off">{{data}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="align-items: center;">
+              <div class="col-md-3 col-sm-3">
+                <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">
+              </div>
+              <div class="col-md-3 col-sm-3">
+                <input class="form-control" id="endDate" #endDate type="text" placeholder="ถึง">
+              </div>
+              <div class="col-md-2 col-sm-3">
+                <button class="btn btn-primary" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
+              </div>
+            </div>
+        </div>
         <div class="col-md-6">
           <div class="bs-component" style="margin-bottom: 10px;">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
-                <input type="radio" name="options" autocomplete="off">{{data}}
-              </label>
+              <label *ngFor="let branch of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
+                (click)="onChange($event, selectBranch)">
+                <input type="checkbox" autocomplete="off" checked>{{branch.BRH_ID}}</label>
             </div>
-            <!-- <div class="btn-group" role="group" aria-label="Basic example" #selectSort>
-                      <button *ngFor="let data of sort" class="btn btn-secondary" 
-                      type="button" (click)="sortBy($event, selectSort)">{{data}}</button> -->
-          </div>
-        </div>
-      <!-- </div> -->
-      <!-- <div class="col-lg-5 col-md-5">
-              <div class="bs-component" style="margin-bottom: 10px;">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label *ngFor="let data of allDataSets" class="btn btn-primary active" id='selectData' #selectData
-                    [ngStyle]="{'background-color':data.backgroundColor, 'border-color':data.borderColor, 'color':'black'}"
-                    (click)="onDataChange($event, selectData)">
-                    <input type="checkbox" autocomplete="off" checked>{{data.label}}</label>
-                </div>
-              </div>
-            </div> -->
-      <div class="col-md-6">
-        <div class="bs-component" style="margin-bottom: 10px;">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label *ngFor="let branch of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
-              (click)="onChange($event, selectBranch)">
-              <input type="checkbox" autocomplete="off" checked>{{branch.BRH_ID}}</label>
-            <!-- <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 02
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 03
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 04
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 05
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 06
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 07
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 08
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 10
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 11
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 12
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 13
-                  </label>
-                  <label class="btn btn-primary">
-                    <input type="checkbox" autocomplete="off"> 14
-                  </label> -->
-
           </div>
         </div>
       </div>
-      <!-- </div> -->
-      <!-- </div> -->
     </div>
-    <!-- <div class="row justify-content-md-center justify-content-lg-center">
-        <div class="col-lg-12 col-md-12">
-          <div class="row justify-content-md-center justify-content-lg-center">
-            <div class="col-lg-6 col-md-6">
-              <div class="bs-component" style="margin-bottom: 10px;">
-                <div class="btn-group" role="group" aria-label="Basic example" #selectSort>
-                  <button *ngFor="let data of sort" class="btn btn-secondary" 
-                  type="button" (click)="sortBy($event, selectSort)">{{data}}</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-            </div>
-          </div>
-        </div>
-      </div> -->
-  </div>
   </div>
   <div class="row justify-content-md-center justify-content-lg-center">
     <div class="col-md-12 col-lg-12">
