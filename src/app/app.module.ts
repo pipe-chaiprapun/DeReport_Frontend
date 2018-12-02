@@ -22,6 +22,7 @@ import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { NewsContentComponent } from './components/news-content/news-content.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -54,7 +55,9 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     NewsEditComponent,
     HomeComponent,
     ThumbnailComponent,
-    GalleryComponent
+    GalleryComponent,
+    NewsContentComponent
+
   ],
   imports: [
     AppRouting,

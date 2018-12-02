@@ -1,16 +1,7 @@
 <!-- Content -->
 <div class="main">
 
-  <!-- Header -->
-  <div class="row">
-    <div class="headerlogo">
-      <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" style="width:auto;height:100%;">
-    </div>
-    <div class="headertext">
-      <h1 class="display-3">DOMESTIC</h1>
-    </div>
-  </div>
-  <!-- EndHeader -->
+  <a href="backoffice">ระบบหลังบ้าน</a>
 
   <!-- Slide Show -->
   <div class="container-fluid">
@@ -20,54 +11,54 @@
       </div>
     </div>
   </div>
+
+
   <!-- End Slide Show -->
 
   <!-- NEWS -->
-  <div style="padding-top:3%">
-    <div class="container-fluid  bgnews">
+  <div>
 
-      <div class="container-fluid">
-        <div class="row">
-          <i class="fa fa-slack" id="newslogo"></i>
-          <div id="newstextlogo">
-            NEWS
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container-fluid" id="newscontent">
-        <!-- ประกาศข่าว -->
-        <div class="row justify-content-center">
-          <div *ngFor="let item of cardData">
-            <div class="col-3" style="padding-top: 4%">
-              <div id="newscard" class="card text-center rounded-top">
-                <div class="card-header" style="background-color:darkgreen;color:white">
-                  <b>{{item.title}}</b>
-                </div>
-                <div class="card-body" style="background-color:rgba(11, 105, 44, 0.3);color:black">
-                  <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap" style="width:240px;height:165px;object-fit: cover;">
-                  <p class="card-text" style="padding-top:8%">{{item.content}}</p>
-                </div>
-                <div class="card-footer" style="background-color:darkgreen;color:white">
-                  ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- จบประกาศข่าว   -->
+<div  style="padding-top:3%" *ngFor="let category of newscategoryData">
+  <div class="container-fluid  bgnews">
+    <div class="container-fluid">
+      <div class="row">
+        <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
+        <div id="newstextlogo">
+          {{category.name}}
         </div>
       </div>
     </div>
-    <!-- EndNEWS  -->
+
+
+    <div class="container-fluid" id="newscontent">
+      <!-- ประกาศข่าว -->
+      <div class="row">
+        <div class="col-4" *ngFor="let item of category.values"  style="padding-top: 2%">
+          <div class="card" id="newscard">
+            <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
+            <div class="card-body">
+              <b style="text-decoration: underline;padding-left: 0.8em;">{{item.title}}</b>
+              <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
+              <p class="card-text"><small class="text-muted text-left">ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}</small>
+                <small id="overnews" (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)' class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
+            </div>
+          </div>
+        </div>
+        <!-- จบประกาศข่าว   -->
+      </div>
+    </div>
+  </div>
+  <!-- EndNEWS  -->
+</div>
+
 
     <!-- Gallary -->
     <div style="padding-top:3%">
       <div class="container-fluid  bggallery">
         <div class="row">
-          <i class="fa fa-instagram" id="bggallerylogo"></i>
+          <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
           <div id="bggallerytextlogo">
-            GALLERY
+            ภาพความทรงจำ
           </div>
         </div>
 
@@ -154,13 +145,13 @@
     <div style="padding-top:3%">
       <div class="container-fluid  bgmondaymenu">
         <div class="row">
-          <i class="fa fa-heart-o" id="bgmondaymenulogo"></i>
+          <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
           <div id="bgmondaymenutextlogo">
-            Monday Menu
+            เมนูอาหารวันจันทร์
           </div>
         </div>
 
-        <div style="padding-top:8%;padding-bottom: 5%;text-align: center;">
+        <div style="padding-top:3%;padding-bottom: 5%;text-align: center;">
           <div class="container-fluid">
             <div class="row">
               <div class="col-3">
