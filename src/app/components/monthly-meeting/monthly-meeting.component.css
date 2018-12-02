@@ -34,8 +34,13 @@ td {
 input#exampleInputAmount.form-control {
     width: 2.8rem;
 }
-.tile .tile-title {
+.tile-title {
     margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.0rem;
+}
+.tile {
+    margin-top:0;
     margin-bottom: 20px;
     font-size: 1.0rem;
 }

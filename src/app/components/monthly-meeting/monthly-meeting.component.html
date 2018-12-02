@@ -6,16 +6,30 @@
       <h1><i class="fa fa fa-users"></i> Monthly Meeting</h1>
       <p>Monthly Meeting</p>
     </div>
-    <ul class="app-breadcrumb breadcrumb">
+    <div class="row">
+        <div class="col-md-4 col-sm-3">
+            <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">      
+        </div>
+        <div class="col-md-1 col-sm-1">
+
+        </div>
+        <div class="col-md-4 col-sm-3">
+            <input class="form-control" id="endDate" #endDate type="text" placeholder="ถึง">
+        </div>
+        <div class="col-md-3 col-sm-2">
+            <button class="btn btn-primary" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
+        </div>
+    </div>
+    <!-- <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
       <li class="breadcrumb-item"><a href="#">Monthly Meeting</a></li>
-    </ul>
+    </ul> -->
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
         <h3 style="text-align: center">รายงานยอดขายสินค้า ยอดการเก็บเงิน และยอดหนี้ PDO</h3>
-        <h3 style="text-align:center">ประจำเดือน{{month}} 2561</h3><br><br>
+        <h3 style="text-align:center">ประจำเดือน{{month}} {{year}}</h3><br><br>
        <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา <!--<select class="form-control" #selectBrh id="exampleSelect1"
             (change)="onChange($event.target.value)">
             <option *ngFor="let branch of branches">{{branch.BRH_ID}}</option>
@@ -103,6 +117,12 @@
               <td>{{pdoAmtPercent}}%</td>
             </tr>
           </table>
+        </div>
+      </div>
+      <div class="tile">
+        <h2 class="tile-title" style="text-align:center">รายละเอียดยอดขายสาขา {{currentBranch}}</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+          <canvas class="embed-responsive-item" id="barChart"></canvas>
         </div>
       </div>
     </div>

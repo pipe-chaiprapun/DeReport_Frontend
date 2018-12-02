@@ -30,6 +30,8 @@ export class SaleInfoComponent implements OnInit {
   public test: number[][];
   private sortOption;
 
+  public month;
+
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
@@ -351,7 +353,142 @@ export class SaleInfoComponent implements OnInit {
     }
   }
   private initialLoadChart() {
-    this.resAPI.getSaleInfo().subscribe(result => {
+    $('#startDate').datepicker({
+      format: 'dd/mm/yyyy',
+      autoclose: true,
+      todayHighlight: true
+    });
+    $('#endDate').datepicker({
+      format: 'dd/mm/yyyy',
+      autoclose: true,
+      todayHighlight: true
+    });
+    const today = new Date(Date.now());
+    today.setMonth(today.getMonth() - 1);
+    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const startDt = document.getElementById('startDate') as HTMLInputElement;
+    const endDt = document.getElementById('endDate') as HTMLInputElement;
+    startDt.value = this.convertDateFormat(firstDay);
+    endDt.value = this.convertDateFormat(lastDay);
+    this.resAPI.getSaleInfo(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay)).subscribe(result => {
+      console.log('---------- get sale info --------------------');
+      console.log(result.status);
+      console.log(result.data);
+      // this.headers = result.header;
+      // this.sort = result.header;
+      result.header.forEach(element => {
+        this.headers.push(element);
+        this.sort.push(element);
+      });
+      console.log(this.headers);
+      this.sortOption = this.headers[0];
+      this.allData = result.data;
+      this.displayData = result.data;
+      result.data.forEach(e => {
+        this.labels.push(e.BRH_ID);
+      });
+      result.data.forEach(e => {
+        this.targetAmt.push(this.devideMillion(e.TAR_AMT));
+      });
+      result.data.forEach(e => {
+        this.saleAmt.push(this.devideMillion(e.SALE_AMT));
+      });
+      result.data.forEach(e => {
+        this.payAmt.push(this.devideMillion(e.PAY_AMT));
+      });
+      result.data.forEach(e => {
+        this.pdoAmt.push(this.devideMillion(e.PDO_AMT));
+      });
+      result.data.forEach(e => {
+        this.diffTarAmt.push(this.devideMillion(e.DIF_TAR_AMT));
+      });
+
+      this.dataSets = [
+        {
+          label: this.headers[1],
+          backgroundColor: constant.tarAmt.background,
+          borderColor: constant.tarAmt.border,
+          // backgroundColor: color.barChart[0].background,
+          // borderColor: color.barChart[0].border,
+          borderWidth: 1,
+          data: this.targetAmt
+        },
+        {
+          label: this.headers[2],
+          backgroundColor: constant.saleAmt.background,
+          borderColor: constant.saleAmt.border,
+          borderWidth: 1,
+          data: this.saleAmt
+        },
+        {
+          label: this.headers[3],
+          backgroundColor: constant.payAmt.background,
+          borderColor: constant.payAmt.border,
+          borderWidth: 1,
+          data: this.payAmt
+        },
+        {
+          label: this.headers[4],
+          backgroundColor: constant.diffTarAmt.background,
+          borderColor: constant.diffTarAmt.border,
+          borderWidth: 1,
+          data: this.diffTarAmt,
+          hidden: true
+        },
+        {
+          label: this.headers[5],
+          backgroundColor: constant.pdoAmt.background,
+          borderColor: constant.pdoAmt.border,
+          borderWidth: 1,
+          data: this.pdoAmt
+        }
+      ];
+      this.allDataSets = this.dataSets;
+      const bdata = {
+        // tslint:disable-next-line:max-line-length
+        labels: this.labels, // ['สาขา02', 'สาขา03', 'สาขา04', 'สาขา05', 'สาขา06', 'สาขา07', 'สาขา08', 'สาขา09', 'สาขา10', 'สาขา11', 'สาขา12', 'สาขา'],
+        datasets: this.dataSets
+      };
+      const ctxb = $('#barChartDemo').get(0).getContext('2d');
+      this.barChart = new Chart(ctxb, {
+        type: 'bar',
+        data: bdata
+      });
+    });
+  }
+  convertDateFormat(data) {
+    const date = new Date(data);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const dt = date.getDate();
+    let strDt = dt.toString();
+    let strMonth = month.toString();
+    if (dt < 10) {
+      strDt = '0' + dt.toString();
+    }
+    if (month < 10) {
+      strMonth = '0' + month;
+    }
+    return strDt + '/' + strMonth + '/' + year;
+  }
+  public getData() {this.labels = [];
+    this.allData = [];
+    this.displayData = [];
+    this.labels = [];
+    this.targetAmt = [];
+    this.saleAmt = [];
+    this.payAmt = [];
+    this.pdoAmt = [];
+    this.diffTarAmt = [];
+    this.dataSets = [];
+    this.sort = [];
+    const startDate = document.getElementById('startDate') as HTMLInputElement;
+    const endDate = document.getElementById('endDate') as HTMLInputElement;
+    console.log(startDate.value);
+    console.log(endDate.value);
+    this.barChart.destroy();
+    this.resAPI.getSaleInfo(startDate.value, endDate.value).subscribe(result => {
       console.log('---------- get sale info --------------------');
       console.log(result.status);
       console.log(result.data);
