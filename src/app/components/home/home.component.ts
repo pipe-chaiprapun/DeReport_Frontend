@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   sportOption: NgxGalleryOptions[];
   sportImage: NgxGalleryImage[];
   public cardData = [];
+  public newscategoryData = [];
 
 
 
@@ -45,8 +46,6 @@ export class HomeComponent implements OnInit {
       console.log(image);
   });
     this.cardNEWS();
-    console.log(this.__galleryservice.mainOptions);
-    console.log(this.__galleryservice.mainImages);
 
     //Main
     this.galleryOptions = this.__galleryservice.mainOptions;
@@ -69,14 +68,32 @@ export class HomeComponent implements OnInit {
     //end
   }
 
-
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
-      console.log(result);
+      console.log(result,"result");
       this.cardData = result.data;
       console.log(this.cardData);
+
+      var groups = new Set(result.data.map(data => data.category)); 
+      groups.forEach(g => this.newscategoryData.push({
+        name: g,
+        values: result.data.filter(i => i.category === g)
+      }));
+      console.log(this.newscategoryData);
+
     });
   }
+
+
+
+  //ไปหน้าเนื้อหาข่าว
+  public newscontent(titles,contents,categorys,images,startDates) {
+    window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
+    &image=${images}&startDate=${startDates}`)
+  }
+
+
+
 
 }

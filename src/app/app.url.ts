@@ -9,5 +9,6 @@ export const AppUrl = {
     NewsEdit: 'newsEdit',
     Home: 'home',
     Thumbnail: 'thumbnail',
-    Gallery: 'gallery'
+    Gallery: 'gallery',
+    NEWSContent: 'NEWSContent'
 };

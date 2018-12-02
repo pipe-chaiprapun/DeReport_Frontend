@@ -11,7 +11,7 @@ import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-
+import { NewsContentComponent } from './components/news-content/news-content.component';
 
 const RouteList: Routes = [
     { path: '', redirectTo: AppUrl.Home, pathMatch: 'full' },
@@ -25,7 +25,9 @@ const RouteList: Routes = [
     { path: AppUrl.NewsEdit, component: NewsEditComponent },
     { path: AppUrl.Home, component: HomeComponent },
     { path: AppUrl.Thumbnail, component: ThumbnailComponent },
-    { path: AppUrl.Gallery, component: GalleryComponent }
+    { path: AppUrl.Gallery, component: GalleryComponent },
+    { path: AppUrl.Home, component: HomeComponent},
+    { path: AppUrl.NEWSContent, component: NewsContentComponent}
 ];
 
 export const AppRouting = RouterModule.forRoot(RouteList);
