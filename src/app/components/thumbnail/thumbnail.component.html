@@ -3,13 +3,19 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-newspaper-o"></i> หน้าจัดการเนื้อหาสำหรับผู้ดูแล</h1>
-      <p>หน้าจัดการเนื้อหาสำหรับผู้ดูแล</p>
+      <h1><i class="fa fa-thumb-tack"></i> หน้าจัดการรูป Thumbnail</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><i class="fa fa-newspaper-o"></i></li>
-      <li class="breadcrumb-item"><a href="#">หน้าจัดการเนื้อหาสำหรับผู้ดูแล</a></li>
+      <li class="breadcrumb-item"><i class="fa fa-thumb-tack"></i></li>
+      <li class="breadcrumb-item"><a href="#">หน้าจัดการรูป Thumbnail</a></li>
     </ul>
+  </div>
+  <div class="app-title">
+    <div class="form-group">
+      <label class="control-label">อัพโหลดภาพ</label>
+      <input class="form-control" id='image' type="file" #thumbImage multiple accept="image/*">
+    </div>
+    <button class="btn btn-primary" type="button" (click)="upload(thumbImage)"><i class="fa fa-fw fa-lg fa fa-upload"></i>อัพโหลด</button>
   </div>
   <div class="row">
     <div *ngFor="let news of newsCard" id="{{news._id}}" #card class="col-lg-4 col-md-6" style="margin-bottom:10px;">
@@ -30,10 +36,10 @@
           </div>
           <div class="card-footer text-muted">
             <div class="row">
-              <div class="col-sm-4 col-md-4 col-lg-4">
+              <div class="col-sm-6 col-md-6 col-lg-6">
                 {{news.created_date}}
               </div>
-              <div class="col-sm-8 col-md-8 col-lg-8" style="text-align: right">
+              <div class="col-sm-6 col-md-6 col-lg-6" style="text-align: right">
                 {{news.category}}
               </div>
             </div>

@@ -18,11 +18,13 @@ export class AppserverService {
   // private pathUrl = `${this.apiUrl}/path`;
   // private reportUrl = `${this.apiUrl}/report`;
   private getMonthylyMeeting = `${this.baseUrl}/api/information/getMonthlyMeeting`;
+  private getPath = `${this.baseUrl}/api/information/getPathInfo`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
   private getnews = `${this.baseUrl}/api/news/getNews`;
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
+  private addThumbnail = `${this.baseUrl}/api/new/album`;
 
 
   constructor(private http: HttpClient) { }
@@ -36,8 +38,8 @@ export class AppserverService {
   //   const url = this.branchUrl;
   //   return this.http.post<any>(url, brh_id, { headers: this.headers });
   // }
-  getSaleInfo(): Observable<any> {
-    return this.http.get<any[]>(this.saleInfoUrl, { headers: this.headers });
+  getSaleInfo(startDate, endDate): Observable<any> {
+    return this.http.get<any[]>(`${this.saleInfoUrl}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
   }
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;
@@ -68,9 +70,20 @@ export class AppserverService {
     return this.http.get<any[]>(this.getCate, { headers: this.headers });
   }
 
-  getMonthlyMeeting(): Observable<any> {
-    return this.http.get<any[]>(this.getMonthylyMeeting, { headers: this.headers });
+  getMonthlyMeeting(startDate, endDate): Observable<any> {
+    return this.http.get<any[]>(`${this.getMonthylyMeeting}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
   }
 
+  getPathInfo(startDate, endDate): Observable<any> {
+    console.log(startDate);
+    console.log(endDate);
+    return this.http.get<any[]>(`${this.getPath}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
+  }
+
+  addImgThumbnail(data: any): Observable<any> {
+    console.log('---------------------- send data --------------------');
+    console.log(data);
+    return this.http.post<any>(this.addThumbnail, data, { headers: this.headers });
+  }
 
 }

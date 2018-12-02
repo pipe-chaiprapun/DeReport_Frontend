@@ -9,6 +9,8 @@ import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-me
 import { NewsManagementComponent } from './components/news-management/news-management.component';
 import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 
 const RouteList: Routes = [
@@ -21,6 +23,9 @@ const RouteList: Routes = [
     { path: AppUrl.MonthlyMeeting, component: MonthlyMeetingComponent },
     { path: AppUrl.NewsManagement, component: NewsManagementComponent },
     { path: AppUrl.NewsEdit, component: NewsEditComponent },
+    { path: AppUrl.Home, component: HomeComponent },
+    { path: AppUrl.Thumbnail, component: ThumbnailComponent },
+    { path: AppUrl.Gallery, component: GalleryComponent },
     { path: AppUrl.Home, component: HomeComponent},
     { path: AppUrl.NEWSContent, component: NewsContentComponent}
 ];

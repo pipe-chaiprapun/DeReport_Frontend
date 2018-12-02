@@ -13,12 +13,16 @@ export class NewsManagementComponent implements OnInit {
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
+    this.initLoadUI();
+    App.initLoadJquery();
+  }
+
+  initLoadUI() {
     this.resAPI.getCategory().subscribe(result => {
       result.data.forEach(element => {
         this.categoryName.push(element.name);
       });
     });
-    App.initLoadJquery();
     $('#startDate').datepicker({
       format: 'dd/mm/yyyy',
       autoclose: true,
@@ -30,13 +34,8 @@ export class NewsManagementComponent implements OnInit {
       todayHighlight: true
     });
   }
+
   saveNews(title, content, cate, startDate, endDate, image) {
-    console.log(title.value);
-    console.log(content.value);
-    console.log(cate.value);
-    console.log(startDate.value.split('/').reverse().join('-'));
-    console.log(endDate.value.split('/').reverse().join('-'));
-    console.log(image.files[0]);
     const news = {
       title: title.value,
       content: content.value,
@@ -53,6 +52,7 @@ export class NewsManagementComponent implements OnInit {
         console.log(result);
         if (result.status === 'SUCCESS') {
           alert('บันทึกข้อมูลสำเร็จ');
+          this.clearNews();
         } else {
           alert('บันทึกข้อมูลไม่สำเร็จ! + ' + result.desc);
         }
@@ -60,6 +60,7 @@ export class NewsManagementComponent implements OnInit {
     };
     myReader.readAsDataURL(image.files[0]);
   }
+
   clearNews() {
     const title = document.getElementById('title') as HTMLInputElement;
     const content = document.getElementById('content') as HTMLInputElement;

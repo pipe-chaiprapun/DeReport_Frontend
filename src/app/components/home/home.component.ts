@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'hammerjs';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -26,12 +27,24 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService) { }
+  constructor(private http: HttpClient, private __appserverservice: AppserverService,
+    private __galleryservice: GalleryService, private route: ActivatedRoute) { }
 
   url = this.__appserverservice.baseUrl;
 
 
   ngOnInit() {
+    // this.route.data.subscribe(v => console.log(v));
+    this.route.queryParams.subscribe(params => {
+      const id = params['title'];
+      const content = params['content'];
+      const category = params['category'];
+      const image = params['image'];
+      console.log(id); // Print the parameter to the console.
+      console.log(content);
+      console.log(category);
+      console.log(image);
+  });
     this.cardNEWS();
 
     //Main

@@ -13,6 +13,10 @@ p.card-text {
     overflow-y: auto;
 }
 
+.app-title {
+    padding-bottom: 0px;
+    padding-top:10px;
+}
 .scrollbar {
     background-color: #F5F5F5;
     float: left;

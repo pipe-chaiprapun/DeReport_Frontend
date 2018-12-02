@@ -34,3 +34,6 @@ label.btn.btn-primary.active {
     margin-right:-4px;
     text-align: center;
 }
+.btn {
+    padding: 0.20rem 0.60rem;
+}
