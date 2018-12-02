@@ -7,5 +7,6 @@ export const AppUrl = {
     MonthlyMeeting: 'monthlyMeeting',
     NewsManagement: 'newsManagement',
     NewsEdit: 'newsEdit',
-    Home: 'home'
+    Home: 'home',
+    NEWSContent: 'NEWSContent'
 };

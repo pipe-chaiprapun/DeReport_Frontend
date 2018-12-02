@@ -25,6 +25,7 @@ import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { NewsContentComponent } from './components/news-content/news-content.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -55,7 +56,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     MonthlyMeetingComponent,
     NewsManagementComponent,
     NewsEditComponent,
-    HomeComponent
+    HomeComponent,
+    NewsContentComponent
   ],
   imports: [
     AppRouting,

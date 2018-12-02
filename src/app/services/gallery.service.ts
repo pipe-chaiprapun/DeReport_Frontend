@@ -13,7 +13,7 @@ public mainOptions = [
     width: '100%',
     height: '690px',
     thumbnailsColumns: 6, "imageAutoPlay": true, "imageAutoPlayInterval": 6000, "imageAutoPlayPauseOnHover": true, "previewAutoPlay": true, "previewAutoPlayPauseOnHover": true,
-    "imageAnimation": "zoom", "thumbnailsMargin": 5, "thumbnailMargin": 0, "thumbnailsPercent": 20, "imageSize": "cover", "imageArrowsAutoHide": true, "thumbnails": false, 'previewFullscreen': true, "imageDescription": true
+    "imageAnimation": "zoom", "thumbnailsMargin": 5, "thumbnailMargin": 0, "thumbnailsPercent": 20, "imageSize": "cover", "imageArrows": false, "thumbnails": false, 'previewFullscreen': true, "imageDescription": true,'preview':false
   },
   { "breakpoint": 500, "width": "300px", "height": "300px", "thumbnailsColumns": 3 },
   { "breakpoint": 300, "width": "100%", "height": "200px", "thumbnailsColumns": 2 }
@@ -30,11 +30,6 @@ public mainImages = [
     small: 'assets/images/board2.jpg',
     medium: 'assets/images/board2.jpg',
     big: 'assets/images/board2.jpg'
-  },
-  {
-    small: 'assets/images/41.jpg',
-    medium: 'assets/images/41.jpg',
-    big: 'assets/images/41.jpg',
   }
 ];
 //END//

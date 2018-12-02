@@ -21,50 +21,66 @@ export class HomeComponent implements OnInit {
   footballImage: NgxGalleryImage[];
   sportOption: NgxGalleryOptions[];
   sportImage: NgxGalleryImage[];
-  public cardData= [];
+  public cardData = [];
+  public newscategoryData = [];
 
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService) { }
 
-  url =  this.__appserverservice.baseUrl;
+  url = this.__appserverservice.baseUrl;
 
 
   ngOnInit() {
     this.cardNEWS();
-  console.log(this.__galleryservice.mainOptions)
-  console.log(this.__galleryservice.mainImages)
 
-        //Main
-        this.galleryOptions = this.__galleryservice.mainOptions;
-        this.galleryImages = this.__galleryservice.mainImages;
-        //endMain
-    
-        //PMDay
-        this.pmdayOption = this.__galleryservice.bdpmOptions;
-        this.pmdayImage = this.__galleryservice.bdpmImages;
-        //endPMDay
-    
-        //แข่งขันฟุตบอลเสียงตามสาย
-        this.footballOption = this.__galleryservice.footballOptions;
-        this.footballImage = this.__galleryservice.footballImages;
-        //end
-    
-        //แข่งขันฟุตบอลเสียงตามสาย
-        this.sportOption = this.__galleryservice.spOptions;
-        this.sportImage = this.__galleryservice.spImages;
-        //end
+    //Main
+    this.galleryOptions = this.__galleryservice.mainOptions;
+    this.galleryImages = this.__galleryservice.mainImages;
+    //endMain
+
+    //PMDay
+    this.pmdayOption = this.__galleryservice.bdpmOptions;
+    this.pmdayImage = this.__galleryservice.bdpmImages;
+    //endPMDay
+
+    //แข่งขันฟุตบอลเสียงตามสาย
+    this.footballOption = this.__galleryservice.footballOptions;
+    this.footballImage = this.__galleryservice.footballImages;
+    //end
+
+    //แข่งขันฟุตบอลเสียงตามสาย
+    this.sportOption = this.__galleryservice.spOptions;
+    this.sportImage = this.__galleryservice.spImages;
+    //end
   }
-
-
 
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
-      console.log(result);
+      console.log(result,"result");
       this.cardData = result.data;
       console.log(this.cardData);
+
+      var groups = new Set(result.data.map(data => data.category)); 
+      groups.forEach(g => this.newscategoryData.push({
+        name: g,
+        values: result.data.filter(i => i.category === g)
+      }));
+      console.log(this.newscategoryData);
+
     });
   }
+
+
+
+  //ไปหน้าเนื้อหาข่าว
+  public newscontent(titles,contents,categorys,images,startDates) {
+    window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
+    &image=${images}&startDate=${startDates}`)
+  }
+
+
+
 
 }
