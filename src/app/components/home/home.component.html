@@ -37,7 +37,7 @@
           <div class="card" id="newscard">
             <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
             <div class="card-body" style="margin-top: 0.5rem;">
-              <P style="text-decoration: underline;margin-left: 2.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
+              <P style="text-decoration: underline;margin-left: 0.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
               <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
               <p class="card-text"><small class="text-muted text-left">ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}</small>
                 <small id="overnews" (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)' class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
