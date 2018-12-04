@@ -7,18 +7,18 @@
       <p>Monthly Meeting</p>
     </div>
     <div class="row">
-        <div class="col-md-4 col-sm-3">
-            <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">      
-        </div>
-        <div class="col-md-1 col-sm-1">
+      <div class="col-md-4 col-sm-3">
+        <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">
+      </div>
+      <div class="col-md-1 col-sm-1">
 
-        </div>
-        <div class="col-md-4 col-sm-3">
-            <input class="form-control" id="endDate" #endDate type="text" placeholder="ถึง">
-        </div>
-        <div class="col-md-3 col-sm-2">
-            <button class="btn btn-primary" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
-        </div>
+      </div>
+      <div class="col-md-4 col-sm-3">
+        <input class="form-control" id="endDate" #endDate type="text" placeholder="ถึง">
+      </div>
+      <div class="col-md-3 col-sm-2">
+        <button class="btn btn-primary" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
+      </div>
     </div>
     <!-- <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -30,25 +30,29 @@
       <div class="tile">
         <h3 style="text-align: center">รายงานยอดขายสินค้า ยอดการเก็บเงิน และยอดหนี้ PDO</h3>
         <h3 style="text-align:center">ประจำเดือน{{month}} {{year}}</h3><br><br>
-       <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา <!--<select class="form-control" #selectBrh id="exampleSelect1"
+        <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา
+          <!--<select class="form-control" #selectBrh id="exampleSelect1"
             (change)="onChange($event.target.value)">
             <option *ngFor="let branch of branches">{{branch.BRH_ID}}</option>
           </select> โดยคุณ {{mgrsName}} -->
           <div class="input-group">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]" (click)="decrease(branchId)">
-                  <i class="fa fa-arrow-circle-left" style="margin-top:-15px;"></i>
-                </button>
+              <button type="button" id="decrease" disabled class="btn btn-danger btn-number" data-type="minus"
+                data-field="quant[2]" (click)="decrease(branchId)">
+                <i class="fa fa-arrow-circle-left" style="margin-top:-15px;"></i>
+              </button>
             </span>
-            <input type="text" id="branchId" #branchId class="form-control input-number" onfocus="this.select();" (change)="selectBranch(branchId)">
+            <input type="text" id="branchId" #branchId class="form-control input-number" onfocus="this.select();"
+              (change)="selectBranch(branchId)">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]" (click)="increase(branchId)">
-                  <i class="fa fa-arrow-circle-right" style="margin-top:-15px;"></i>
-                </button>
+              <button type="button" id="increase" disabled class="btn btn-success btn-number" data-type="plus"
+                data-field="quant[2]" (click)="increase(branchId)">
+                <i class="fa fa-arrow-circle-right" style="margin-top:-15px;"></i>
+              </button>
             </span>
-        </div> โดยคุณ {{mgrsName}}
+          </div> โดยคุณ {{mgrsName}}
         </h5>
-        
+
         <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
@@ -121,8 +125,34 @@
       </div>
       <div class="tile">
         <h2 class="tile-title" style="text-align:center">รายละเอียดยอดขายสาขา {{currentBranch}}</h2>
-        <div class="embed-responsive embed-responsive-16by9">
-          <canvas class="embed-responsive-item" id="barChart"></canvas>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="bs-component" style="margin-bottom: 10px;display:grid;">
+              <label class="control-label">เรียงลำดับข้อมูลตาม</label>
+              <div id="sortOption" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
+                  <input type="radio" name="options" autocomplete="off">{{data}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="bs-component" style="margin-bottom: 10px;display:grid;">
+              <label class="control-label">แสดงข้อมูลของสายบริการ</label>
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label *ngFor="let path of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
+                  (click)="onChange($event, selectBranch)">
+                  <input type="checkbox" autocomplete="off" checked>{{path.PATH_NO}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+          <div class="embed-responsive embed-responsive-16by9">
+            <canvas class="embed-responsive-item" id="barChart"></canvas>
+          </div>
         </div>
       </div>
     </div>

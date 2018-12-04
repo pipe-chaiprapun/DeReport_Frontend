@@ -17,7 +17,7 @@ export class SaleInfoComponent implements OnInit {
   private saleAmt = [];
   private payAmt = [];
   private diffTarAmt = [];
-  private pdoAmt = [];
+  private pdoLg = [];
   public allData = [];
   private displayData = [];
   private current;
@@ -48,7 +48,7 @@ export class SaleInfoComponent implements OnInit {
     this.targetAmt = [];
     this.saleAmt = [];
     this.payAmt = [];
-    this.pdoAmt = [];
+    this.pdoLg = [];
     this.diffTarAmt = [];
     if (data === this.headers[0]) {
       this.sortOption = this.headers[0];
@@ -103,10 +103,10 @@ export class SaleInfoComponent implements OnInit {
       },
       {
         label: this.headers[5],
-        backgroundColor: constant.pdoAmt.background,
-        borderColor: constant.pdoAmt.border,
+        backgroundColor: constant.pdoLg.background,
+        borderColor: constant.pdoLg.border,
         borderWidth: 2,
-        data: this.pdoAmt
+        data: this.pdoLg
       }
     ];
     const bdata = {
@@ -169,7 +169,7 @@ export class SaleInfoComponent implements OnInit {
     this.targetAmt = [];
     this.saleAmt = [];
     this.payAmt = [];
-    this.pdoAmt = [];
+    this.pdoLg = [];
     this.diffTarAmt = [];
     if (display === false) {
       this.displayData = this.displayData.filter(e => e !== this.current);
@@ -209,7 +209,7 @@ export class SaleInfoComponent implements OnInit {
       // this.targetAmt.push(this.devideMillion(this.current.TAR_AMT));
       // this.saleAmt.push(this.devideMillion(this.current.SALE_AMT));
       // this.payAmt.push(this.devideMillion(this.current.PAY_AMT));
-      // this.pdoAmt.push(this.devideMillion(this.current.PDO_AMT));
+      // this.pdoLg.push(this.devideMillion(this.current.PDO_LOSS_GAIN));
       // this.diffTarAmt.push(this.devideMillion(this.current.DIF_TAR_AMT));
     }
     // this.sortByBranch();
@@ -245,10 +245,10 @@ export class SaleInfoComponent implements OnInit {
       },
       {
         label: this.headers[5],
-        backgroundColor: constant.pdoAmt.background,
-        borderColor: constant.pdoAmt.border,
+        backgroundColor: constant.pdoLg.background,
+        borderColor: constant.pdoLg.border,
         borderWidth: 2,
-        data: this.pdoAmt
+        data: this.pdoLg
       }
     ];
     const bdata = {
@@ -271,7 +271,7 @@ export class SaleInfoComponent implements OnInit {
           this.targetAmt.push(this.devideMillion(j.TAR_AMT));
           this.saleAmt.push(this.devideMillion(j.SALE_AMT));
           this.payAmt.push(this.devideMillion(j.PAY_AMT));
-          this.pdoAmt.push(this.devideMillion(j.PDO_AMT));
+          this.pdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
           this.diffTarAmt.push(this.devideMillion(j.DIF_TAR_AMT));
         }
       }
@@ -286,7 +286,7 @@ export class SaleInfoComponent implements OnInit {
           this.labels.push(j.BRH_ID);
           this.saleAmt.push(this.devideMillion(j.SALE_AMT));
           this.payAmt.push(this.devideMillion(j.PAY_AMT));
-          this.pdoAmt.push(this.devideMillion(j.PDO_AMT));
+          this.pdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
           this.diffTarAmt.push(this.devideMillion(j.DIF_TAR_AMT));
         }
       }
@@ -301,7 +301,7 @@ export class SaleInfoComponent implements OnInit {
           this.labels.push(j.BRH_ID);
           this.targetAmt.push(this.devideMillion(j.TAR_AMT));
           this.payAmt.push(this.devideMillion(j.PAY_AMT));
-          this.pdoAmt.push(this.devideMillion(j.PDO_AMT));
+          this.pdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
           this.diffTarAmt.push(this.devideMillion(j.DIF_TAR_AMT));
         }
       }
@@ -316,7 +316,7 @@ export class SaleInfoComponent implements OnInit {
           this.labels.push(j.BRH_ID);
           this.targetAmt.push(this.devideMillion(j.TAR_AMT));
           this.saleAmt.push(this.devideMillion(j.SALE_AMT));
-          this.pdoAmt.push(this.devideMillion(j.PDO_AMT));
+          this.pdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
           this.diffTarAmt.push(this.devideMillion(j.DIF_TAR_AMT));
         }
       }
@@ -331,18 +331,18 @@ export class SaleInfoComponent implements OnInit {
           this.labels.push(j.BRH_ID);
           this.targetAmt.push(this.devideMillion(j.TAR_AMT));
           this.payAmt.push(this.devideMillion(j.PAY_AMT));
-          this.pdoAmt.push(this.devideMillion(j.PDO_AMT));
+          this.pdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
           this.saleAmt.push(this.devideMillion(j.SALE_AMT));
         }
       }
     }
   }
   private sortByPDO() {
-    this.displayData.forEach(e => this.pdoAmt.push(this.devideMillion(e.PDO_AMT)));
-    this.pdoAmt.sort(function (a, b) { return a - b; });
-    for (const i of this.pdoAmt) {
+    this.displayData.forEach(e => this.pdoLg.push(this.devideMillion(e.PDO_LOSS_GAIN)));
+    this.pdoLg.sort(function (a, b) { return a - b; });
+    for (const i of this.pdoLg) {
       for (const j of this.displayData) {
-        if (i === this.devideMillion(j.PDO_AMT)) {
+        if (i === this.devideMillion(j.PDO_LOSS_GAIN)) {
           this.labels.push(j.BRH_ID);
           this.targetAmt.push(this.devideMillion(j.TAR_AMT));
           this.payAmt.push(this.devideMillion(j.PAY_AMT));
@@ -381,7 +381,6 @@ export class SaleInfoComponent implements OnInit {
         this.headers.push(element);
         this.sort.push(element);
       });
-      console.log(this.headers);
       this.sortOption = this.headers[0];
       this.allData = result.data;
       this.displayData = result.data;
@@ -398,7 +397,7 @@ export class SaleInfoComponent implements OnInit {
         this.payAmt.push(this.devideMillion(e.PAY_AMT));
       });
       result.data.forEach(e => {
-        this.pdoAmt.push(this.devideMillion(e.PDO_AMT));
+        this.pdoLg.push(this.devideMillion(e.PDO_LOSS_GAIN));
       });
       result.data.forEach(e => {
         this.diffTarAmt.push(this.devideMillion(e.DIF_TAR_AMT));
@@ -438,10 +437,10 @@ export class SaleInfoComponent implements OnInit {
         },
         {
           label: this.headers[5],
-          backgroundColor: constant.pdoAmt.background,
-          borderColor: constant.pdoAmt.border,
+          backgroundColor: constant.pdoLg.background,
+          borderColor: constant.pdoLg.border,
           borderWidth: 1,
-          data: this.pdoAmt
+          data: this.pdoLg
         }
       ];
       this.allDataSets = this.dataSets;
@@ -479,7 +478,7 @@ export class SaleInfoComponent implements OnInit {
     this.targetAmt = [];
     this.saleAmt = [];
     this.payAmt = [];
-    this.pdoAmt = [];
+    this.pdoLg = [];
     this.diffTarAmt = [];
     this.dataSets = [];
     this.sort = [];
@@ -515,7 +514,7 @@ export class SaleInfoComponent implements OnInit {
         this.payAmt.push(this.devideMillion(e.PAY_AMT));
       });
       result.data.forEach(e => {
-        this.pdoAmt.push(this.devideMillion(e.PDO_AMT));
+        this.pdoLg.push(this.devideMillion(e.PDO_LOSS_GAIN));
       });
       result.data.forEach(e => {
         this.diffTarAmt.push(this.devideMillion(e.DIF_TAR_AMT));
@@ -555,10 +554,10 @@ export class SaleInfoComponent implements OnInit {
         },
         {
           label: this.headers[5],
-          backgroundColor: constant.pdoAmt.background,
-          borderColor: constant.pdoAmt.border,
+          backgroundColor: constant.pdoLg.background,
+          borderColor: constant.pdoLg.border,
           borderWidth: 1,
-          data: this.pdoAmt
+          data: this.pdoLg
         }
       ];
       this.allDataSets = this.dataSets;

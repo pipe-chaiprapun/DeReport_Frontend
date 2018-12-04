@@ -75,14 +75,10 @@ export class AppserverService {
   }
 
   getPathInfo(startDate, endDate): Observable<any> {
-    console.log(startDate);
-    console.log(endDate);
     return this.http.get<any[]>(`${this.getPath}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
   }
 
   addImgThumbnail(data: any): Observable<any> {
-    console.log('---------------------- send data --------------------');
-    console.log(data);
     return this.http.post<any>(this.addThumbnail, data, { headers: this.headers });
   }
 
