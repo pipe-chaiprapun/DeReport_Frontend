@@ -2,9 +2,20 @@
     padding-top: 3%;
     padding-bottom: 3%;
     padding-right: 4%;
-    padding-left: 4%;   
+    padding-left: 4%;
+}
+
+.bg {
+    /* background: linear-gradient(to bottom right, rgb(0,174,57), rgb(0,26,9));
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:  cover; */
     background: linear-gradient(to bottom right, rgb(0,174,57), rgb(0,26,9));
-    background-size: cover; 
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
 #newslogo {
@@ -18,3 +29,8 @@
     margin-top: 2.3rem !important;
     margin-left: 2rem;
 }
+
+.wrapper {
+    height: 100%; 
+    width: 100%; 
+  }
