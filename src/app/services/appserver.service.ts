@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://192.168.1.50:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://192.168.1.65:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
@@ -75,14 +75,10 @@ export class AppserverService {
   }
 
   getPathInfo(startDate, endDate): Observable<any> {
-    console.log(startDate);
-    console.log(endDate);
     return this.http.get<any[]>(`${this.getPath}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
   }
 
   addImgThumbnail(data: any): Observable<any> {
-    console.log('---------------------- send data --------------------');
-    console.log(data);
     return this.http.post<any>(this.addThumbnail, data, { headers: this.headers });
   }
 

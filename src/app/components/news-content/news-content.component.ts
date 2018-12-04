@@ -8,11 +8,11 @@ import { AppserverService } from '../../services/appserver.service';
   styleUrls: ['./news-content.component.css']
 })
 export class NewsContentComponent implements OnInit {
-  private newsTitle;
-  private newsContent;
-  private newsCategory;
-  private newsImage;
-  private newsStartdate;
+  public newsTitle;
+  public newsContent;
+  public newsCategory;
+  public newsImage;
+  public newsStartdate;
 
   constructor(private route: ActivatedRoute,private __appserverservice: AppserverService) { }
 

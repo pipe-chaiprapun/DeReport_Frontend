@@ -36,17 +36,22 @@ export class MonthlyMeetingComponent implements OnInit {
   public currentBranch: string;
 
   public paths = [];
-  private header = [];
-  private pathNo = [];
+  public pathNo = [];
   private pathName = [];
   private pathLabels = [];
   private pathTarAmt = [];
   private pathSaleAmt = [];
   private pathPayAmt = [];
   private pathDifTarAmt = [];
-  private pathPdoAmt = [];
+  private pathPdoLg = [];
   private dataSet = [];
   private barChart;
+  private header = [];
+  public sort = [];
+  private sortOption;
+  public allData = [];
+  public displayData = [];
+  private currentPath;
 
   public month: string;
   public year;
@@ -98,8 +103,8 @@ export class MonthlyMeetingComponent implements OnInit {
   public getData() {
     const startDate = document.getElementById('startDate') as HTMLInputElement;
     const endDate = document.getElementById('endDate') as HTMLInputElement;
-    console.log(startDate.value);
-    console.log(endDate.value);
+    $('#increase').attr('disabled', true);
+    $('#decrease').attr('disabled', true);
     this.getMonthly(startDate.value, endDate.value);
     this.barChart.destroy();
     this.initLoadChart(startDate.value, endDate.value);
@@ -127,68 +132,92 @@ export class MonthlyMeetingComponent implements OnInit {
       this.oCustPDOAMT = this.devideMillion(result.data[0].OCUST_PDO_AMT);
       this.nCustPDOAMT = this.devideMillion(result.data[0].NCUST_PDO_AMT);
       this.pdoAmtPercent = ((result.data[0].PDO_AMT / result.data[0].FREMAIN_AMT) * 100).toFixed(2);
+      $('#increase').removeAttr('disabled');
+      $('#decrease').removeAttr('disabled');
     });
   }
 
   initLoadChart(startDate, endDate) {
+    this.displayData = [];
+    this.allData = [];
+    this.pathNo = [];
+    this.pathName = [];
+    this.pathLabels = [];
+    this.pathTarAmt = [];
+    this.pathSaleAmt = [];
+    this.pathPayAmt = [];
+    this.pathDifTarAmt = [];
+    this.pathPdoLg = [];
     this.resAPI.getPathInfo(startDate, endDate).subscribe(result => {
       console.log(result);
       this.paths = result.data;
-      this.header = result.header;
-      console.log(result.data[0].BRH_ID === '01');
+      // this.header = result.header;
+      this.sort = ['สายบริการ'];
+      this.header = ['สายบริการ'];
+      result.header.forEach(element => {
+        this.header.push(element);
+        this.sort.push(element);
+      });
+      this.sortOption = this.header[0];
       if ((result.data[0].BRH_ID === '01')) {
         this.currentBranch = '01';
-        result.data.forEach(element => {
-          if (element.BRH_ID === '01') {
-            this.pathNo.push(element.PATH_NO);
-            this.pathName.push(element.PATH_NAME);
-            this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
-            this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
-            this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
-            this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
-            this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
-            this.pathPdoAmt.push(this.devideMillion(element.PDO_AMT));
-          }
-        });
+        this.displayData = result.data.filter(e => e.BRH_ID === '01');
+        this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
+        this.sortByPath();
+        // result.data.forEach(element => {
+        //   if (element.BRH_ID === '01') {
+        //     this.pathNo.push(element.PATH_NO);
+        //     this.pathName.push(element.PATH_NAME);
+        //     this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+        //     this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+        //     this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+        //     this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+        //     this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+        //     this.pathPdoAmt.push(this.devideMillion(element.PDO_AMT));
+        //   }
+        // });
       } else {
-        result.data.forEach(element => {
-          if (element.BRH_ID === '02') {
-            this.currentBranch = '02';
-            this.pathNo.push(element.PATH_NO);
-            this.pathName.push(element.PATH_NAME);
-            this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
-            this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
-            this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
-            this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
-            this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
-            this.pathPdoAmt.push(this.devideMillion(element.PDO_AMT));
-          }
-        });
+        this.currentBranch = '02';
+        this.displayData = result.data.filter(e => e.BRH_ID === '02');
+        this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
+        this.sortByPath();
+        // result.data.forEach(element => {
+        //   if (element.BRH_ID === '02') {
+        //     this.pathNo.push(element.PATH_NO);
+        //     this.pathName.push(element.PATH_NAME);
+        //     this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+        //     this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+        //     this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+        //     this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+        //     this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+        //     this.pathPdoAmt.push(this.devideMillion(element.PDO_AMT));
+        //   }
+        // });
       }
       this.dataSet = [
         {
-          label: this.header[0],
+          label: this.header[1],
           backgroundColor: constant.tarAmt.background,
           borderColor: constant.tarAmt.border,
           borderWidth: 1,
           data: this.pathTarAmt
         },
         {
-          label: this.header[1],
+          label: this.header[2],
           backgroundColor: constant.saleAmt.background,
           borderColor: constant.saleAmt.border,
           borderWidth: 1,
           data: this.pathSaleAmt
         },
         {
-          label: this.header[2],
+          label: this.header[3],
           backgroundColor: constant.payAmt.background,
           borderColor: constant.payAmt.border,
           borderWidth: 1,
           data: this.pathPayAmt
         },
         {
-          label: this.header[3],
+          label: this.header[4],
           backgroundColor: constant.diffTarAmt.background,
           borderColor: constant.diffTarAmt.border,
           borderWidth: 1,
@@ -196,11 +225,11 @@ export class MonthlyMeetingComponent implements OnInit {
           hidden: true
         },
         {
-          label: this.header[4],
-          backgroundColor: constant.pdoAmt.background,
-          borderColor: constant.pdoAmt.border,
+          label: this.header[5],
+          backgroundColor: constant.pdoLg.background,
+          borderColor: constant.pdoLg.border,
           borderWidth: 1,
-          data: this.pathPdoAmt
+          data: this.pathPdoLg
         }
       ];
       const bdata = {
@@ -218,7 +247,8 @@ export class MonthlyMeetingComponent implements OnInit {
     });
   }
 
-  private newRenderChart(brh) {
+  private RenderChartbyPath(display, index) {
+    this.currentPath = this.allData[index];
     this.pathNo = [];
     this.pathName = [];
     this.pathLabels = [];
@@ -226,48 +256,66 @@ export class MonthlyMeetingComponent implements OnInit {
     this.pathSaleAmt = [];
     this.pathPayAmt = [];
     this.pathDifTarAmt = [];
-    this.pathPdoAmt = [];
-    const branch = this.paths.filter(element => element.BRH_ID === brh);
-    console.log(branch);
-    if (noUndefined(branch)) {
-      this.currentBranch = brh;
-      branch.forEach(element => {
-        // if (element.BRH_ID === brh) {
-          this.pathNo.push(element.PATH_NO);
-          this.pathName.push(element.PATH_NAME);
-          this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
-          this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
-          this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
-          this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
-          this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
-          this.pathPdoAmt.push(this.devideMillion(element.PDO_AMT));
-        // }
-      });
+    this.pathPdoLg = [];
+    if (display === false) {
+      this.displayData = this.displayData.filter(e => e !== this.currentPath);
+      if (this.sortOption === this.header[0]) {
+        this.sortByPath();
+      } else if (this.sortOption === this.header[1]) {
+        this.sortByTarAmt();
+      } else if (this.sortOption === this.header[2]) {
+        this.sortBySaleAmt();
+      } else if (this.sortOption === this.header[3]) {
+        this.sortByPayAmt();
+      } else if (this.sortOption === this.header[4]) {
+        this.sortByDiffTarAmt();
+      } else if (this.sortOption === this.header[5]) {
+        this.sortByPDO();
+      } else {
+        this.sortByPath();
+      }
+    } else {
+      this.displayData.push(this.currentPath);
+      if (this.sortOption === this.header[0]) {
+        this.sortByPath();
+      } else if (this.sortOption === this.header[1]) {
+        this.sortByTarAmt();
+      } else if (this.sortOption === this.header[2]) {
+        this.sortBySaleAmt();
+      } else if (this.sortOption === this.header[3]) {
+        this.sortByPayAmt();
+      } else if (this.sortOption === this.header[4]) {
+        this.sortByDiffTarAmt();
+      } else if (this.sortOption === this.header[5]) {
+        this.sortByPDO();
+      } else {
+        this.sortByPath();
+      }
     }
     this.dataSet = [
       {
-        label: this.header[0],
+        label: this.header[1],
         backgroundColor: constant.tarAmt.background,
         borderColor: constant.tarAmt.border,
         borderWidth: 1,
         data: this.pathTarAmt
       },
       {
-        label: this.header[1],
+        label: this.header[2],
         backgroundColor: constant.saleAmt.background,
         borderColor: constant.saleAmt.border,
         borderWidth: 1,
         data: this.pathSaleAmt
       },
       {
-        label: this.header[2],
+        label: this.header[3],
         backgroundColor: constant.payAmt.background,
         borderColor: constant.payAmt.border,
         borderWidth: 1,
         data: this.pathPayAmt
       },
       {
-        label: this.header[3],
+        label: this.header[4],
         backgroundColor: constant.diffTarAmt.background,
         borderColor: constant.diffTarAmt.border,
         borderWidth: 1,
@@ -275,11 +323,90 @@ export class MonthlyMeetingComponent implements OnInit {
         hidden: true
       },
       {
-        label: this.header[4],
-        backgroundColor: constant.pdoAmt.background,
-        borderColor: constant.pdoAmt.border,
+        label: this.header[5],
+        backgroundColor: constant.pdoLg.background,
+        borderColor: constant.pdoLg.border,
         borderWidth: 1,
-        data: this.pathPdoAmt
+        data: this.pathPdoLg
+      }
+    ];
+    const bdata = {
+      labels: this.pathLabels,
+      datasets: this.dataSet
+    };
+    const ctxb = $('#barChart').get(0).getContext('2d');
+    this.barChart.destroy();
+    this.barChart = new Chart(ctxb, {
+      type: 'bar',
+      data: bdata
+    });
+  }
+  private RenderChartbyBrh(brh) {
+    this.displayData = [];
+    this.allData = [];
+    this.pathNo = [];
+    this.pathName = [];
+    this.pathLabels = [];
+    this.pathTarAmt = [];
+    this.pathSaleAmt = [];
+    this.pathPayAmt = [];
+    this.pathDifTarAmt = [];
+    this.pathPdoLg = [];
+    const branch = this.paths.filter(element => element.BRH_ID === brh);
+    this.displayData = branch;
+    this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
+    this.sortOption = this.header[0];
+    console.log(branch);
+    if (noUndefined(branch)) {
+      this.sortByPath();
+      // this.currentBranch = brh;
+      // branch.forEach(element => {
+      //   this.pathNo.push(element.PATH_NO);
+      //   this.pathName.push(element.PATH_NAME);
+      //   this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      //   this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      //   this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      //   this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+      //   this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+      //   this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      // });
+    }
+    this.dataSet = [
+      {
+        label: this.header[1],
+        backgroundColor: constant.tarAmt.background,
+        borderColor: constant.tarAmt.border,
+        borderWidth: 1,
+        data: this.pathTarAmt
+      },
+      {
+        label: this.header[2],
+        backgroundColor: constant.saleAmt.background,
+        borderColor: constant.saleAmt.border,
+        borderWidth: 1,
+        data: this.pathSaleAmt
+      },
+      {
+        label: this.header[3],
+        backgroundColor: constant.payAmt.background,
+        borderColor: constant.payAmt.border,
+        borderWidth: 1,
+        data: this.pathPayAmt
+      },
+      {
+        label: this.header[4],
+        backgroundColor: constant.diffTarAmt.background,
+        borderColor: constant.diffTarAmt.border,
+        borderWidth: 1,
+        data: this.pathDifTarAmt,
+        hidden: true
+      },
+      {
+        label: this.header[5],
+        backgroundColor: constant.pdoLg.background,
+        borderColor: constant.pdoLg.border,
+        borderWidth: 1,
+        data: this.pathPdoLg
       }
     ];
     const bdata = {
@@ -317,33 +444,31 @@ export class MonthlyMeetingComponent implements OnInit {
       this.pdoAmtPercent = ((branch.PDO_AMT / branch.FREMAIN_AMT) * 100).toFixed(2);
     }
   }
-  onChange(deviceValue) {
-    this.newRenderTable(deviceValue);
-    this.newRenderChart(deviceValue);
+  onChange(data, select) {
+    const path = data.target.innerText;
+    const checked = data.target.childNodes[0].checked;
+    const index = this.allData.findIndex(e => e.PATH_NO === data.target.innerText);
+    this.RenderChartbyPath(checked === true ? false : true, index);
+    // this.newRenderChart(branch, checked === true ? false : true, index);
+
+    // this.newRenderTable(deviceValue);
+    // this.newRenderChart(deviceValue);
   }
   increase(data) {
     this.nextItem();
-    // var inputBranch = document.getElementById("branchId") as HTMLInputElement;
-    // let branchId = parseInt(inputBranch.value);
   }
   selectBranch(data) {
     this.newRenderTable(data.value);
-    this.newRenderChart(data.value);
+    this.RenderChartbyBrh(data.value);
   }
   decrease(data) {
     this.prevItem();
-    // const RouteList: Routes = [
-    //   { path: 'home', component: HomeComponent, data: {test: 'test'}},
-    // ];
-    // RouterModule.forChild(RouteList);
-    // window.open(`home?title=${this.saleAmt}&content=รับสมัครเจ้าหน้าที่ฝ่ายการตลาดและฝ่ายติด&category=ข่าวทั่วไป
-    // &image=d07ccceb-797d-59e7-bbbf-118987dd83bd.png`);
   }
   nextItem() {
     this.branchIndex++; // increase i by one
     this.branchIndex = this.branchIndex % this.branchNum; // if we've gone too high, start from `0` again
     this.newRenderTable(this.branches[this.branchIndex].BRH_ID);
-    this.newRenderChart(this.branches[this.branchIndex].BRH_ID);
+    this.RenderChartbyBrh(this.branches[this.branchIndex].BRH_ID);
   }
   prevItem() {
     if (this.branchIndex === 0) { // i would become 0
@@ -351,11 +476,7 @@ export class MonthlyMeetingComponent implements OnInit {
     }
     this.branchIndex--; // decrease by one
     this.newRenderTable(this.branches[this.branchIndex].BRH_ID);
-    this.newRenderChart(this.branches[this.branchIndex].BRH_ID);
-  }
-  test(data) {
-    console.log(data);
-    console.log('kuy');
+    this.RenderChartbyBrh(this.branches[this.branchIndex].BRH_ID);
   }
   convertDateFormat(data) {
     const date = new Date(data);
@@ -374,5 +495,167 @@ export class MonthlyMeetingComponent implements OnInit {
   }
   private devideMillion(data: number) {
     return (data / 1000000).toFixed(2);
+  }
+  sortBy(data) {
+    console.log(data);
+    this.pathNo = [];
+    this.pathName = [];
+    this.pathLabels = [];
+    this.pathTarAmt = [];
+    this.pathSaleAmt = [];
+    this.pathPayAmt = [];
+    this.pathDifTarAmt = [];
+    this.pathPdoLg = [];
+    if (data === this.header[0]) {
+      this.sortOption = this.header[0];
+      this.sortByPath();
+    } else if (data === this.header[1]) {
+      this.sortOption = this.header[1];
+      this.sortByTarAmt();
+    } else if (data === this.header[2]) {
+      this.sortOption = this.header[2];
+      this.sortBySaleAmt();
+    } else if (data === this.header[3]) {
+      this.sortOption = this.header[3];
+      this.sortByPayAmt();
+    } else if (data === this.header[4]) {
+      this.sortOption = this.header[4];
+      this.sortByDiffTarAmt();
+    } else if (data === this.header[5]) {
+      this.sortOption = this.header[5];
+      this.sortByPDO();
+    } else {
+      this.sortByPath();
+    }
+    this.dataSet = [];
+    this.dataSet = [
+      {
+        label: this.header[1],
+        backgroundColor: constant.tarAmt.background,
+        borderColor: constant.tarAmt.border,
+        borderWidth: 2,
+        data: this.pathTarAmt
+      },
+      {
+        label: this.header[2],
+        backgroundColor: constant.saleAmt.background,
+        borderColor: constant.saleAmt.border,
+        borderWidth: 2,
+        data: this.pathSaleAmt
+      },
+      {
+        label: this.header[3],
+        backgroundColor: constant.payAmt.background,
+        borderColor: constant.payAmt.border,
+        borderWidth: 2,
+        data: this.pathPayAmt
+      },
+      {
+        label: this.header[4],
+        backgroundColor: constant.diffTarAmt.background,
+        borderColor: constant.diffTarAmt.border,
+        borderWidth: 2,
+        data: this.pathDifTarAmt
+      },
+      {
+        label: this.header[5],
+        backgroundColor: constant.pdoLg.background,
+        borderColor: constant.pdoLg.border,
+        borderWidth: 2,
+        data: this.pathPdoLg
+      }
+    ];
+    const bdata = {
+      labels: this.pathLabels,
+      datasets: this.dataSet
+    };
+    const ctxb = $('#barChart').get(0).getContext('2d');
+    this.barChart.destroy();
+    this.barChart = new Chart(ctxb, {
+      type: 'bar',
+      data: bdata,
+    });
+  }
+  private sortByPath() {
+    this.displayData.forEach(e => this.pathNo.push(e.PATH_NO));
+    this.pathNo.sort();
+    for (const i of this.pathNo) {
+      for (const j of this.displayData) {
+        if (i === j.PATH_NO) {
+          this.pathLabels.push(j.PATH_NO + ` ${j.PATH_NAME}`);
+          this.pathName.push(j.PATH_NAME);
+          this.pathTarAmt.push(this.devideMillion(j.TAR_AMT));
+          this.pathSaleAmt.push(this.devideMillion(j.SALE_AMT));
+          this.pathPayAmt.push(this.devideMillion(j.PAY_AMT));
+          this.pathPdoLg.push(this.devideMillion(j.PDO_LOSS_GAIN));
+          this.pathDifTarAmt.push(this.devideMillion(j.DIF_TAR_AMT));
+        }
+      }
+    }
+  }
+  private sortByTarAmt() {
+    this.displayData.sort(function (a, b) { return a.TAR_AMT - b.TAR_AMT; });
+    this.displayData.forEach(element => {
+      this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      this.pathNo.push(element.PATH_NO);
+      this.pathName.push(element.PATH_NAME);
+      this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+      this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+    });
+  }
+  private sortBySaleAmt() {
+    this.displayData.sort(function (a, b) { return a.SALE_AMT - b.SALE_AMT; });
+    this.displayData.forEach(element => {
+      this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      this.pathNo.push(element.PATH_NO);
+      this.pathName.push(element.PATH_NAME);
+      this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+      this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+    });
+  }
+  private sortByPayAmt() {
+    this.displayData.sort(function (a, b) { return a.PAY_AMT - b.PAY_AMT; });
+    this.displayData.forEach(element => {
+      this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+      this.pathNo.push(element.PATH_NO);
+      this.pathName.push(element.PATH_NAME);
+      this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+    });
+  }
+  private sortByDiffTarAmt() {
+    this.displayData.sort(function (a, b) { return a.DIF_TAR_AMT - b.DIF_TAR_AMT; });
+    this.displayData.forEach(element => {
+      this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+      this.pathNo.push(element.PATH_NO);
+      this.pathName.push(element.PATH_NAME);
+      this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+    });
+  }
+  private sortByPDO() {
+    this.displayData.sort(function (a, b) { return a.PDO_LOSS_GAIN - b.PDO_LOSS_GAIN; });
+    this.displayData.forEach(element => {
+      this.pathPdoLg.push(this.devideMillion(element.PDO_LOSS_GAIN));
+      this.pathNo.push(element.PATH_NO);
+      this.pathName.push(element.PATH_NAME);
+      this.pathLabels.push(element.PATH_NO + ` ${element.PATH_NAME}`);
+      this.pathTarAmt.push(this.devideMillion(element.TAR_AMT));
+      this.pathSaleAmt.push(this.devideMillion(element.SALE_AMT));
+      this.pathDifTarAmt.push(this.devideMillion(element.DIF_TAR_AMT));
+      this.pathPayAmt.push(this.devideMillion(element.PAY_AMT));
+    });
   }
 }
