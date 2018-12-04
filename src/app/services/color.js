@@ -15,7 +15,7 @@ export default {
         'background': '#FFE099',
         'border': '#FFC233'
     },
-    'pdoAmt': {
+    'pdoLg': {
         'background': '#FF9EB3',
         'border': '#FF6E8E'
     }

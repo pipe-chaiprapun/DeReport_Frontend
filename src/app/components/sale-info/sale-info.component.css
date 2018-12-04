@@ -37,3 +37,9 @@ label.btn.btn-primary.active {
 .btn {
     padding: 0.20rem 0.60rem;
 }
+.app-content {
+    padding:10px;
+}
+.tile {
+    margin-bottom: 15px;
+}
