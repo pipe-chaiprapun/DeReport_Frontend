@@ -93,6 +93,13 @@ export class HomeComponent implements OnInit {
     &image=${images}&startDate=${startDates}`)
   }
 
+  openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
 
 
 
