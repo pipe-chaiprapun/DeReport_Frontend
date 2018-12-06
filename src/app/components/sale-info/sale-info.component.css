@@ -42,4 +42,33 @@ label.btn.btn-primary.active {
 }
 .tile {
     margin-bottom: 15px;
+    padding:5px 15px;
+}
+.bs-component {
+    display: grid;
+    margin-bottom:0px;
+}
+label {
+    margin-bottom: 0.1rem;
+}
+.btn {
+    font-size: 0.70rem;
+}
+.form-control {
+    font-size: 0.90rem;
+    padding: 0.3rem 0.1rem;
+    text-align: center;
+    width:6rem;
+}
+.input-group {
+    width:15rem;
+}
+.input-group-text {
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+#submitDate {
+    height: 100%;
 }
