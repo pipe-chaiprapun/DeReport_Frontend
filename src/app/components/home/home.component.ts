@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
   footballImage: NgxGalleryImage[];
   sportOption: NgxGalleryOptions[];
   sportImage: NgxGalleryImage[];
+  abcOption:  NgxGalleryOptions[];
+  abcImage: NgxGalleryImage[];
   public cardData = [];
   public newscategoryData = [];
 
@@ -66,6 +68,9 @@ export class HomeComponent implements OnInit {
     this.sportOption = this.__galleryservice.spOptions;
     this.sportImage = this.__galleryservice.spImages;
     //end
+
+    this.abcOption = this.__galleryservice.abcOption;
+    this.abcImage = this.__galleryservice.abcImage;
   }
 
   //  รับข้อมูลข่าว
@@ -93,6 +98,13 @@ export class HomeComponent implements OnInit {
     &image=${images}&startDate=${startDates}`)
   }
 
+  openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
 
 
 

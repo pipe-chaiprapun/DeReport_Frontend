@@ -280,4 +280,52 @@ public footballImages = [
   ];
   //emd
 
+  public abcImage = [
+    {
+      small: 'assets/images/abc/1.jpg',
+      medium: 'assets/images/abc/1.jpg',
+      big: 'assets/images/abc/1.jpg',
+    },
+    {
+      small: 'assets/images/abc/2.jpg',
+      medium: 'assets/images/abc/2.jpg',
+      big: 'assets/images/abc/2.jpg'
+    },
+    {
+      small: 'assets/images/abc/3.jpg',
+      medium: 'assets/images/abc/3.jpg',
+      big: 'assets/images/abc/3.jpg'
+    },
+    {
+      small: 'assets/images/abc/4.jpg',
+      medium: 'assets/images/abc/4.jpg',
+      big: 'assets/images/abc/4.jpg'
+    },
+    {
+      small: 'assets/images/abc/5.jpg',
+      medium: 'assets/images/abc/5.jpg',
+      big: 'assets/images/abc/5.jpg'
+    },
+    {
+      small: 'assets/images/abc/6.jpg',
+      medium: 'assets/images/abc/6.jpg',
+      big: 'assets/images/abc/6.jpg'
+    },
+    {
+      small: 'assets/images/abc/7.jpg',
+      medium: 'assets/images/abc/7.jpg',
+      big: 'assets/images/abc/7.jpg'
+    },
+    {
+      small: 'assets/images/abc/8.jpg',
+      medium: 'assets/images/abc/8.jpg',
+      big: 'assets/images/abc/8.jpg'
+    }
+  ];
+
+  public abcOption = [
+    { "image": false, "thumbnailsRemainingCount": true, "height": "200px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
+    { "breakpoint": 500, "width": "50%", "thumbnailsColumns": 1 }  
+  ];
+
 }

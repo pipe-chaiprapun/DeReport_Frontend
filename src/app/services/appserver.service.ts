@@ -24,8 +24,7 @@ export class AppserverService {
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
-  private addThumbnail = `${this.baseUrl}/api/new/album`;
-
+  private addThumbnail = `${this.baseUrl}/api/new/album`; 
 
   constructor(private http: HttpClient) { }
 

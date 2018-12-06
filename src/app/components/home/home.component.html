@@ -1,7 +1,30 @@
 <!-- Content -->
 <div class="main">
 
-  <a href="backoffice">ระบบ MIS</a>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="color:aliceblue">&times;</a>
+        <div class="overlay-content">
+            <div class="container-fluid login-form">
+                <form action="/examples/actions/confirmation.php" method="post">
+                    <h2 class="text-center">MIS System</h2>       
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <a href="summary" class="btn btn-primary btn-block" role="button" style="font-size:1.3rem;color:aliceblue">Log in</a>
+                    </div>
+                    <div class="clearfix">
+                        <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                    </div>        
+                </form>
+            </div>
+        </div>
+      </div>
+
+  <a id="menulink" (click)="openNav()">ระบบ MIS</a>
 
   <!-- Slide Show -->
   <div class="container-fluid">
@@ -33,14 +56,14 @@
     <div class="container-fluid" id="newscontent">
       <!-- ประกาศข่าว -->
       <div class="row">
-        <div class="col-4" *ngFor="let item of category.values"  style="padding-top: 2%">
-          <div class="card" id="newscard">
+        <div class="col-md-4 col-sm-12 col-12" *ngFor="let item of category.values"  style="padding-top: 1%">
+          <div class="card" id="newscard"  (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)'>
             <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
-            <div class="card-body">
-              <b style="text-decoration: underline;padding-left: 0.8em;font-family: 'Mali', cursive;">{{item.title}}</b>
-              <p id="newscardcontent" class="card-text indent;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
-              <p class="card-text"><small class="text-muted text-left">ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}</small>
-                <small id="overnews" (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)' class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
+            <div class="card-body" style="margin-top: 0.5rem;">
+              <P style="text-decoration: underline;margin-left: 0.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
+              <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
+              <p class="card-text" style="font-family: 'Mali', cursive;font-size:1rem;padding-top:1%"><small class="text-muted text-left">ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}</small>
+                <small id="overnews" class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
             </div>
           </div>
         </div>
@@ -93,44 +116,9 @@
             <div class="col-lg-3 col-md-4">
               <div id="gallerycard" class="card" style="width:100%">
                 <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                  <ngx-gallery [options]="abcOption" [images]="abcImage"></ngx-gallery>
                 </div>
-                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+                <p class="card-text" id="namealbum">อบรมโปรแกรมคอมฯ เจ้าหน้าที่ฝ่ายตลาดใหม่</p>
               </div>
             </div>
           </div>
