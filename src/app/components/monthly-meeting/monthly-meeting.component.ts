@@ -48,42 +48,65 @@ export class MonthlyMeetingComponent implements OnInit {
   private barChart;
   private header = [];
   public sort = [];
-  private sortOption;
+  private sortOption = null;
   public allData = [];
   public displayData = [];
   private currentPath;
 
   public month: string;
   public year;
+  public monthIndex;
+  public today = new Date(Date.now());
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
     App.initLoadJquery();
     this.initLoadUI();
-    const today = new Date(Date.now());
-    this.month = monthNames[today.getMonth() - 1];
-    this.year = today.getFullYear() + 543;
+    this.month = monthNames[this.today.getMonth() - 1];
+    this.year = this.today.getFullYear() + 543;
   }
 
   private initLoadUI() {
-    const today = new Date(Date.now());
-    today.setMonth(today.getMonth() - 1);
-    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-    const startDt = document.getElementById('startDate') as HTMLInputElement;
-    const endDt = document.getElementById('endDate') as HTMLInputElement;
-    startDt.value = this.convertDateFormat(firstDay);
-    endDt.value = this.convertDateFormat(lastDay);
-    $('#startDate').datepicker({
-      format: 'dd/mm/yyyy',
+    const self = this;
+    $('#txtMonth').datepicker({
+      format: 'mm-yyyy',
       autoclose: true,
-      todayHighlight: true
+      todayHighlight: true,
+      startView: 'months',
+      minViewMode: 'months'
+    }).on('changeMonth', function (e) {
+      console.log(e.date.getMonth());
+      self.month = monthNames[e.date.getMonth()];
+      self.monthIndex = e.date.getMonth();
+      self.year = e.date.getFullYear() + 543;
+      self.today.setMonth(e.date.getMonth());
+      self.today.setFullYear(e.date.getFullYear());
+      console.log(self.month);
+      console.log(self.monthIndex);
+      console.log(self.year);
+      console.log(self.today);
+      self.getData();
     });
-    $('#endDate').datepicker({
-      format: 'dd/mm/yyyy',
-      autoclose: true,
-      todayHighlight: true
-    });
+    this.today.setMonth(this.today.getMonth() - 1);
+    const firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    const lastDay = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+    const txtMonth = document.getElementById('txtMonth') as HTMLInputElement;
+    txtMonth.value = this.convertDateFormat(firstDay).substring(3, 10);
+    this.monthIndex = this.today.getMonth();
+    // const startDt = document.getElementById('startDate') as HTMLInputElement;
+    // const endDt = document.getElementById('endDate') as HTMLInputElement;
+    // startDt.value = this.convertDateFormat(firstDay);
+    // endDt.value = this.convertDateFormat(lastDay);
+    // $('#startDate').datepicker({
+    //   format: 'dd/mm/yyyy',
+    //   autoclose: true,
+    //   todayHighlight: true
+    // });
+    // $('#endDate').datepicker({
+    //   format: 'dd/mm/yyyy',
+    //   autoclose: true,
+    //   todayHighlight: true
+    // });
     // $('#startDate').datepicker().on('changeDate', function (e) {
     //   const endDate = document.getElementById('endDate') as HTMLInputElement;
     //   console.log(endDate.value);
@@ -101,13 +124,21 @@ export class MonthlyMeetingComponent implements OnInit {
   }
 
   public getData() {
-    const startDate = document.getElementById('startDate') as HTMLInputElement;
-    const endDate = document.getElementById('endDate') as HTMLInputElement;
+    const firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    const lastDay = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+    const txtMonth = document.getElementById('txtMonth') as HTMLInputElement;
+    txtMonth.value = this.convertDateFormat(firstDay).substring(3, 10);
+    // this.monthIndex = this.today.getMonth();
+    console.log(this.monthIndex);
+    // const startDate = document.getElementById('startDate') as HTMLInputElement;
+    // const endDate = document.getElementById('endDate') as HTMLInputElement;
     $('#increase').attr('disabled', true);
     $('#decrease').attr('disabled', true);
-    this.getMonthly(startDate.value, endDate.value);
+    $('#previous').attr('disabled', true);
+    $('#next').attr('disabled', true);
+    this.getMonthly(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
     this.barChart.destroy();
-    this.initLoadChart(startDate.value, endDate.value);
+    this.initLoadChart(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
   }
   private getMonthly(startDate, endDate) {
     this.resAPI.getMonthlyMeeting(startDate, endDate).subscribe(result => {
@@ -119,8 +150,8 @@ export class MonthlyMeetingComponent implements OnInit {
       this.mgrsName = result.data[0].MGRS_NAME;
       this.tarAmt = this.devideMillion(result.data[0].TAR_AMT);
       this.saleAmt = this.devideMillion(result.data[0].SALE_AMT);
-      // this.diffTarAmt = devideMillion(result.data[0].DIF_TAR_AMT);
-      this.diffTarAmt = this.devideMillion(result.data[0].SALE_AMT - result.data[0].TAR_AMT);
+      this.diffTarAmt = this.devideMillion(result.data[0].DIF_TAR_AMT);
+      // this.diffTarAmt = this.devideMillion(result.data[0].SALE_AMT - result.data[0].TAR_AMT);
       this.numDiffTarAmt = result.data[0].SALE_AMT - result.data[0].TAR_AMT;
       this.payAmt = this.devideMillion(result.data[0].PAY_AMT);
       this.accTarAmt = this.devideMillion(result.data[0].ACC_TAR_AMT);
@@ -134,6 +165,8 @@ export class MonthlyMeetingComponent implements OnInit {
       this.pdoAmtPercent = ((result.data[0].PDO_AMT / result.data[0].FREMAIN_AMT) * 100).toFixed(2);
       $('#increase').removeAttr('disabled');
       $('#decrease').removeAttr('disabled');
+      $('#previous').removeAttr('disabled');
+      $('#next').removeAttr('disabled');
     });
   }
 
@@ -158,12 +191,29 @@ export class MonthlyMeetingComponent implements OnInit {
         this.header.push(element);
         this.sort.push(element);
       });
-      this.sortOption = this.header[0];
+      if (this.sortOption === null) {
+        this.sortOption = this.header[0];
+      }
       if ((result.data[0].BRH_ID === '01')) {
         this.currentBranch = '01';
         this.displayData = result.data.filter(e => e.BRH_ID === '01');
         this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
-        this.sortByPath();
+        if (this.sortOption === this.header[0]) {
+          this.sortByPath();
+        } else if (this.sortOption === this.header[1]) {
+          this.sortByTarAmt();
+        } else if (this.sortOption === this.header[2]) {
+          this.sortBySaleAmt();
+        } else if (this.sortOption === this.header[3]) {
+          this.sortByPayAmt();
+        } else if (this.sortOption === this.header[4]) {
+          this.sortByDiffTarAmt();
+        } else if (this.sortOption === this.header[5]) {
+          this.sortByPDO();
+        } else {
+          this.sortByPath();
+        }
+        // this.sortByPath();
         // result.data.forEach(element => {
         //   if (element.BRH_ID === '01') {
         //     this.pathNo.push(element.PATH_NO);
@@ -180,7 +230,22 @@ export class MonthlyMeetingComponent implements OnInit {
         this.currentBranch = '02';
         this.displayData = result.data.filter(e => e.BRH_ID === '02');
         this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
-        this.sortByPath();
+        if (this.sortOption === this.header[0]) {
+          this.sortByPath();
+        } else if (this.sortOption === this.header[1]) {
+          this.sortByTarAmt();
+        } else if (this.sortOption === this.header[2]) {
+          this.sortBySaleAmt();
+        } else if (this.sortOption === this.header[3]) {
+          this.sortByPayAmt();
+        } else if (this.sortOption === this.header[4]) {
+          this.sortByDiffTarAmt();
+        } else if (this.sortOption === this.header[5]) {
+          this.sortByPDO();
+        } else {
+          this.sortByPath();
+        }
+        // this.sortByPath();
         // result.data.forEach(element => {
         //   if (element.BRH_ID === '02') {
         //     this.pathNo.push(element.PATH_NO);
@@ -221,15 +286,15 @@ export class MonthlyMeetingComponent implements OnInit {
           backgroundColor: constant.diffTarAmt.background,
           borderColor: constant.diffTarAmt.border,
           borderWidth: 1,
-          data: this.pathDifTarAmt,
-          hidden: true
+          data: this.pathDifTarAmt
         },
         {
           label: this.header[5],
           backgroundColor: constant.pdoLg.background,
           borderColor: constant.pdoLg.border,
           borderWidth: 1,
-          data: this.pathPdoLg
+          data: this.pathPdoLg,
+          hidden: true
         }
       ];
       const bdata = {
@@ -319,15 +384,15 @@ export class MonthlyMeetingComponent implements OnInit {
         backgroundColor: constant.diffTarAmt.background,
         borderColor: constant.diffTarAmt.border,
         borderWidth: 1,
-        data: this.pathDifTarAmt,
-        hidden: true
+        data: this.pathDifTarAmt
       },
       {
         label: this.header[5],
         backgroundColor: constant.pdoLg.background,
         borderColor: constant.pdoLg.border,
         borderWidth: 1,
-        data: this.pathPdoLg
+        data: this.pathPdoLg,
+        hidden: true
       }
     ];
     const bdata = {
@@ -355,10 +420,25 @@ export class MonthlyMeetingComponent implements OnInit {
     const branch = this.paths.filter(element => element.BRH_ID === brh);
     this.displayData = branch;
     this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
-    this.sortOption = this.header[0];
+    // this.sortOption = this.header[0];
     console.log(branch);
     if (noUndefined(branch)) {
-      this.sortByPath();
+      console.log(this.sortOption);
+      if (this.sortOption === this.header[0]) {
+        this.sortByPath();
+      } else if (this.sortOption === this.header[1]) {
+        this.sortByTarAmt();
+      } else if (this.sortOption === this.header[2]) {
+        this.sortBySaleAmt();
+      } else if (this.sortOption === this.header[3]) {
+        this.sortByPayAmt();
+      } else if (this.sortOption === this.header[4]) {
+        this.sortByDiffTarAmt();
+      } else if (this.sortOption === this.header[5]) {
+        this.sortByPDO();
+      } else {
+        this.sortByPath();
+      }
       // this.currentBranch = brh;
       // branch.forEach(element => {
       //   this.pathNo.push(element.PATH_NO);
@@ -398,15 +478,15 @@ export class MonthlyMeetingComponent implements OnInit {
         backgroundColor: constant.diffTarAmt.background,
         borderColor: constant.diffTarAmt.border,
         borderWidth: 1,
-        data: this.pathDifTarAmt,
-        hidden: true
+        data: this.pathDifTarAmt
       },
       {
         label: this.header[5],
         backgroundColor: constant.pdoLg.background,
         borderColor: constant.pdoLg.border,
         borderWidth: 1,
-        data: this.pathPdoLg
+        data: this.pathPdoLg,
+        hidden: true
       }
     ];
     const bdata = {
@@ -422,6 +502,7 @@ export class MonthlyMeetingComponent implements OnInit {
   }
 
   private newRenderTable(brh) {
+    this.currentBranch = brh;
     this.branchIndex = this.branches.findIndex(element => element.BRH_ID === brh);
     const branch = this.branches.filter(element => element.BRH_ID === brh)[0];
     if (noUndefined(branch)) {
@@ -430,7 +511,7 @@ export class MonthlyMeetingComponent implements OnInit {
       this.tarAmt = this.devideMillion(branch.TAR_AMT);
       this.saleAmt = this.devideMillion(branch.SALE_AMT);
       // this.diffTarAmt = devideMillion(result.data[0].DIF_TAR_AMT);
-      this.diffTarAmt = this.devideMillion(branch.SALE_AMT - branch.TAR_AMT);
+      this.diffTarAmt = this.devideMillion(branch.DIF_TAR_AMT);
       this.numDiffTarAmt = branch.SALE_AMT - branch.TAR_AMT;
       this.payAmt = this.devideMillion(branch.PAY_AMT);
       this.accTarAmt = this.devideMillion(branch.ACC_TAR_AMT);
@@ -463,6 +544,58 @@ export class MonthlyMeetingComponent implements OnInit {
   }
   decrease(data) {
     this.prevItem();
+  }
+  previous(data) {
+    this.prevMonth();
+  }
+  next(data) {
+    this.nextMonth();
+  }
+  nextMonth() {
+    this.monthIndex++;
+    this.today.setMonth(this.today.getMonth() + 1);
+    // this.monthIndex = this.monthIndex / monthNames.length;
+    if (this.monthIndex > 11) {
+      this.monthIndex = 0;
+      this.year++;
+      this.today.setMonth(this.today.getMonth() - 12);
+      this.today.setFullYear(this.today.getFullYear() + 1);
+      this.year = this.today.getFullYear() + 543;
+    }
+    $('#previous').attr('disabled', true);
+    $('#next').attr('disabled', true);
+    $('#increase').attr('disabled', true);
+    $('decrease').attr('disabled', true);
+    this.today.setMonth(this.monthIndex);
+    const firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    const lastDay = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+    const txtMonth = document.getElementById('txtMonth') as HTMLInputElement;
+    txtMonth.value = this.convertDateFormat(firstDay).substring(3, 10);
+    this.month = monthNames[this.today.getMonth()];
+    this.getMonthly(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
+    this.barChart.destroy();
+    this.initLoadChart(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
+  }
+  prevMonth() {
+    if (this.monthIndex === 0) {
+      this.monthIndex = monthNames.length;
+      this.year--;
+      this.year = this.today.getFullYear() + 543;
+    }
+    this.monthIndex--;
+    $('#previous').attr('disabled', true);
+    $('#next').attr('disabled', true);
+    $('#increase').attr('disabled', true);
+    $('#decrease').attr('disabled', true);
+    this.today.setMonth(this.today.getMonth() - 1);
+    const firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+    const lastDay = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+    const txtMonth = document.getElementById('txtMonth') as HTMLInputElement;
+    txtMonth.value = this.convertDateFormat(firstDay).substring(3, 10);
+    this.month = monthNames[this.today.getMonth()];
+    this.getMonthly(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
+    this.barChart.destroy();
+    this.initLoadChart(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay));
   }
   nextItem() {
     this.branchIndex++; // increase i by one
@@ -562,7 +695,8 @@ export class MonthlyMeetingComponent implements OnInit {
         backgroundColor: constant.pdoLg.background,
         borderColor: constant.pdoLg.border,
         borderWidth: 2,
-        data: this.pathPdoLg
+        data: this.pathPdoLg,
+        hidden: true
       }
     ];
     const bdata = {

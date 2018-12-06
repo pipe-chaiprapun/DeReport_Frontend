@@ -31,8 +31,9 @@ td {
     border-radius: 4px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
-input#exampleInputAmount.form-control {
-    width: 2.8rem;
+input#txtMonth.form-control {
+    width: fit-content;
+    text-align: center;
 }
 .tile-title {
     margin-top: 0;
@@ -67,4 +68,11 @@ i.material-icons {
 }
 .app-title {
     margin-bottom: 10px;
+    padding: 10px 30px;
+}
+.input-group-text{
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 0px;
 }
