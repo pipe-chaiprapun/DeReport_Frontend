@@ -9,22 +9,22 @@
     </div>
   </div>
   <ul class="app-menu">
-    <li><a class="app-menu__item" [routerLink]="['/', Url.Summary]"><i class="app-menu__icon fa fa-dashboard"></i><span
+    <li><a class="app-menu__item" [routerLink]="['/', Url.Summary]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa-dashboard"></i><span
           class="app-menu__label">รายงานสรุป</span></a></li>
-    <li><a class="app-menu__item" [routerLink]="['/', Url.SaleInfo]"><i class="app-menu__icon fa fa-pie-chart"></i><span
+    <li><a class="app-menu__item" [routerLink]="['/', Url.SaleInfo]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa-pie-chart"></i><span
           class="app-menu__label">ข้อมูลยอดขาย</span></a></li>
-    <li><a class="app-menu__item" [routerLink]="['/', Url.MonthlyMeeting]"><i class="app-menu__icon fa fa fa-users"></i><span
+    <li><a class="app-menu__item" [routerLink]="['/', Url.MonthlyMeeting]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa fa-users"></i><span
           class="app-menu__label">Monthly Meeting</span></a></li>
     <!-- <li><a class="app-menu__item" [routerLink]="['/', Url.Branch]"><i class="app-menu__icon fa fa-university"></i><span class="app-menu__label">ข้อมูลสาขา</span></a></li> -->
 
     <!-- <li><a class="app-menu__item" [routerLink]="['/', Url.ExamChart]"><i class="app-menu__icon fa fa-pie-chart"></i><span
           class="app-menu__label">ตัวอย่างแผนภูมิ</span></a></li> -->
-    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-newspaper-o"></i><span
+    <li class="treeview" [routerLinkActive]="['is-expanded']"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-newspaper-o"></i><span
           class="app-menu__label">จัดการข่าว</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
-        <li><a class="treeview-item" [routerLink]="['/', Url.NewsManagement]"><i class="icon fa fa-plus-square"></i>
+        <li><a class="treeview-item" [routerLink]="['/', Url.NewsManagement]" [routerLinkActive]="['active']"><i class="icon fa fa-plus-square"></i>
             เพิ่มข่าวใหม่</a></li>
-        <li><a class="treeview-item" [routerLink]="['/', Url.NewsEdit]"><i class="icon fa fa-pencil-square-o"></i>
+        <li><a class="treeview-item" [routerLink]="['/', Url.NewsEdit]" [routerLinkActive]="['active']"><i class="icon fa fa-pencil-square-o"></i>
             แก้ไขข่าว</a></li>
       </ul>
     </li>
