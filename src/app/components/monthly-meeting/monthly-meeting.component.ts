@@ -62,8 +62,8 @@ export class MonthlyMeetingComponent implements OnInit {
   ngOnInit() {
     App.initLoadJquery();
     this.initLoadUI();
-    this.month = monthNames[this.today.getMonth() - 1];
-    this.year = this.today.getFullYear() + 543;
+    // this.month = monthNames[this.today.getMonth() - 1];
+    // this.year = this.today.getFullYear() + 543;
   }
 
   private initLoadUI() {
@@ -93,6 +93,8 @@ export class MonthlyMeetingComponent implements OnInit {
     const txtMonth = document.getElementById('txtMonth') as HTMLInputElement;
     txtMonth.value = this.convertDateFormat(firstDay).substring(3, 10);
     this.monthIndex = this.today.getMonth();
+    this.month = monthNames[this.today.getMonth()];
+    this.year = this.today.getFullYear() + 543;
     // const startDt = document.getElementById('startDate') as HTMLInputElement;
     // const endDt = document.getElementById('endDate') as HTMLInputElement;
     // startDt.value = this.convertDateFormat(firstDay);
@@ -421,7 +423,6 @@ export class MonthlyMeetingComponent implements OnInit {
     this.displayData = branch;
     this.allData = this.displayData.sort((a, b) => a.PATH_NO.localeCompare(b.PATH_NO));
     // this.sortOption = this.header[0];
-    console.log(branch);
     if (noUndefined(branch)) {
       console.log(this.sortOption);
       if (this.sortOption === this.header[0]) {
