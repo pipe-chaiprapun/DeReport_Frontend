@@ -12,6 +12,9 @@ declare const App;
   styleUrls: ['./sale-info.component.css']
 })
 export class SaleInfoComponent implements OnInit {
+  private monthName = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม',
+    'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+
   private labels = [];
   private targetAmt = [];
   private saleAmt = [];
@@ -354,14 +357,18 @@ export class SaleInfoComponent implements OnInit {
   }
   private initialLoadChart() {
     $('#startDate').datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'mm/yyyy',
       autoclose: true,
-      todayHighlight: true
+      todayHighlight: true,
+      startView: 'months',
+      minViewMode: 'months'
     });
     $('#endDate').datepicker({
-      format: 'dd/mm/yyyy',
+      format: 'mm/yyyy',
       autoclose: true,
-      todayHighlight: true
+      todayHighlight: true,
+      startView: 'months',
+      minViewMode: 'months'
     });
     const today = new Date(Date.now());
     today.setMonth(today.getMonth() - 1);
@@ -369,8 +376,8 @@ export class SaleInfoComponent implements OnInit {
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
     const startDt = document.getElementById('startDate') as HTMLInputElement;
     const endDt = document.getElementById('endDate') as HTMLInputElement;
-    startDt.value = this.convertDateFormat(firstDay);
-    endDt.value = this.convertDateFormat(lastDay);
+    startDt.value = this.convertDateFormat(firstDay).substring(3, 10);
+    endDt.value = this.convertDateFormat(lastDay).substring(3, 10);
     this.resAPI.getSaleInfo(this.convertDateFormat(firstDay), this.convertDateFormat(lastDay)).subscribe(result => {
       console.log('---------- get sale info --------------------');
       console.log(result.status);
@@ -471,7 +478,8 @@ export class SaleInfoComponent implements OnInit {
     }
     return strDt + '/' + strMonth + '/' + year;
   }
-  public getData() {this.labels = [];
+  public getData() {
+  this.labels = [];
     this.allData = [];
     this.displayData = [];
     this.labels = [];
@@ -484,10 +492,8 @@ export class SaleInfoComponent implements OnInit {
     this.sort = [];
     const startDate = document.getElementById('startDate') as HTMLInputElement;
     const endDate = document.getElementById('endDate') as HTMLInputElement;
-    console.log(startDate.value);
-    console.log(endDate.value);
     this.barChart.destroy();
-    this.resAPI.getSaleInfo(startDate.value, endDate.value).subscribe(result => {
+    this.resAPI.getSaleInfo('01/' + startDate.value, '01/' + endDate.value).subscribe(result => {
       console.log('---------- get sale info --------------------');
       console.log(result.status);
       console.log(result.data);

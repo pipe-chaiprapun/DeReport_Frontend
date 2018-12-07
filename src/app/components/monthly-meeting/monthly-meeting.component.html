@@ -7,7 +7,18 @@
       <p>Monthly Meeting</p>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-3">
+      <div class="form-group">
+        <label class="control-label">ข้อมูล</label>
+        <div class="form-group">
+          <!-- <label class="sr-only" for="exampleInputAmount">ข้อมูล</label> -->
+          <div class="input-group">
+            <div class="input-group-prepend"><button id="previous" class="input-group-text" disabled (click)="previous(txtMonth)">ก่อนหน้า</button></div>
+            <input class="form-control" #txtMonth id="txtMonth" type="text">
+            <div class="input-group-append"><button id="next" class="input-group-text" disabled (click)="next(txtMonth)">ถัดไป</button></div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-4 col-sm-3">
         <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">
       </div>
       <div class="col-md-1 col-sm-1">
@@ -18,7 +29,7 @@
       </div>
       <div class="col-md-3 col-sm-2">
         <button class="btn btn-primary" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
-      </div>
+      </div> -->
     </div>
     <!-- <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -79,8 +90,8 @@
               <tr>
                 <td>{{tarAmt}}</td>
                 <td>{{saleAmt}}</td>
-                <td class='text-success' *ngIf="numDiffTarAmt>0">+{{diffTarAmt}}</td>
-                <td class='text-danger' *ngIf="numDiffTarAmt<0">{{diffTarAmt}}</td>
+                <td class='text-success' *ngIf="diffTarAmt>0">+{{diffTarAmt}}</td>
+                <td class='text-danger' *ngIf="diffTarAmt<0">{{diffTarAmt}}</td>
                 <!-- <ng-template #minus>
                   <td class='text-danger'>{{diffTarAmt}}</td>
                 </ng-template> -->
@@ -97,7 +108,7 @@
           </table>
         </div>
         <br>
-        <h5 class="tile-title">รายงานยอดหนี้ผลกำหนดชำระ (Past Due of Obligation)</h5>
+        <h5 class="tile-title">รายงานยอดหนี้พ้นกำหนดชำระ (Past Due of Obligation)</h5>
         <div class="table-responsive">
           <table class="table table-bordered">
             <tr class='table-warning'>
@@ -128,7 +139,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="bs-component" style="margin-bottom: 10px;display:grid;">
-              <label class="control-label">เรียงลำดับข้อมูลตาม</label>
+              <label class="control-label">เรียงตาม</label>
               <div id="sortOption" class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
                   <input type="radio" name="options" autocomplete="off">{{data}}
@@ -140,7 +151,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="bs-component" style="margin-bottom: 10px;display:grid;">
-              <label class="control-label">แสดงข้อมูลของสายบริการ</label>
+              <label class="control-label">สายบริการ</label>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label *ngFor="let path of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
                   (click)="onChange($event, selectBranch)">
