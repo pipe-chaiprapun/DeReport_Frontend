@@ -22,17 +22,23 @@ export class HomeComponent implements OnInit {
   footballImage: NgxGalleryImage[];
   sportOption: NgxGalleryOptions[];
   sportImage: NgxGalleryImage[];
-  abcOption:  NgxGalleryOptions[];
+  abcOption: NgxGalleryOptions[];
   abcImage: NgxGalleryImage[];
   public cardData = [];
   public newscategoryData = [];
+  public newsTitle;
+  public newsContent;
+  public newsImage;
+  public url;
+  public newsCategory;
+  public newsStartdate;
 
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService,
-    private __galleryservice: GalleryService, private route: ActivatedRoute) { }
-
-  url = this.__appserverservice.baseUrl;
+    private __galleryservice: GalleryService, private route: ActivatedRoute) {
+    this.url = this.__appserverservice.baseUrl;
+  }
 
 
   ngOnInit() {
@@ -46,7 +52,7 @@ export class HomeComponent implements OnInit {
       console.log(content);
       console.log(category);
       console.log(image);
-  });
+    });
     this.cardNEWS();
 
     //Main
@@ -76,11 +82,11 @@ export class HomeComponent implements OnInit {
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
-      console.log(result,"result");
+      console.log(result, "result");
       this.cardData = result.data;
       console.log(this.cardData);
 
-      var groups = new Set(result.data.map(data => data.category)); 
+      var groups = new Set(result.data.map(data => data.category));
       groups.forEach(g => this.newscategoryData.push({
         name: g,
         values: result.data.filter(i => i.category === g)
@@ -93,15 +99,20 @@ export class HomeComponent implements OnInit {
 
 
   //ไปหน้าเนื้อหาข่าว
-  public newscontent(titles,contents,categorys,images,startDates) {
-    window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
-    &image=${images}&startDate=${startDates}`)
+  public newscontent(titles, contents, categorys, images, startDates) {
+    // window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
+    // &image=${images}&startDate=${startDates}`)
+    this.newsTitle = titles;
+    this.newsContent = contents;
+    this.newsCategory = categorys;
+    this.newsImage = images;
+    this.newsStartdate = startDates;
   }
 
   openNav() {
     document.getElementById("myNav").style.width = "100%";
   }
-  
+
   closeNav() {
     document.getElementById("myNav").style.width = "0%";
   }
