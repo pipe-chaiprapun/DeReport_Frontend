@@ -102,16 +102,6 @@ public bdpmImages = [
     small: 'assets/images/pmbd/11.jpg',
     medium: 'assets/images/pmbd/11.jpg',
     big: 'assets/images/pmbd/11.jpg'
-  },
-  {
-    small: 'assets/images/pmbd/12.jpg',
-    medium: 'assets/images/pmbd/12.jpg',
-    big: 'assets/images/pmbd/12.jpg'
-  },
-  {
-    small: 'assets/images/pmbd/13.jpg',
-    medium: 'assets/images/pmbd/13.jpg',
-    big: 'assets/images/pmbd/13.jpg'
   }
 ];
 //endBDPM
@@ -272,11 +262,11 @@ public footballImages = [
       medium: 'assets/images/sp/12.jpg',
       big: 'assets/images/sp/12.jpg'
     },
-    {
-      small: 'assets/images/sp/13.jpg',
-      medium: 'assets/images/sp/13.jpg',
-      big: 'assets/images/sp/13.jpg'
-    }
+    // {
+    //   small: 'assets/images/sp/13.jpg',
+    //   medium: 'assets/images/sp/13.jpg',
+    //   big: 'assets/images/sp/13.jpg'
+    // }
   ];
   //emd
 
