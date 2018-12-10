@@ -4,6 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AppRouting } from '../app.routing';
+import { ChartFilterComponent } from './components/chart-filter/chart-filter.component';
 
 @NgModule({
   imports: [
@@ -11,11 +12,12 @@ import { AppRouting } from '../app.routing';
     CommonModule,
     BsDropdownModule
   ],
-  declarations: [NavbarComponent, SidebarComponent],
+  declarations: [NavbarComponent, SidebarComponent, ChartFilterComponent],
   exports: [
     NavbarComponent,
     SidebarComponent,
-    BsDropdownModule
+    BsDropdownModule,
+    ChartFilterComponent
   ]
 })
 export class SharedModule { }
