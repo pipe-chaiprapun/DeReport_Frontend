@@ -69,10 +69,25 @@ i.material-icons {
 .app-title {
     margin-bottom: 10px;
     padding: 10px 30px;
+    opacity: 0;
+    position: sticky;
+    top:3rem;
+    z-index: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+.app-title:hover {
+    opacity: 0.90;
 }
 .input-group-text{
     cursor: pointer;
 }
 .form-group {
     margin-bottom: 0px;
+}
+.btn.active {
+    z-index: 0;
 }
