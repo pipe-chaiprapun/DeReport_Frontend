@@ -57,7 +57,6 @@ import { NewsContentComponent } from './components/news-content/news-content.com
     ThumbnailComponent,
     GalleryComponent,
     NewsContentComponent
-
   ],
   imports: [
     AppRouting,
