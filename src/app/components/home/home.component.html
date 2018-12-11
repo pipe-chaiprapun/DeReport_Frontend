@@ -1,28 +1,29 @@
 <!-- Content -->
 <div class="main">
 
-    <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="color:aliceblue">&times;</a>
-        <div class="overlay-content">
-            <div class="container-fluid login-form">
-                <form action="/examples/actions/confirmation.php" method="post">
-                    <h2 class="text-center">MIS System</h2>       
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username" required="required">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" required="required">
-                    </div>
-                    <div class="form-group">
-                        <a href="summary" class="btn btn-primary btn-block" role="button" style="font-size:1.3rem;color:aliceblue">Log in</a>
-                    </div>
-                    <div class="clearfix">
-                        <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-                    </div>        
-                </form>
-            </div>
-        </div>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()" style="color:aliceblue">&times;</a>
+    <div class="overlay-content">
+      <div class="container-fluid login-form">
+        <form action="/examples/actions/confirmation.php" method="post">
+          <h2 class="text-center">MIS System</h2>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required">
+          </div>
+          <div class="form-group">
+            <a href="summary" class="btn btn-primary btn-block" role="button" style="font-size:1.3rem;color:aliceblue">Log
+              in</a>
+          </div>
+          <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
 
   <a id="menulink" (click)="openNav()">ระบบ MIS</a>
 
@@ -41,38 +42,44 @@
   <!-- NEWS -->
   <div>
 
-<div  style="padding-top:3%" *ngFor="let category of newscategoryData">
-  <div class="container-fluid  bgnews">
-    <div class="container-fluid">
-      <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
-        <img class="img" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
-        <div id="newstextlogo">
-          {{category.name}}
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container-fluid" id="newscontent">
-      <!-- ประกาศข่าว -->
-      <div class="row">
-        <div class="col-md-4 col-sm-12 col-12" *ngFor="let item of category.values"  style="padding-top: 1%">
-          <div class="card" id="newscard" data-toggle="modal" data-target="#exampleModalLong" (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)'>
-            <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
-            <div class="card-body" style="margin-top: 0.5rem;">
-              <P style="text-decoration: underline;margin-left: 0.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
-              <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
-              <p class="card-text" style="font-family: 'Mali', cursive;font-size:1rem;padding-top:1%"><small class="text-muted text-left">ประกาศเมื่อ {{item.startDate | date: 'dd/MM/yyyy'}}</small>
-                <small id="overnews" class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
+    <div style="padding-top:3%" *ngFor="let category of newscategoryData">
+      <div class="container-fluid  bgnews">
+        <div class="container-fluid">
+          <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
+            <img class="img" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
+            <div id="newstextlogo">
+              {{category.name}}
             </div>
           </div>
         </div>
-        <!-- จบประกาศข่าว   -->
+
+    <div class="container-fluid" id="newscontent">
+        <!-- ประกาศข่าว -->
+        <div class="row">
+          <ng-container *ngFor="let item of category.values">
+          <div class="col-md-4 col-sm-12 col-12" *ngIf="today < item.endDate"  style="padding-top: 1%">
+            <div class="card"  id="newscard" data-toggle="modal" data-target="#exampleModalLong"
+              (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)'>
+              <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
+              <div class="card-body" style="margin-top: 0.5rem;">
+                <P style="text-decoration: underline;margin-left: 0.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
+                <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
+                <p class="card-text" style="font-family: 'Mali', cursive;font-size:1rem;padding-top:1%"><small class="text-muted text-left">ประกาศเมื่อ
+                    {{item.startDate | date: 'dd/MM/yyyy'}}</small>
+                  <small id="overnews" class="text-muted" style="float: right;padding-right:3%">อ่านเพิ่มเติม >></small></p>
+              </div>
+            </div>
+          </div>
+          <!-- จบประกาศข่าว   -->                
+          </ng-container>
+        
+        </div>
       </div>
+
+
+      </div>
+      <!-- EndNEWS  -->
     </div>
-  </div>
-  <!-- EndNEWS  -->
-</div>
 
 
     <!-- Gallary -->
@@ -129,62 +136,104 @@
 
     <!-- Monday Menu -->
     <div style="padding-top:3%">
-      <div class="container-fluid  bgmondaymenu">
-        <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
-          <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
-          <div id="bgmondaymenutextlogo">
-            เมนูอาหารวันจันทร์
-          </div>
-        </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="container-fluid  bgmondaymenu">
+              <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
+                <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
+                <div id="bgmondaymenutextlogo">
+                  เมนูอาหาร   <div class="float-right">ประจำวัน</div> 
+                </div>
+                
+              </div>
 
-        <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/yum.JPG" alt="Card image cap">
-                  <p class="card-text">ยำสามกรอบ</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/eeg.JPG" alt="Card image cap">
-                  <p class="card-text">ไข่ดาวลูกเขย</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/mara.jpg" alt="Card image cap">
-                  <p class="card-text">ต้มมะระกระดูกหมู</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/ped.jpg" alt="Card image cap">
-                  <p class="card-text">คั่วกลิ้งหมู</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/orange].jpg" alt="Card image cap">
-                  <p class="card-text">น้ำส้ม</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-4">
-                <div id="monday" class="card">
-                  <img id="mondaypic" class="card-img-top img-fluid" src="../../../assets/images/food/lookjak.jpg" alt="Card image cap">
-                  <p class="card-text">ลูกจากลอยแก้ว</p>
+              <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row">
+                      <div class="col-lg-4 col-md-6">
+                        <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/yum.JPG" alt="Card image cap">
+                        <div class="text-block"><h4>1</h4></div>                          
+                      </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="containerMonday">
+                         <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/eeg.JPG" alt="Card image cap">
+                         <div class="text-block"><h4>2</h4></div>   
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                       <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/mara.jpg" alt="Card image cap">
+                        <div class="text-block"><h4>3</h4></div>   
+                      </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 mt-2">
+                          <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/ped.jpg" alt="Card image cap">
+                        <div class="text-block"><h4>4</h4></div>  
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/orange].jpg" alt="Card image cap">
+                        <div class="text-block"><h4>5</h4></div>                            
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 mt-2">
+                          <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="../../../assets/images/food/lookjak.jpg" alt="Card image cap">
+                        <div class="text-block"><h4>6</h4></div> 
+                          </div>
+                      </div>                        
+                      </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="col-lg-12 col-md-12 mt-0">
+                          <table class="table table-bordered text-white" style="font-size:1.5rem">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ชื่ออาหาร</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>ยำสามกรอบ</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>ไข่ดาวลูกเขย</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>ต้มมะระกระดูกหมู</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">4</th>
+                                <td>คั่วกลิ้งหมู</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">5</th>
+                                <td>น้ำส้ม</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">6</th>
+                                <td>ลูกจากลอยแก้ว</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  </div>
                 </div>
               </div>
             </div>
-<!-- 
-            <div class="row" style="padding-top:2%">
-
-            </div> -->
           </div>
-
-
-
         </div>
       </div>
     </div>
@@ -193,34 +242,38 @@
   <!-- End Content -->
 
   <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-          <img class="img-responsive" style="width: 27px;height: 25px;" src="../../../assets/images/logo/logogal.png" alt="">
-        <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 1rem;">{{newsCategory}} : {{newsTitle}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container" style="background-color:white;">
-          <div class="row"> 
-            <!-- Post Content Column -->
-            <div class="col-lg-12"> 
-              <!-- Preview Image -->
-              <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt=""> 
-              <hr>
-              <!-- Post Content -->
-              <h3 style="margin-left:2rem;">{{newsTitle}}</h3>
-              <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>      
-              <!-- Date/Time -->
-              <div>
-              <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div></div>    
-            </div>    
-          </div>  
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img class="img-responsive" style="width: 27px;height: 25px;" src="../../../assets/images/logo/logogal.png"
+            alt="">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 1rem;">{{newsCategory}} :
+            {{newsTitle}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container" style="background-color:white;">
+            <div class="row">
+              <!-- Post Content Column -->
+              <div class="col-lg-12">
+                <!-- Preview Image -->
+                <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt="">
+                <hr>
+                <!-- Post Content -->
+                <h3 style="margin-left:2rem;">{{newsTitle}}</h3>
+                <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>
+                <!-- Date/Time -->
+                <div>
+                  <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

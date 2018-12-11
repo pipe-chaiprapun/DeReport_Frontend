@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
   public newsStartdate;
 
 
+  today = new Date();
+  
+
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService,
     private __galleryservice: GalleryService, private route: ActivatedRoute) {
@@ -42,6 +45,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log(this.today)
     // this.route.data.subscribe(v => console.log(v));
     this.route.queryParams.subscribe(params => {
       const id = params['title'];
@@ -83,6 +87,11 @@ export class HomeComponent implements OnInit {
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
       console.log(result, "result");
+      console.log(this.today);
+      result.data.forEach(element => {
+        let endDate = new Date(element.endDate)
+        element.endDate = endDate;
+      })
       this.cardData = result.data;
       console.log(this.cardData);
 
@@ -116,7 +125,6 @@ export class HomeComponent implements OnInit {
   closeNav() {
     document.getElementById("myNav").style.width = "0%";
   }
-
 
 
 }
