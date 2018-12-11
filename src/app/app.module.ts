@@ -23,6 +23,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
+import { FoodManagementComponent } from './components/food-management/food-management.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -56,7 +57,8 @@ import { NewsContentComponent } from './components/news-content/news-content.com
     HomeComponent,
     ThumbnailComponent,
     GalleryComponent,
-    NewsContentComponent
+    NewsContentComponent,
+    FoodManagementComponent
   ],
   imports: [
     AppRouting,

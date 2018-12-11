@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-apple"></i> หน้าจัดการเมนูประจำสัปดาห์</h1>
+      <p>หน้าจัดการเมนูประจำสัปดาห์</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-newspaper-o"></i></li>
+      <li class="breadcrumb-item"><a href="#">หน้าจัดการเมนูประจำสัปดาห์</a></li>
+    </ul>
+  </div>
+
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-8"> <h3 class="tile-title ml-3">จัดการเมนูประจำสัปดาห์</h3></div>
+              <div class="col-2"><input class="form-control" id="startDate" #startDate type="text" placeholder="ประจำวันที่"></div>
+              <div class="col-2">
+                  <a href="#" class="btn btn-outline-success  mr-1">เพิ่มเมนู</a><a href="#" class="btn btn-outline-danger  mr-1" >ลบทั้งหมด</a> 
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tile-body">
+          <form>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3 col-sm-6 mt-2" *ngFor='let test of abc; let i = index;'>
+                  <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{test.img}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{i+1}} : {{test.name}}</h5>
+                      <a href="#" class="btn btn-danger" style="float:right">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

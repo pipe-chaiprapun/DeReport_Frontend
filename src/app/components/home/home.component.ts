@@ -32,16 +32,17 @@ export class HomeComponent implements OnInit {
   public url;
   public newsCategory;
   public newsStartdate;
+  public foodMenu;
 
 
   today = new Date();
-  
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService,
     private __galleryservice: GalleryService, private route: ActivatedRoute) {
     this.url = this.__appserverservice.baseUrl;
   }
+
 
 
   ngOnInit() {
@@ -81,6 +82,8 @@ export class HomeComponent implements OnInit {
 
     this.abcOption = this.__galleryservice.abcOption;
     this.abcImage = this.__galleryservice.abcImage;
+
+    this.foodMenu = this.__appserverservice.foodmenu;
   }
 
   //  รับข้อมูลข่าว
