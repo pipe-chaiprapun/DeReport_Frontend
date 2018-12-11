@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://192.168.1.65:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://10.192.192.10:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
@@ -25,6 +25,9 @@ export class AppserverService {
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
+  public foodmenu = [{"name":"ยำสามกรอบ","img":"../../../assets/images/food/yum.JPG"},{"name":"ไข่ดาวลูกเขย","img":"../../../assets/images/food/eeg.JPG"},
+  {"name":"ต้มมะระกระดูกหมู","img":"../../../assets/images/food/mara.jpg"},{"name":"คั่วกลิ้งหมู","img":"../../../assets/images/food/ped.jpg"},
+  {"name":"น้ำส้ม","img":"../../../assets/images/food/orange].jpg"},{"name":"ลูกจากลอยแก้ว","img":"../../../assets/images/food/lookjak.jpg"}];
 
   constructor(private http: HttpClient) { }
 

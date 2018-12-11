@@ -10,5 +10,6 @@ export const AppUrl = {
     Home: 'home',
     Thumbnail: 'thumbnail',
     Gallery: 'gallery',
-    NEWSContent: 'NEWSContent'
+    NEWSContent: 'NEWSContent',
+    FoodManagement: 'foodManagement'
 };
