@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { SaleInfoComponent } from './components/sale-info/sale-info.component';
 import { BranchComponent } from './components/branch/branch.component';
 
-import { ChartJS } from './../assets/app/chartjs';
 import { AppRouting } from './app.routing';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SharedModule } from './shared/shared.module';
