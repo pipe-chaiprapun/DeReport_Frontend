@@ -47,7 +47,9 @@ export class NewsManagementComponent implements OnInit {
     };
     const myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
+      console.log(e)
       news.image = myReader.result;
+      console.log(news.image,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       this.resAPI.addNews(news).subscribe(result => {
         console.log(result);
         if (result.status === 'SUCCESS') {
@@ -59,6 +61,7 @@ export class NewsManagementComponent implements OnInit {
       });
     };
     myReader.readAsDataURL(image.files[0]);
+    console.log(image.files[0])
   }
 
   clearNews() {
