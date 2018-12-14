@@ -25,9 +25,16 @@ export class AppserverService {
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
-  public foodmenu = [{"name":"ยำสามกรอบ","img":"../../../assets/images/food/yum.JPG"},{"name":"ไข่ดาวลูกเขย","img":"../../../assets/images/food/eeg.JPG"},
-  {"name":"ต้มมะระกระดูกหมู","img":"../../../assets/images/food/mara.jpg"},{"name":"คั่วกลิ้งหมู","img":"../../../assets/images/food/ped.jpg"},
-  {"name":"น้ำส้ม","img":"../../../assets/images/food/orange].jpg"},{"name":"ลูกจากลอยแก้ว","img":"../../../assets/images/food/lookjak.jpg"}];
+  public foodMenuDate = new Date('11-12-2018');
+  public foodmenu = [
+  { "name": "ยำสามกรอบ", "img": "../../../assets/images/food/ยำสามกรอบ.JPG" },
+  { "name": "ไข่ดาวลูกเขย", "img": "../../../assets/images/food/eeg.JPG" },
+  { "name": "ต้มมะระกระดูกหมู", "img": "../../../assets/images/food/mara.jpg" },
+  { "name": "คั่วกลิ้งหมู", "img": "../../../assets/images/food/ped.jpg" },
+  { "name": "น้ำส้ม", "img": "../../../assets/images/food/orange].jpg" },
+  { "name": "ลูกจากลอยแก้ว", "img": "../../../assets/images/food/lookjak.jpg" }
+  ];
+
 
   constructor(private http: HttpClient) { }
 
@@ -53,7 +60,7 @@ export class AppserverService {
   }
 
   addNews(data: any): Observable<any> {
-    return this.http.post<any>(this.createNews, data, {headers: this.headers});
+    return this.http.post<any>(this.createNews, data, { headers: this.headers });
   }
 
   getNews(): Observable<any> {
