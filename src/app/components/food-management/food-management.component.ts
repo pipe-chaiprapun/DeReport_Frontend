@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
 import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ViewChild } from '@angular/core';
 declare const App;
 declare const $;
 
@@ -13,8 +12,7 @@ declare const $;
   styleUrls: ['./food-management.component.css']
 })
 export class FoodManagementComponent implements OnInit {
-  @ViewChild('myInput')
-  myInputVariable: any;
+
 
   public abc = this.__Appserver.foodmenu;
   fileToUpload: File = null;
@@ -80,21 +78,17 @@ export class FoodManagementComponent implements OnInit {
   }
 
   clearFileDetail() {
+    this.menuFiles = [];
     alert("aaaa");
     const uploadIMG = document.getElementById('files') as HTMLInputElement;
-    var form = document.getElementById('fileform');
-    document.getElementById('list').innerHTML = null;
+    const ltstFood = document.getElementById('list')
+    let form1 = document.getElementById('fileform');
+    ltstFood.innerHTML = null;
     uploadIMG.value = null;
-    this.detail = "";
     console.log(this.detail)
   }
 
-  reset() {
-    alert("clear!!!")
-    console.log(this.myInputVariable.nativeElement.files);
-    this.myInputVariable.nativeElement.value = "";
-    console.log(this.myInputVariable.nativeElement.files);
-  }
+
 
 
   uploadFiles() {
