@@ -15,30 +15,53 @@ export class FoodManagementComponent implements OnInit {
 
 
   public abc = this.__Appserver.foodmenu;
-  fileToUpload: File = null;
+  public fileToUpload: File = null;
   public menuFiles = [];
-  sMsg: string = '';
-  nameMenu;
-  detail;
-
+  public sMsg: string = '';
+  public detail: any;
+  public datepicker;
+  public days = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+  public months = ["มกราคม","กุมภาพันธ์","มีนาคม", "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน", "ตุลาคม","พฤศจิกายน","ธันวาคม"];
 
   constructor(private http: HttpClient, private __Appserver: AppserverService) { }
 
 
 
   ngOnInit() {
-    this.menuDate();
-    // this.menuData();
+    this.menudate();
+    this.menuDateChange();
   }
 
 
 
-  private menuDate() {
+  private menuDateChange() {
+    $.fn.datepicker.dates['en'] = {
+      days: ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์", "อาทิตย์"],
+      daysShort: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"],
+      daysMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส", "อา"],
+      months: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+      monthsShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
+      today: "วันนี้",
+      clear: "Clear",
+      format: "ประจำวัน DD ที่ dd MM yyyy",
+      titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+      weekStart: 0
+  };
     $('#startDate').datepicker({
-      format: 'dd/mm/yyyy',
+      language: 'en',
       autoclose: true,
       todayHighlight: true
     });
+  }
+
+  private menudate() {
+    this.datepicker = this.__Appserver.foodMenuDate;
+    var dd = this.datepicker.getDate();
+    var day = this.days[this.datepicker.getDay()]
+    var mm = this.months[this.datepicker.getMonth()];
+    var yyyy = this.datepicker.getFullYear();
+    this.datepicker = "ประจำวัน"+ " " + day + " ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+    (<HTMLInputElement>document.getElementById('startDate')).value = this.datepicker;
   }
 
   getFileDetails(evt) {
@@ -54,7 +77,7 @@ export class FoodManagementComponent implements OnInit {
 
       var reader = new FileReader();
 
-      
+
       var self = this;
       // Closure to capture the file information.
       reader.onloadend = (function (theFile) {
@@ -63,13 +86,14 @@ export class FoodManagementComponent implements OnInit {
           menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
           self.menuFiles.push(menuDetail);
           console.log(menuDetail);
-          this.detail = document.createElement('container');
-          this.detail.innerHTML = ['<div class="row"><div class="col-md-6 col-xs-12"><div class="card" style="width: 18rem;"><img class="card-img-top" src="', e.target.result,
-            '" title="', escape(theFile.name), '"/><div class="card-body"> <h5 class="card-title">', theFile.name.replace(/\.[^/.]+$/, ""), '</h5></div></div></div></div>'].join('');
+          this.detail = document.createElement('div');
+          this.detail.className = "col-md-4 col-xs-6";
+          this.detail.innerHTML = ['<div class="card ml-4 mt-3" style="width: 18rem;"><img style="height: 220px;" class="card-img-top" src="', e.target.result,
+            '" title="', escape(theFile.name), '"/><div class="card-body" style="text-align: center;"> <h5 class="card-title">', theFile.name.replace(/\.[^/.]+$/, ""), '</h5></div></div>'].join('');
           document.getElementById('list').insertBefore(this.detail, null);
         };
       })(f);
-      
+
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
 
