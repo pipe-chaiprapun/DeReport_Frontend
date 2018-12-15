@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   footballImage: NgxGalleryImage[];
   sportOption: NgxGalleryOptions[];
   sportImage: NgxGalleryImage[];
-  abcOption: NgxGalleryOptions[];
-  abcImage: NgxGalleryImage[];
+  misOption: NgxGalleryOptions[];
+  misImage: NgxGalleryImage[];
   public cardData = [];
   public newscategoryData = [];
   public newsTitle;
@@ -33,9 +33,11 @@ export class HomeComponent implements OnInit {
   public newsCategory;
   public newsStartdate;
   public foodMenu;
+  public foodDate;
+  public days = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+  public months = ["มกราคม","กุมภาพันธ์","มีนาคม", "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน", "ตุลาคม","พฤศจิกายน","ธันวาคม"];
 
-
-  today = new Date();
+ 
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService,
@@ -46,51 +48,18 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.today)
-    // this.route.data.subscribe(v => console.log(v));
-    this.route.queryParams.subscribe(params => {
-      const id = params['title'];
-      const content = params['content'];
-      const category = params['category'];
-      const image = params['image'];
-      console.log(id); // Print the parameter to the console.
-      console.log(content);
-      console.log(category);
-      console.log(image);
-    });
+    this.sendNEWS();
     this.cardNEWS();
-
-    //Main
-    this.galleryOptions = this.__galleryservice.mainOptions;
-    this.galleryImages = this.__galleryservice.mainImages;
-    //endMain
-
-    //PMDay
-    this.pmdayOption = this.__galleryservice.bdpmOptions;
-    this.pmdayImage = this.__galleryservice.bdpmImages;
-    //endPMDay
-
-    //แข่งขันฟุตบอลเสียงตามสาย
-    this.footballOption = this.__galleryservice.footballOptions;
-    this.footballImage = this.__galleryservice.footballImages;
-    //end
-
-    //แข่งขันฟุตบอลเสียงตามสาย
-    this.sportOption = this.__galleryservice.spOptions;
-    this.sportImage = this.__galleryservice.spImages;
-    //end
-
-    this.abcOption = this.__galleryservice.abcOption;
-    this.abcImage = this.__galleryservice.abcImage;
-
-    this.foodMenu = this.__appserverservice.foodmenu;
+    this.gallery();
+    this.menutDate();
+    console.log("-----------foodDate2------------");
   }
+
 
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
       console.log(result, "result");
-      console.log(this.today);
       result.data.forEach(element => {
         let endDate = new Date(element.endDate)
         element.endDate = endDate;
@@ -105,6 +74,43 @@ export class HomeComponent implements OnInit {
       }));
       console.log(this.newscategoryData);
 
+    });
+  }
+
+  public gallery() {
+    //Main
+    this.galleryOptions = this.__galleryservice.mainOptions;
+    this.galleryImages = this.__galleryservice.mainImages;
+
+    //PMDay
+    this.pmdayOption = this.__galleryservice.bdpmOptions;
+    this.pmdayImage = this.__galleryservice.bdpmImages;
+
+    //แข่งขันฟุตบอลเสียงตามสาย
+    this.footballOption = this.__galleryservice.footballOptions;
+    this.footballImage = this.__galleryservice.footballImages;
+
+    //แข่งขันฟุตบอลเสียงตามสาย
+    this.sportOption = this.__galleryservice.spOptions;
+    this.sportImage = this.__galleryservice.spImages;
+
+    this.misOption = this.__galleryservice.abcOption;
+    this.misImage = this.__galleryservice.abcImage;
+    this.foodMenu = this.__appserverservice.foodmenu;
+  }
+
+
+  public sendNEWS() {
+    // this.route.data.subscribe(v => console.log(v));
+    this.route.queryParams.subscribe(params => {
+      const id = params['title'];
+      const content = params['content'];
+      const category = params['category'];
+      const image = params['image'];
+      console.log(id); // Print the parameter to the console.
+      console.log(content);
+      console.log(category);
+      console.log(image);
     });
   }
 
@@ -127,6 +133,17 @@ export class HomeComponent implements OnInit {
 
   closeNav() {
     document.getElementById("myNav").style.width = "0%";
+  }
+
+  public menutDate() {
+    this.foodDate = this.__appserverservice.foodMenuDate;
+    var dd = this.foodDate.getDate();
+    var day = this.days[this.foodDate.getDay()]
+    var mm = this.months[this.foodDate.getMonth()];
+    var yyyy = this.foodDate.getFullYear()+543;
+    this.foodDate = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+    // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
+    console.log(this.foodDate);
   }
 
 
