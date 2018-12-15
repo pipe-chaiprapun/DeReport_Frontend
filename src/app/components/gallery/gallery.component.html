@@ -1,13 +1,74 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
-<main class="app-content">
-  <div class="app-title">
-    <div>
-      <h1><i class="fa fa-camera-retro"></i> หน้าจัดการรูป Gallery</h1>
-      <p>หน้าจัดการรูป Gallery</p>
+
+
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1><i class="fa fa-camera-retro"></i> หน้าจัดการรูป Gallery</h1>
+        <p>หน้าจัดการรูป Gallery</p>
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-camera-retro"></i></li>
+        <li class="breadcrumb-item"><a href="#">หน้าจัดการรูป Gallery</a></li>
+      </ul>
     </div>
-    <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><i class="fa fa-camera-retro"></i></li>
-      <li class="breadcrumb-item"><a href="#">หน้าจัดการรูป Gallery</a></li>
-    </ul>
-  </div>
+  
+    <div class="row justify-content-md-center mt-4">
+      <div class="col-md-12">
+        <div class="tile">
+          <div class="tile-header">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-10"> <h3 class="tile-title ml-3">อัลบั้มรูปทั้งหมด</h3></div>
+                <div class="col-2">
+                    <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">ลบอัลบั้ม</a><a href="#" class="btn btn-outline-success mr-2" style="float: right;">เพิ่มอัลบั้ม</a> 
+                </div>
+              </div>
+            </div>
+  
+          </div>
+          <div class="tile-body">
+            <div class="container-fluid" style="padding-bottom: 3%;">
+              <div class="row">
+                <div class="col-lg-3 col-md-4">
+                  <div id="gallerycard" class="card" style="width:100%">
+                    <div class="card-header" style="display:inline-flex;">
+                      <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
+                    </div>
+                    <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                  <div id="gallerycard" class="card" style="width:100%">
+                    <div class="card-header" style="display:inline-flex;">
+                      <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
+                    </div>
+                    <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
+                  </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-4">
+                  <div id="gallerycard" class="card" style="width:100%">
+                    <div class="card-header" style="display:inline-flex;">
+                      <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
+                    </div>
+                    <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
+                  </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-4">
+                  <div id="gallerycard" class="card" style="width:100%">
+                    <div class="card-header" style="display:inline-flex;">
+                      <ngx-gallery [options]="misOption" [images]="misImage"></ngx-gallery>
+                    </div>
+                    <p class="card-text" id="namealbum">อบรมโปรแกรมคอมฯ เจ้าหน้าที่ฝ่ายตลาดใหม่</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
