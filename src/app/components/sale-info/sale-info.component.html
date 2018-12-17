@@ -1,57 +1,15 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 <main class="app-content">
-  <!-- <div class="app-title"> -->
-  <div class="tile">
-    <div class="row" style="align-items: center;">
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="bs-component" style="margin-bottom: 0px;">
-          <label class="control-label">เรียงตาม</label>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary" *ngFor="let data of sort" (click)="sortBy(data)">
-              <input type="radio" name="options" autocomplete="off">{{data}}
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-          <label class="control-label">ข้อมูล</label>
-        <div class="row">
-          
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input class="form-control" id="startDate" #startDate type="text" placeholder="จาก">
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-3">
-            <input class="form-control" id="endDate" #endDate type="text" placeholder="ถึง">
-          </div>
-          <div class="col-lg-2 col-md-2 col-sm-3">
-            <button class="btn btn-primary" id="submitDate" type="button" (click)="getData()"><i class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
-          </div>
-        </div>
-      </div>
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-pie-chart"></i> รายงานข้อมูลยอดขาย</h1>
+      <p>รายงานข้อมูลยอดขาย</p>
     </div>
-    <label class="control-label">สาขา</label>
-    <div class="row" style="align-items: center;">
-      <div class="col-lg-6 col-md-12 col-sm-12">
-        <div class="bs-component" style="margin-bottom: 0px;">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label *ngFor="let branch of allData" class="btn btn-primary active" id="selectBranch" #selectBranch
-              (click)="onChange($event, selectBranch)">
-              <input type="checkbox" autocomplete="off" checked>{{branch.BRH_ID}}</label>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-newspaper-o"></i></li>
+      <li class="breadcrumb-item"><a href="#">รายงานข้อมูลยอดขาย</a></li>
+    </ul>
   </div>
-  <!-- </div> -->
-  <div class="row justify-content-md-center justify-content-lg-center">
-    <div class="col-md-12 col-lg-12">
-      <div class="tile">
-        <h3 class="tile-title">ข้อมูลยอดขาย</h3>
-        <!-- <div class="embed-responsive embed-responsive-16by9"> -->
-        <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
-        <!-- </div> -->
-      </div>
-    </div>
-  </div>
+    <app-sale></app-sale>
 </main>

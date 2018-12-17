@@ -1,7 +1,7 @@
-.app-title {
+/* .app-title {
     margin-bottom: 10px;
     padding: 10px 10px;
-}
+} */
 #targetAmt {
     background-color: #FF9EB3;
     border-color: #FF4D73;
@@ -44,6 +44,9 @@ label.btn.btn-primary.active {
     margin-bottom: 15px;
     padding:5px 15px;
 }
+.tile .tile-title {
+    margin-top:-4%;
+}
 .bs-component {
     display: grid;
     margin-bottom:0px;
@@ -84,5 +87,5 @@ label {
     transition: opacity 0.3s ease-in-out;
 }
 #filter:hover {
-    opacity: 0.90;
+    opacity: 0.95;
 }
