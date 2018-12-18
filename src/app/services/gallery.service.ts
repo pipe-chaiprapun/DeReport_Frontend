@@ -37,7 +37,7 @@ public mainImages = [
 
 //BDPM
 public bdpmOptions = [
-  { "image": false, "thumbnailsRemainingCount": true, "height": "200px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
+  { "image": false, "thumbnailsRemainingCount": true, "height": "212px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
   { "breakpoint": 500, "width": "100%", "thumbnailsColumns": 2 }  
 ];
 
@@ -109,7 +109,7 @@ public bdpmImages = [
 
 //แข่งขันฟุตบอลเสียงตามสาย
 public footballOptions = [
-  { "image": false, "thumbnailsRemainingCount": true, "height": "200px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
+  { "image": false, "thumbnailsRemainingCount": true, "height": "212px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
   { "breakpoint": 500, "width": "50%", "thumbnailsColumns": 1 }  
 ];
 
@@ -191,7 +191,7 @@ public footballImages = [
 
   //ประชุมสมาคมกีฬา
   public spOptions = [
-    { "image": false, "thumbnailsRemainingCount": true, "height": "200px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
+    { "image": false, "thumbnailsRemainingCount": true, "height": "212px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
     { "breakpoint": 500, "width": "50%", "thumbnailsColumns": 1 }  
   ];
 
@@ -314,7 +314,7 @@ public footballImages = [
   ];
 
   public abcOption = [
-    { "image": false, "thumbnailsRemainingCount": true, "height": "200px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
+    { "image": false, "thumbnailsRemainingCount": true, "height": "212px","thumbnailsColumns": 1,"previewfullWidth":true,"width":"100%"},
     { "breakpoint": 500, "width": "50%", "thumbnailsColumns": 1 }  
   ];
 

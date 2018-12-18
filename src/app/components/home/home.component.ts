@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
-import { GalleryService } from '../../services/gallery.service';
 import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'hammerjs';
@@ -14,16 +13,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
-  pmdayOption: NgxGalleryOptions[];
-  pmdayImage: NgxGalleryImage[];
-  footballOption: NgxGalleryOptions[];
-  footballImage: NgxGalleryImage[];
-  sportOption: NgxGalleryOptions[];
-  sportImage: NgxGalleryImage[];
-  abcOption: NgxGalleryOptions[];
-  abcImage: NgxGalleryImage[];
   public cardData = [];
   public newscategoryData = [];
   public newsTitle;
@@ -33,64 +22,35 @@ export class HomeComponent implements OnInit {
   public newsCategory;
   public newsStartdate;
   public foodMenu;
+  public foodDate;
+  public days = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
+  public months = ["มกราคม","กุมภาพันธ์","มีนาคม", "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน", "ตุลาคม","พฤศจิกายน","ธันวาคม"];
+  public today = new Date();
+  public album;
+  public header;
+ 
 
 
-  today = new Date();
-
-
-  constructor(private http: HttpClient, private __appserverservice: AppserverService,
-    private __galleryservice: GalleryService, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private __appserverservice: AppserverService, private route: ActivatedRoute) {
     this.url = this.__appserverservice.baseUrl;
   }
 
 
 
   ngOnInit() {
-    console.log(this.today)
-    // this.route.data.subscribe(v => console.log(v));
-    this.route.queryParams.subscribe(params => {
-      const id = params['title'];
-      const content = params['content'];
-      const category = params['category'];
-      const image = params['image'];
-      console.log(id); // Print the parameter to the console.
-      console.log(content);
-      console.log(category);
-      console.log(image);
-    });
-    this.cardNEWS();
-
-    //Main
-    this.galleryOptions = this.__galleryservice.mainOptions;
-    this.galleryImages = this.__galleryservice.mainImages;
-    //endMain
-
-    //PMDay
-    this.pmdayOption = this.__galleryservice.bdpmOptions;
-    this.pmdayImage = this.__galleryservice.bdpmImages;
-    //endPMDay
-
-    //แข่งขันฟุตบอลเสียงตามสาย
-    this.footballOption = this.__galleryservice.footballOptions;
-    this.footballImage = this.__galleryservice.footballImages;
-    //end
-
-    //แข่งขันฟุตบอลเสียงตามสาย
-    this.sportOption = this.__galleryservice.spOptions;
-    this.sportImage = this.__galleryservice.spImages;
-    //end
-
-    this.abcOption = this.__galleryservice.abcOption;
-    this.abcImage = this.__galleryservice.abcImage;
-
     this.foodMenu = this.__appserverservice.foodmenu;
+    this.sendNEWS();
+    this.cardNEWS();
+    this.menutDate();
+    this.getGallery();
+    this.getHeader();
   }
+
 
   //  รับข้อมูลข่าว
   private cardNEWS() {
     this.__appserverservice.getNews().subscribe(result => {
       console.log(result, "result");
-      console.log(this.today);
       result.data.forEach(element => {
         let endDate = new Date(element.endDate)
         element.endDate = endDate;
@@ -105,6 +65,20 @@ export class HomeComponent implements OnInit {
       }));
       console.log(this.newscategoryData);
 
+    });
+  }
+
+  public sendNEWS() {
+    // this.route.data.subscribe(v => console.log(v));
+    this.route.queryParams.subscribe(params => {
+      const id = params['title'];
+      const content = params['content'];
+      const category = params['category'];
+      const image = params['image'];
+      console.log(id); // Print the parameter to the console.
+      console.log(content);
+      console.log(category);
+      console.log(image);
     });
   }
 
@@ -129,5 +103,35 @@ export class HomeComponent implements OnInit {
     document.getElementById("myNav").style.width = "0%";
   }
 
+  public menutDate() {
+    this.foodDate = this.__appserverservice.foodMenuDate;
+    var dd = this.foodDate.getDate();
+    var day = this.days[this.foodDate.getDay()]
+    var mm = this.months[this.foodDate.getMonth()];
+    var yyyy = this.foodDate.getFullYear()+543;
+    this.foodDate = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+    // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
+    console.log(this.foodDate);
+  }
+
+  public getGallery() {
+    fetch('../../../assets/json/gallery.json').then((res) => res.json())
+    .then((data) => {
+      this.album = data;
+      console.log(this.album,"----album-----")
+    })
+  }
+
+  public getHeader() {
+    fetch('../../../assets/json/header.json').then((res) => res.json())
+    .then((data) => {
+      this.header = data;
+      console.log(this.header)
+    })
+  }
+
+  public test() {
+    alert("Test")
+  }
 
 }
