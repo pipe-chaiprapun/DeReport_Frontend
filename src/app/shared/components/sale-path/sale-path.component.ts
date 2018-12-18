@@ -6,11 +6,11 @@ import { Library } from '../../../services/library';
 declare const $;
 declare const App;
 @Component({
-  selector: 'app-sale',
-  templateUrl: './sale.component.html',
-  styleUrls: ['./sale.component.css']
+  selector: 'app-sale-path',
+  templateUrl: './sale-path.component.html',
+  styleUrls: ['./sale-path.component.css']
 })
-export class SaleComponent implements OnInit {
+export class SalePathComponent implements OnInit {
   public headers = [];
   public allData = [];
   public displayData = [];
@@ -26,6 +26,10 @@ export class SaleComponent implements OnInit {
   public startMonth;
   public endMonth;
   private library: Library;
+  private currentBrh = 2;
+  public currentBrhTxt = '02';
+  private pathNum;
+
   constructor(private resAPI: AppserverService) { }
 
   ngOnInit() {
@@ -34,40 +38,40 @@ export class SaleComponent implements OnInit {
   }
   private initialLoadChart() {
     this.library = new Library();
-    $('#startDtSaleBrh').datepicker({
+    $('#startDtSalePath').datepicker({
       format: 'mm/yyyy',
       autoclose: true,
       todayHighlight: true,
       startView: 'months',
       minViewMode: 'months'
-    }).on('show', function(e) {
+    }).on('show', function (e) {
       $('#filter').addClass('hovered');
-    }).on('hide', function(e) {
+    }).on('hide', function (e) {
       $('#filter').removeClass('hovered');
     });
-    $('#endDtSaleBrh').datepicker({
+    $('#endDtSalePath').datepicker({
       format: 'mm/yyyy',
       autoclose: true,
       todayHighlight: true,
       startView: 'months',
       minViewMode: 'months'
-    }).on('show', function(e) {
+    }).on('show', function (e) {
       $('#filter').addClass('hovered');
-    }).on('hide', function(e) {
+    }).on('hide', function (e) {
       $('#filter').removeClass('hovered');
     });
     this.today = new Date(Date.now());
     this.today.setMonth(this.today.getMonth() - 1);
     this.firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
     this.lastDay = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
-    const startDt = document.getElementById('startDtSaleBrh') as HTMLInputElement;
-    const endDt = document.getElementById('endDtSaleBrh') as HTMLInputElement;
+    const startDt = document.getElementById('startDtSalePath') as HTMLInputElement;
+    const endDt = document.getElementById('endDtSalePath') as HTMLInputElement;
     startDt.value = this.library.convertDateFormat(this.firstDay).substring(3, 10);
     endDt.value = this.library.convertDateFormat(this.lastDay).substring(3, 10);
     this.startMonth = startDt.value;
     this.endMonth = endDt.value;
     // tslint:disable-next-line:max-line-length
-    this.resAPI.getSaleInfo2(this.library.convertDateFormat(this.firstDay), this.library.convertDateFormat(this.lastDay)).subscribe(result => {
+    this.resAPI.getPathSaleInfo(this.currentBrh, this.library.convertDateFormat(this.firstDay), this.library.convertDateFormat(this.lastDay)).subscribe(result => {
       console.log(result);
       result.data.forEach(element => this.headers.push(element.columnName));
       result.data.forEach(element => {
@@ -91,19 +95,74 @@ export class SaleComponent implements OnInit {
           hidden: element.hidden
         });
       });
-      console.log(this.displayData);
       result.data[0].data.forEach(element => this.legend.push(element));
       this.masterColumn = result.masterColumn;
       const bdata = {
         labels: this.legend,
         datasets: this.dataSets
       };
-      const ctxb = $('#saleBrhChart').get(0).getContext('2d');
+      const ctxb = $('#salePathChart').get(0).getContext('2d');
       this.barChart = new Chart(ctxb, {
         type: 'bar',
         data: bdata
       });
     });
+  }
+  public sort(data) {
+    this.sortOption = data;
+    this.headers = [];
+    this.allData = [];
+    this.displayData = [];
+    this.dataSets = [];
+    this.legend = [];
+    this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
+  }
+  next(data) {
+    this.currentBrh++;
+    this.currentBrhTxt = this.library.setPrefixZero(this.currentBrh);
+    this.headers = [];
+    this.allData = [];
+    this.displayData = [];
+    this.dataSets = [];
+    this.legend = [];
+    this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
+  }
+  previous(data) {
+    this.currentBrh--;
+    if (this.currentBrh < 1) {
+      this.currentBrh = 1;
+    }
+    this.currentBrhTxt = this.library.setPrefixZero(this.currentBrh);
+    this.headers = [];
+    this.allData = [];
+    this.displayData = [];
+    this.dataSets = [];
+    this.legend = [];
+    this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
+  }
+  selectPath(data) {
+    if (parseInt(data.value, 10) > 1) {
+      this.currentBrh = parseInt(data.value, 10);
+      this.currentBrhTxt = this.library.setPrefixZero(this.currentBrh);
+      this.headers = [];
+      this.allData = [];
+      this.displayData = [];
+      this.dataSets = [];
+      this.legend = [];
+      this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
+    }
+  }
+  public getPeriod(startDate, endDate) {
+    console.log(startDate.value, endDate.value);
+    this.startMonth = startDate.value;
+    this.endMonth = endDate.value;
+    const result = this.library.getPeriodMonth(startDate.value, endDate.value);
+    this.headers = [];
+    this.allData = [];
+    this.displayData = [];
+    this.dataSets = [];
+    this.legend = [];
+    this.getData(result.firstDay, result.lastDay, this.sortOption, this.filter);
   }
   onChange(data) {
     this.headers = [];
@@ -121,30 +180,9 @@ export class SaleComponent implements OnInit {
     }
     this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
   }
-  public sort(data) {
-    this.sortOption = data;
-    this.headers = [];
-    this.allData = [];
-    this.displayData = [];
-    this.dataSets = [];
-    this.legend = [];
-    this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
-  }
-  public getPeriod(startDate, endDate) {
-    console.log(startDate.value, endDate.value);
-    this.startMonth = startDate.value;
-    this.endMonth = endDate.value;
-    const result = this.library.getPeriodMonth(startDate.value, endDate.value);
-    this.headers = [];
-    this.allData = [];
-    this.displayData = [];
-    this.dataSets = [];
-    this.legend = [];
-    this.getData(result.firstDay, result.lastDay, this.sortOption, this.filter);
-  }
   private getData(firstDay, lastDay, sort = '%', filter = []) {
     // tslint:disable-next-line:max-line-length
-    this.resAPI.getSaleInfo2(this.library.convertDateFormat(firstDay), this.library.convertDateFormat(lastDay), sort, filter).subscribe(result => {
+    this.resAPI.getPathSaleInfo(this.currentBrh, this.library.convertDateFormat(firstDay), this.library.convertDateFormat(lastDay), sort, filter).subscribe(result => {
       console.log(result);
       result.data.forEach(element => this.headers.push(element.columnName));
       result.data.forEach(element => {
@@ -167,7 +205,7 @@ export class SaleComponent implements OnInit {
           hidden: element.hidden
         });
       });
-      console.log(this.displayData);
+      this.masterColumn = result.masterColumn;
       result.data[0].data.forEach(element => this.legend.push(element));
       this.newRenderChart();
     });
@@ -178,7 +216,7 @@ export class SaleComponent implements OnInit {
       labels: this.legend,
       datasets: this.dataSets
     };
-    const ctxb = $('#saleBrhChart').get(0).getContext('2d');
+    const ctxb = $('#salePathChart').get(0).getContext('2d');
     this.barChart = new Chart(ctxb, {
       type: 'bar',
       data: bdata

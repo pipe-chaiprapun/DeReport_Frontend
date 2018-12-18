@@ -18,6 +18,7 @@ export class AppserverService {
   private saleInfo2 = `${this.baseUrl}/api/information/getSaleInfo2`;
   private getMonthylyMeeting = `${this.baseUrl}/api/information/getMonthlyMeeting`;
   private getPath = `${this.baseUrl}/api/information/getPathInfo`;
+  private getPathSaleInfoUrl = `${this.baseUrl}/api/information/getPathInfo2`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
   private getnews = `${this.baseUrl}/api/news/getNews`;
   private getCate = `${this.baseUrl}/api/news/getCategory`;
@@ -50,6 +51,10 @@ export class AppserverService {
   getSaleInfo2(startDate, endDate, sort = '%', filter = []): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this.http.get<any[]>(`${this.saleInfo2}?startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
+  }
+  getPathSaleInfo(brh, startDate, endDate, sort = '%', filter = []): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<any[]>(`${this.getPathSaleInfoUrl}?branch_id=${brh}&startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
   }
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;

@@ -64,7 +64,8 @@ label {
     width:6rem;
 }
 .input-group {
-    width:15rem;
+    width:12rem;
+    display: -webkit-inline-box;
 }
 .input-group-text {
     cursor: pointer;
