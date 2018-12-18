@@ -1,0 +1,58 @@
+<div class="tile">
+  <div class="tile" id="filter">
+    <div class="row" style="align-items: center;">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="bs-component" style="margin-bottom: 0px;">
+          <label class="control-label">เรียงตาม</label>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary" *ngFor="let data of headers" (click)="sort(data)">
+              <input type="radio" name="options" autocomplete="off">{{data}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <label class="control-label">ข้อมูล</label>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <input class="form-control" id="startDtSalePath" #startDtSalePath type="text" placeholder="{{startMonth}}">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <input class="form-control" id="endDtSalePath" #endDtSalePath type="text" placeholder="{{endMonth}}">
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-3">
+            <button class="btn btn-primary" id="submitDate" type="button" (click)="getPeriod(startDtSalePath, endDtSalePath)"><i
+                class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="align-items: center;">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <label class="control-label">สายบริการ</label>
+        <div class="bs-component" style="margin-bottom: 0px;">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label *ngFor="let path of masterColumn" class="btn btn-primary active" id="selectPath" #selectPath
+              (click)="onChange($event)">
+              <input type="checkbox" autocomplete="off" checked>{{path}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+          <label class="control-label">สาขา</label>
+          <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend"><button id="previous" class="input-group-text" (click)="previous(txtBrh)" data-type="minus"
+                  data-field="quant[2]">ก่อนหน้า</button></div>
+                <input class="form-control" #txtBrh id="txtBrh" type="text" value="{{currentBrhTxt}}" onfocus="this.select();"
+                (change)="selectPath(txtBrh)">
+                <div class="input-group-append"><button id="next" class="input-group-text" (click)="next(txtBrh)" data-type="plus"
+                  data-field="quant[2]">ถัดไป</button></div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <h3 class="tile-title">ข้อมูลยอดสาขา{{currentBrhTxt}} ตามสายบริการ</h3>
+  <canvas class="embed-responsive-item" id="salePathChart"></canvas>
+</div>
