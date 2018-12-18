@@ -30,8 +30,8 @@
   <!-- Slide Show -->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12  padding-0" id="slidetop">
-        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      <div class="col-12  padding-0" id="slidetop" *ngFor='let headers of header'>
+        <ngx-gallery [options]="headers.Option" [images]="headers.Images"></ngx-gallery>
       </div>
     </div>
   </div>
@@ -94,92 +94,68 @@
 
         <div class="container-fluid" style="padding-bottom: 3%;">
           <div class="row">
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-3 col-md-4" *ngFor='let nameAlbums of album'>
               <div id="gallerycard" class="card" style="width:100%">
                 <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
+                  <ngx-gallery [options]="nameAlbums.Option" [images]="nameAlbums.Images"></ngx-gallery>
                 </div>
-                <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
+                <p class="card-text" id="namealbum">{{nameAlbums.name}}</p>
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
-              </div>
-            </div>
 
-            <div class="col-lg-3 col-md-4">
-              <div id="gallerycard" class="card" style="width:100%">
-                <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="misOption" [images]="misImage"></ngx-gallery>
-                </div>
-                <p class="card-text" id="namealbum">อบรมโปรแกรมคอมฯ เจ้าหน้าที่ฝ่ายตลาดใหม่</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- EndGallary -->
+  </div>
+  <!-- EndGallary -->
 
-    <!-- Monday Menu -->
-    <div style="padding-top:3%">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="container-fluid  bgmondaymenu">
-              <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
-                <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
-                <div class="ml-2" id="bgmondaymenutextlogo">
-                  เมนูอาหาร <div class="float-right">{{foodDate}}</div>
-                </div>
-
+  <!-- Monday Menu -->
+  <div style="padding-top:3%">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="container-fluid  bgmondaymenu">
+            <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
+              <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
+              <div class="ml-2" id="bgmondaymenutextlogo">
+                เมนูอาหาร <div class="float-right">{{foodDate}}</div>
               </div>
 
-              <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="col-lg-4 col-md-6 mt-2" *ngFor='let food of foodMenu;let i = index'>
-                          <div class="containerMonday">
-                            <img id="mondaypic" class="border border-white img-fluid" src="{{food.img}}" alt="Card image cap">
-                            <div class="text-block">
-                              <h4>{{i+1}}</h4>
-                            </div>
+            </div>
+
+            <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 mt-2" *ngFor='let food of foodMenu;let i = index'>
+                        <div class="containerMonday">
+                          <img id="mondaypic" class="border border-white img-fluid" src="{{food.img}}" alt="Card image cap">
+                          <div class="text-block">
+                            <h4>{{i+1}}</h4>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="col-lg-12 col-md-12 mt-0">
-                        <table class="table table-bordered text-white" style="font-size:1.5rem">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">ชื่ออาหาร</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor='let food of foodMenu;let i = index'>
-                              <th scope="row">{{i+1}}</th>
-                              <td>{{food.name}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="col-lg-12 col-md-12 mt-0">
+                      <table class="table table-bordered text-white" style="font-size:1.5rem">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">ชื่ออาหาร</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor='let food of foodMenu;let i = index'>
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{food.name}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -189,39 +165,38 @@
         </div>
       </div>
     </div>
-    <!-- EndMonday Menu -->
   </div>
-  <!-- End Content -->
+  <!-- EndMonday Menu -->
+</div>
+<!-- End Content -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <img class="img-responsive" style="width: 27px;height: 25px;" src="../../../assets/images/logo/logogal.png"
-            alt="">
-          <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 1rem;">{{newsCategory}} :
-            {{newsTitle}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container" style="background-color:white;">
-            <div class="row">
-              <!-- Post Content Column -->
-              <div class="col-lg-12">
-                <!-- Preview Image -->
-                <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt="">
-                <hr>
-                <!-- Post Content -->
-                <h3 style="margin-left:2rem;">{{newsTitle}}</h3>
-                <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>
-                <!-- Date/Time -->
-                <div>
-                  <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img class="img-responsive" style="width: 27px;height: 25px;" src="../../../assets/images/logo/logogal.png" alt="">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="margin-left: 1rem;">{{newsCategory}} :
+          {{newsTitle}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container" style="background-color:white;">
+          <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-12">
+              <!-- Preview Image -->
+              <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt="">
+              <hr>
+              <!-- Post Content -->
+              <h3 style="margin-left:2rem;">{{newsTitle}}</h3>
+              <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>
+              <!-- Date/Time -->
+              <div>
+                <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div>
               </div>
             </div>
           </div>
@@ -229,3 +204,4 @@
       </div>
     </div>
   </div>
+</div>
