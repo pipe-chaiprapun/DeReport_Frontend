@@ -25,8 +25,8 @@ export class GalleryComponent implements OnInit {
   misOption: NgxGalleryOptions[];
   misImage: NgxGalleryImage[];
 
-  constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) { 
-     this.url = this.__appserverservice.baseUrl; 
+  constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
+    this.url = this.__appserverservice.baseUrl;
   }
 
   ngOnInit() {
@@ -35,19 +35,19 @@ export class GalleryComponent implements OnInit {
   }
 
   public gallery() {
-    //Main
+    // Main
     this.galleryOptions = this.__galleryservice.mainOptions;
     this.galleryImages = this.__galleryservice.mainImages;
 
-    //PMDay
+    // PMDay
     this.pmdayOption = this.__galleryservice.bdpmOptions;
     this.pmdayImage = this.__galleryservice.bdpmImages;
 
-    //แข่งขันฟุตบอลเสียงตามสาย
+    // แข่งขันฟุตบอลเสียงตามสาย
     this.footballOption = this.__galleryservice.footballOptions;
     this.footballImage = this.__galleryservice.footballImages;
 
-    //แข่งขันฟุตบอลเสียงตามสาย
+    // แข่งขันฟุตบอลเสียงตามสาย
     this.sportOption = this.__galleryservice.spOptions;
     this.sportImage = this.__galleryservice.spImages;
 
