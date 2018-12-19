@@ -77,8 +77,7 @@
             {
                 "breakpoint": 500,
                 "width": "100%",
-                "thumbnailsColumns": 2
-            }
+                "thumbnailsColumns": 1            }
         ]
     },
     {
@@ -149,11 +148,6 @@
                 "small": "assets/images/fb/13.jpg",
                 "medium": "assets/images/fb/13.jpg",
                 "big": "assets/images/fb/13.jpg"
-            },
-            {
-                "small": "assets/images/fb/14.jpg",
-                "medium": "assets/images/fb/14.jpg",
-                "big": "assets/images/fb/14.jpg"
             }
         ],
         "Option": [
@@ -240,11 +234,6 @@
                 "small": "assets/images/sp/13.jpg",
                 "medium": "assets/images/sp/13.jpg",
                 "big": "assets/images/sp/13.jpg"
-            },
-            {
-                "small": "assets/images/sp/14.jpg",
-                "medium": "assets/images/sp/14.jpg",
-                "big": "assets/images/sp/14.jpg"
             }
         ],
         "Option": [

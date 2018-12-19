@@ -2,73 +2,115 @@
 <app-sidebar></app-sidebar>
 
 
-  <main class="app-content">
-    <div class="app-title">
-      <div>
-        <h1><i class="fa fa-camera-retro"></i> หน้าจัดการรูป Gallery</h1>
-        <p>หน้าจัดการรูป Gallery</p>
-      </div>
-      <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-camera-retro"></i></li>
-        <li class="breadcrumb-item"><a href="#">หน้าจัดการรูป Gallery</a></li>
-      </ul>
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-camera-retro"></i> หน้าจัดการรูป Gallery</h1>
+      <p>หน้าจัดการรูป Gallery</p>
     </div>
-  
-    <div class="row justify-content-md-center mt-4">
-      <div class="col-md-12">
-        <div class="tile">
-          <div class="tile-header">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-10"> <h3 class="tile-title ml-3">อัลบั้มรูปทั้งหมด</h3></div>
-                <div class="col-2">
-                    <a href="#" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">ลบอัลบั้ม</a><a href="#" class="btn btn-outline-success mr-2" style="float: right;">เพิ่มอัลบั้ม</a> 
-                </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-camera-retro"></i></li>
+      <li class="breadcrumb-item"><a href="#">หน้าจัดการรูป Gallery</a></li>
+    </ul>
+  </div>
+
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-10">
+                <h3 class="tile-title ml-3" id="galleryName">อัลบั้มรูปทั้งหมด</h3>
+                <h3 class="tile-title ml-3 albumName">{{nameAlbum}}</h3>
+              </div>
+              <div class="col-2">
+                <button type="button" id="addAlbum" class="btn btn-primary mr-2" style="float: right;" data-toggle="modal"
+                  data-target="#exampleModalCenter">เพิ่มอัลบั้ม</button>
+                <button type="button" id="backMain" class="btn btn-primary mr-2" style="float: right;" (click)='backtomain()'>กลับหน้าอัลบั้มทั้งหมด</button>
               </div>
             </div>
-  
           </div>
-          <div class="tile-body">
-            <div class="container-fluid" style="padding-bottom: 3%;">
-              <div class="row">
-                <div class="col-lg-3 col-md-4">
-                  <div id="gallerycard" class="card" style="width:100%">
-                    <div class="card-header" style="display:inline-flex;">
-                      <ngx-gallery [options]="pmdayOption" [images]="pmdayImage"></ngx-gallery>
+
+        </div>
+        <div class="tile-body">
+          <div class="container-fluid" style="padding-bottom: 3%;" id="main">
+            <div class="row">
+              <div class="col-lg-3 col-md-4" *ngFor='let album of albums'>
+                <div class="card border-secondary">
+                  <img class="card-img-top" src="{{album.Images[0].big}}" alt="Card image cap" style="height:186px">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">{{album.name}}</h5>
+                    <div class="row justify-content-center">
+                      <div class="col-md-6 text-center"><button type="button" class="btn btn-outline-primary albumDetail"
+                          (click)='getvalue(album.Images,album.name)'>ดูอัลบั้ม</button></div>
+                      <div class="col-md-6 text-center"><button type="button" id="albumDelete" class="btn btn-outline-danger"
+                          (click)='deleteAlbum()'>ลบอัลบั้ม</button></div>
                     </div>
-                    <p class="card-text" id="namealbum">กิจกรรมวันเกิดท่านประธาน</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                  <div id="gallerycard" class="card" style="width:100%">
-                    <div class="card-header" style="display:inline-flex;">
-                      <ngx-gallery [options]="footballOption" [images]="footballImage"></ngx-gallery>
-                    </div>
-                    <p class="card-text" id="namealbum">แข่งขันฟุตบอลเสียงตามสาย</p>
-                  </div>
-                </div>
-    
-                <div class="col-lg-3 col-md-4">
-                  <div id="gallerycard" class="card" style="width:100%">
-                    <div class="card-header" style="display:inline-flex;">
-                      <ngx-gallery [options]="sportOption" [images]="sportImage"></ngx-gallery>
-                    </div>
-                    <p class="card-text" id="namealbum">ประชุมสมาคมกีฬา</p>
-                  </div>
-                </div>
-    
-                <div class="col-lg-3 col-md-4">
-                  <div id="gallerycard" class="card" style="width:100%">
-                    <div class="card-header" style="display:inline-flex;">
-                      <ngx-gallery [options]="misOption" [images]="misImage"></ngx-gallery>
-                    </div>
-                    <p class="card-text" id="namealbum">อบรมโปรแกรมคอมฯ เจ้าหน้าที่ฝ่ายตลาดใหม่</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="tile-body" id="อัลบั้ม">
+          <div class="container-fluid" style="padding-bottom: 3%;">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 mt-3" *ngFor='let gal of imgAlbum'>
+                <div class="card border-dark">
+                  <img class="card-img-top" src="{{gal.big}}" alt="Card image cap" style="height:186px">
+                  <div class="card-body">
+                    <div class="row justify-content-center">
+                      <div class="col-md-12 text-center "><button type="button" id="ลบรูป" class="btn btn-outline-danger" >ลบรูป</button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-  </main>
+  </div>
+</main>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">เพิ่มอัลบั้ม</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='clearFileDetail(); heroForm.reset()'>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #heroForm="ngForm">
+          <label class="control-label">อัพโหลดภาพ : </label>
+          <input class="ml-3" #myInput input type="file" id="files" multiple (change)="getFileDetails($event)">
+        </form>
+        <div class="container-fluid">
+          <div class="row" id="list"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)='heroForm.reset()' data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)='uploadFiles()'>อัพโหลด</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">              
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <img src="" class="imagepreview" style="width: 100%;" >
+        </div>
+    </div>
+  </div>
+</div>
