@@ -114,13 +114,12 @@ export class HomeComponent implements OnInit {
     console.log(this.foodDate);
   }
 
-  public getGallery() {
-    fetch('../../../assets/json/gallery.json').then((res) => res.json())
-    .then((data) => {
-      this.album = data;
-      console.log(this.album,"----album-----")
-    })
-  }
+  // getGallery() {
+  //   fetch('../assets/json/gallery.json').then((res) => res.json())
+  //   .then((data) =>{
+  //     this.album = data;
+  //   })
+  // }
 
   public getHeader() {
     fetch('../../../assets/json/header.json').then((res) => res.json())
@@ -130,8 +129,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  public test() {
-    alert("Test")
+  getGallery() {
+    this.__appserverservice.getGallery().subscribe((res) => {
+      this.album = res;
+    })
   }
+
 
 }

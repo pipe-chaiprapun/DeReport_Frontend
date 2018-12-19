@@ -27,6 +27,7 @@ export class AppserverService {
   private addThumbnail = `${this.baseUrl}/api/new/album`;
 
   public foodMenuDate = new Date('11-12-2018');
+  public gallary = '../assets/json/gallery.json';
   public foodmenu = [
   { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
   { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
@@ -97,6 +98,10 @@ export class AppserverService {
 
   addImgThumbnail(data: any): Observable<any> {
     return this.http.post<any>(this.addThumbnail, data, { headers: this.headers });
+  }
+
+  getGallery(): Observable<any> {
+    return this.http.get<any[]>(this.gallary, { headers: this.headers });
   }
 
 }
