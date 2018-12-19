@@ -9,22 +9,23 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://10.192.192.10:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://localhost:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
   private branchUrl = `${this.baseUrl}/api/information/getBranch`;
   private saleInfoUrl = `${this.baseUrl}/api/information/getSaleInfo`;
-  // private pathUrl = `${this.apiUrl}/path`;
-  // private reportUrl = `${this.apiUrl}/report`;
+  private saleInfo2 = `${this.baseUrl}/api/information/getSaleInfo2`;
   private getMonthylyMeeting = `${this.baseUrl}/api/information/getMonthlyMeeting`;
   private getPath = `${this.baseUrl}/api/information/getPathInfo`;
+  private getPathSaleInfoUrl = `${this.baseUrl}/api/information/getPathInfo2`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
   private getnews = `${this.baseUrl}/api/news/getNews`;
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
+
   public foodMenuDate = new Date('11-12-2018');
   public gallary = '../assets/json/gallery.json';
   public foodmenu = [
@@ -35,7 +36,6 @@ export class AppserverService {
   { "name": "น้ำส้ม", "img": "../../../assets/images/food/น้ำส้ม.jpg" },
   { "name": "ลูกจากลอยแก้ว", "img": "../../../assets/images/food/ลูกจากลอยแก้ว.jpg" }
   ];
-
 
   constructor(private http: HttpClient) { }
 
@@ -50,6 +50,14 @@ export class AppserverService {
   // }
   getSaleInfo(startDate, endDate): Observable<any> {
     return this.http.get<any[]>(`${this.saleInfoUrl}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
+  }
+  getSaleInfo2(startDate, endDate, sort = '%', filter = []): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<any[]>(`${this.saleInfo2}?startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
+  }
+  getPathSaleInfo(brh, startDate, endDate, sort = '%', filter = []): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.get<any[]>(`${this.getPathSaleInfoUrl}?branch_id=${brh}&startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
   }
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;
