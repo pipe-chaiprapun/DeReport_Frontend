@@ -29,12 +29,12 @@ export class AppserverService {
   public foodMenuDate = new Date('11-12-2018');
   public gallary = '../assets/json/gallery.json';
   public foodmenu = [
-  { "name": "ยำสามกรอบ", "img": "../../../assets/images/food/ยำสามกรอบ.JPG" },
-  { "name": "ไข่ดาวลูกเขย", "img": "../../../assets/images/food/ไข่ดาวลูกเขย.JPG" },
-  { "name": "ต้มมะระกระดูกหมู", "img": "../../../assets/images/food/ต้มมะระหมูสับ.jpg" },
-  { "name": "คั่วกลิ้งหมู", "img": "../../../assets/images/food/คั่วกลิ้ง.jpg" },
-  { "name": "น้ำส้ม", "img": "../../../assets/images/food/น้ำส้ม.jpg" },
-  { "name": "ลูกจากลอยแก้ว", "img": "../../../assets/images/food/ลูกจากลอยแก้ว.jpg" }
+  { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
+  { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
+  { 'name': 'ต้มมะระกระดูกหมู', 'img': '../../../assets/images/food/ต้มมะระหมูสับ.jpg' },
+  { 'name': 'คั่วกลิ้งหมู', 'img': '../../../assets/images/food/คั่วกลิ้ง.jpg' },
+  { 'name': 'น้ำส้ม', 'img': '../../../assets/images/food/น้ำส้ม.jpg' },
+  { 'name': 'ลูกจากลอยแก้ว', 'img': '../../../assets/images/food/ลูกจากลอยแก้ว.jpg' }
   ];
 
   constructor(private http: HttpClient) { }

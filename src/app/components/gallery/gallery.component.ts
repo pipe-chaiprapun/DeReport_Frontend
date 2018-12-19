@@ -20,7 +20,6 @@ export class GalleryComponent implements OnInit {
   public menuFiles = [];
   public detail: any;
 
-
   constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
     this.url = this.__appserverservice.baseUrl;
   }
@@ -109,6 +108,7 @@ export class GalleryComponent implements OnInit {
           document.getElementById('list').insertBefore(this.detail, null);
         };
       })(f);
+
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);

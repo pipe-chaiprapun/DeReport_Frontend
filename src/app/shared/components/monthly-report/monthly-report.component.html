@@ -1,16 +1,12 @@
 <div class="tile">
   <h3 style="text-align: center">รายงานยอดขายสินค้า ยอดการเก็บเงิน และยอดหนี้ PDO</h3>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6">
+    <div class="row justify-content-md-center justify-content-lg-center">
         <div class="inline-items">
           <button id="previous" class="input-group-text" disabled (click)="previous()">ก่อนหน้า</button>
-          <h3 style="text-align:center;padding:0px 5px;">ประจำเดือน{{month}} {{year}}</h3>
+          <h3 style="text-align:center;padding:0px 5px;font-size: 1.53125rem;">ประจำเดือน{{month}} {{year}}</h3>
           <button id="next" class="input-group-text" disabled (click)="next()">ถัดไป</button>
         </div>
-      </div>
-      <div class="col-3"></div>
     </div>
   </div>
   <br><br>
