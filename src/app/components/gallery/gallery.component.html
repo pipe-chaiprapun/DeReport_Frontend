@@ -21,6 +21,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-10">
+                <!-- <img id='imageId' src="../../../assets/images/4 .jpg" style="width: 400px; height: 264px;" (click)='getimg()'> -->
                 <h3 class="tile-title ml-3" id="galleryName">อัลบั้มรูปทั้งหมด</h3>
                 <h3 class="tile-title ml-3 albumName">{{nameAlbum}}</h3>
               </div>
@@ -38,7 +39,7 @@
             <div class="row">
               <div class="col-lg-3 col-md-4" *ngFor='let album of albums'>
                 <div class="card border-secondary">
-                  <img class="card-img-top" src="{{album.Images[0].big}}" alt="Card image cap" style="height:186px">
+                  <img class="card-img-top" src="{{album.Images[0].img}}" alt="Card image cap" style="height:186px">
                   <div class="card-body">
                     <h5 class="card-title text-center">{{album.name}}</h5>
                     <div class="row justify-content-center">
@@ -56,10 +57,10 @@
 
         <div class="tile-body" id="อัลบั้ม">
           <div class="container-fluid" style="padding-bottom: 3%;">
-            <div class="row">
+            <div class="row gallery">
               <div class="col-lg-3 col-md-4 mt-3" *ngFor='let gal of imgAlbum'>
                 <div class="card border-dark">
-                  <img class="card-img-top" src="{{gal.big}}" alt="Card image cap" style="height:186px">
+                  <img class="card-img-top cursor" src="{{gal.img}}" alt="Card image cap" style="height:186px" (click)='getimg(gal.img)'>
                   <div class="card-body">
                     <div class="row justify-content-center">
                       <div class="col-md-12 text-center "><button type="button" id="ลบรูป" class="btn btn-outline-danger" >ลบรูป</button></div>
@@ -91,13 +92,15 @@
         <form #heroForm="ngForm">
           <label class="control-label">อัพโหลดภาพ : </label>
           <input class="ml-3" #myInput input type="file" id="files" multiple (change)="getFileDetails($event)">
+          <label class="control-label">ชื่ออัลบั้ม : </label>
+          <input class="ml-2" type="text" id="textAlbum" (change)="getNameAlbum($event)">
         </form>
         <div class="container-fluid">
           <div class="row" id="list"></div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)='heroForm.reset()' data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-secondary" (click)='clearFileDetail()' data-dismiss="modal">ยกเลิก</button>
         <button type="button" class="btn btn-primary" (click)='uploadFiles()'>อัพโหลด</button>
       </div>
     </div>
@@ -108,7 +111,7 @@
     <div class="modal-dialog">
       <div class="modal-content">              
         <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <button type="button" class="close" data-dismiss="modal" (click)='clearimgpreview()'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <img src="" class="imagepreview" style="width: 100%;" >
         </div>
     </div>

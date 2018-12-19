@@ -17,8 +17,24 @@ export class GalleryComponent implements OnInit {
   public albums;
   public imgAlbum;
   public nameAlbum;
-  public menuFiles = [];
+  public galleryFiles = [];
   public detail: any;
+  public imgpath;
+  public optionGallery = [
+    {
+        "image": false,
+        "thumbnailsRemainingCount": true,
+        "height": "212px",
+        "thumbnailsColumns": 1,
+        "previewfullWidth": true,
+        "width": "100%"
+    },
+    {
+        "breakpoint": 500,
+        "width": "50%",
+        "thumbnailsColumns": 1
+    }
+]
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
@@ -29,7 +45,7 @@ export class GalleryComponent implements OnInit {
     App.initLoadJquery();
     this.GetGallery();
     this.galleryDetail();
-    this.imagePreview();
+    // this.imagePreview();
   }
 
   public GetGallery() {
@@ -100,7 +116,7 @@ export class GalleryComponent implements OnInit {
         return function (e) {
           menuDetail['img'] = e.target.result;
           menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
-          self.menuFiles.push(menuDetail);
+          self.galleryFiles.push(menuDetail);
           console.log(menuDetail);
           this.detail = document.createElement('div');
           this.detail.className = "col-md-4 col-xs-6";
@@ -114,11 +130,11 @@ export class GalleryComponent implements OnInit {
       reader.readAsDataURL(f);
 
     }
-    console.log(this.menuFiles);
+    console.log(this.galleryFiles);
   }
 
   public clearFileDetail() {
-    this.menuFiles = [];
+    this.galleryFiles = [];
     const uploadIMG = document.getElementById('files') as HTMLInputElement;
     const ltstFood = document.getElementById('list')
     let form1 = document.getElementById('fileform');
@@ -127,14 +143,33 @@ export class GalleryComponent implements OnInit {
     console.log(this.detail)
   }
 
-  public imagePreview() {
-      $('#ลบรูป').click(function(event) {
-        console.log(event)
-        alert('test')
-        $('.imagepreview').attr('src', $(this).find('img').attr('src'));
-        $('#imagemodal').modal('show');   
-      });		
-    }
+  // public imagePreview() {
+  //     $('#ลบรูป').click(function(event) {
+  //       console.log(event)
+  //       alert('test')
+  //       $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+  //       $('#imagemodal').modal('show');   
+  //     });
+  //   }
+
+  public getNameAlbum(evt) {
+    let galleryName = {};
+    galleryName['name'] = evt.target.value;
+    this.galleryFiles.push(galleryName);
+    console.log(this.galleryFiles);
+  }
+
+  public getimg(val) {
+    console.log(val);
+    this.imgpath = val;
+    $('.imagepreview').attr('src', this.imgpath);
+    $('#imagemodal').modal('show'); 
+  }
+
+  public clearimgpreview() {
+    this.imgpath = null;
+    $('.imagepreview').attr('src', this.imgpath);
+  }
   
 
 }

@@ -28,6 +28,21 @@ export class HomeComponent implements OnInit {
   public today = new Date();
   public album;
   public header;
+  public optionGallery = [
+    {
+        "image": false,
+        "thumbnailsRemainingCount": true,
+        "height": "212px",
+        "thumbnailsColumns": 1,
+        "previewfullWidth": true,
+        "width": "100%"
+    },
+    {
+        "breakpoint": 500,
+        "width": "50%",
+        "thumbnailsColumns": 1
+    }
+]
  
 
 
@@ -129,9 +144,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getGallery() {
+  public getGallery() {
     this.__appserverservice.getGallery().subscribe((res) => {
-      this.album = res;
+      // this.album = res;
+      res = res.map(o => Object.assign(
+        {}, o,
+        { Images: o.Images.map(({ img }) => ({ small: img, medium: img, big: img })) }
+    ));
+    console.log(res)
+    this.album = res;
     })
   }
 

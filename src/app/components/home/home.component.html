@@ -97,7 +97,7 @@
             <div class="col-lg-3 col-md-4" *ngFor='let nameAlbums of album'>
               <div id="gallerycard" class="card" style="width:100%">
                 <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="nameAlbums.Option" [images]="nameAlbums.Images"></ngx-gallery>
+                  <ngx-gallery [options]="optionGallery" [images]="nameAlbums.Images"></ngx-gallery>
                 </div>
                 <p class="card-text" id="namealbum">{{nameAlbums.name}}</p>
               </div>
