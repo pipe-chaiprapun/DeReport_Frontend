@@ -9,13 +9,11 @@ export class IntroComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   goHome() {
-    alert("before" + sessionStorage.getItem("Intro"));
-    sessionStorage.setItem("Intro", "true");
-    alert("after" + sessionStorage.getItem("Intro"));
+    alert('before' + sessionStorage.getItem('Intro'));
+    sessionStorage.setItem('Intro', 'true');
+    alert('after' + sessionStorage.getItem('Intro'));
   }
 }

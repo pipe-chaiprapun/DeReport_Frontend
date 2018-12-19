@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
 import { AppserverService } from '../../services/appserver.service';
-import { Chart } from 'chart.js';
-import constant from '../../services/color.js';
-declare const $;
 // declare const Chart;
 declare const App;
 

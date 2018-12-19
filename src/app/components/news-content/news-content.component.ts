@@ -14,7 +14,7 @@ export class NewsContentComponent implements OnInit {
   public newsImage;
   public newsStartdate;
 
-  constructor(private route: ActivatedRoute,private __appserverservice: AppserverService) { }
+  constructor(private route: ActivatedRoute, private __appserverservice: AppserverService) { }
 
   url = this.__appserverservice.baseUrl;
 
@@ -29,7 +29,7 @@ export class NewsContentComponent implements OnInit {
       const content = params['content'];
       const category = params['category'];
       const image = params['image'];
-      const startdate= params['startDate'];
+      const startdate = params['startDate'];
       this.newsTitle = id;
       this.newsContent = content;
       this.newsImage = image;
