@@ -14,6 +14,7 @@ export class FoodManagementComponent implements OnInit {
   public abc = this.__Appserver.foodmenu;
   public fileToUpload: File = null;
   public menuFiles = [];
+  public myFilesName = [];
   public sMsg = '';
   public detail: any;
   public datepicker;

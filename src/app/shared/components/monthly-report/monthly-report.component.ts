@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../../services/appserver.service';
 import { Library } from '../../../services/library';
 import { noUndefined } from '@angular/compiler/src/util';
-declare const App;
 declare const $;
 @Component({
   selector: 'app-monthly-report',
@@ -45,7 +44,6 @@ export class MonthlyReportComponent implements OnInit {
 
   ngOnInit() {
     this.initLoadTable();
-    App.initLoadJquery();
   }
   private initLoadTable() {
     this.library = new Library();

@@ -134,4 +134,5 @@ export class GalleryComponent implements OnInit {
       $('#imagemodal').modal('show');
     });
   }
+  public uploadFiles() {}
 }

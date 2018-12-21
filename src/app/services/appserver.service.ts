@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://localhost:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://10.192.192.10:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
