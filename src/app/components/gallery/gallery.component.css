@@ -15,3 +15,8 @@
     width: auto;
     min-width: 1200px;  
 }
+
+
+.cursor {
+    cursor: pointer;
+}

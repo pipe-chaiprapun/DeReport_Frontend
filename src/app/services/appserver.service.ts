@@ -25,8 +25,8 @@ export class AppserverService {
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
-
-  public foodMenuDate = new Date('11-12-2018');
+  public foodMenuDate = new Date('12-25-2018');
+  public foodmenu = '../assets/json/foodMenu.json';
   public gallary = '../assets/json/gallery.json';
   public foodmenu = [
   { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
@@ -102,6 +102,10 @@ export class AppserverService {
 
   getGallery(): Observable<any> {
     return this.http.get<any[]>(this.gallary, { headers: this.headers });
+  }
+
+  getFoodMenu(): Observable<any> {
+    return this.http.get<any[]>(this.foodmenu, { headers: this.headers });
   }
 
 }

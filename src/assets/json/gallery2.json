@@ -1,337 +1,255 @@
-{
-    "กิจกรรมวันเกิดท่านประธาน": [
-        {
-            "Images": [
-                {
-                    "small": "assets/images/pmbd/30.jpg",
-                    "medium": "assets/images/pmbd/30.jpg",
-                    "big": "assets/images/pmbd/30.jpg",
-                    "description": "Happy Birth Day To Big Boss"
-                },
-                {
-                    "small": "assets/images/pmbd/2.jpg",
-                    "medium": "assets/images/pmbd/2.jpg",
-                    "big": "assets/images/pmbd/2.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/3.jpg",
-                    "medium": "assets/images/pmbd/3.jpg",
-                    "big": "assets/images/pmbd/3.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/4.jpg",
-                    "medium": "assets/images/pmbd/4.jpg",
-                    "big": "assets/images/pmbd/4.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/5.jpg",
-                    "medium": "assets/images/pmbd/5.jpg",
-                    "big": "assets/images/pmbd/5.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/6.jpg",
-                    "medium": "assets/images/pmbd/6.jpg",
-                    "big": "assets/images/pmbd/6.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/7.jpg",
-                    "medium": "assets/images/pmbd/7.jpg",
-                    "big": "assets/images/pmbd/7.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/7.jpg",
-                    "medium": "assets/images/pmbd/7.jpg",
-                    "big": "assets/images/pmbd/7.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/8.jpg",
-                    "medium": "assets/images/pmbd/8.jpg",
-                    "big": "assets/images/pmbd/8.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/9.jpg",
-                    "medium": "assets/images/pmbd/9.jpg",
-                    "big": "assets/images/pmbd/9.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/10.jpg",
-                    "medium": "assets/images/pmbd/10.jpg",
-                    "big": "assets/images/pmbd/10.jpg"
-                },
-                {
-                    "small": "assets/images/pmbd/11.jpg",
-                    "medium": "assets/images/pmbd/11.jpg",
-                    "big": "assets/images/pmbd/11.jpg"
-                }
-            ]
-        },
-        {
-            "Option": [
-                {
-                    "image": false,
-                    "thumbnailsRemainingCount": true,
-                    "height": "212px",
-                    "thumbnailsColumns": 1,
-                    "previewfullWidth": true,
-                    "width": "100%"
-                },
-                {
-                    "breakpoint": 500,
-                    "width": "100%",
-                    "thumbnailsColumns": 2
-                }
-            ]
-        }
-    ],
-    "แข่งขันฟุตบอลเสียงตามสาย": [
-        {
-            "Images": [
-                {
-                    "small": "assets/images/fb/30.jpg",
-                    "medium": "assets/images/fb/30.jpg",
-                    "big": "assets/images/fb/30.jpg",
-                    "description": "แข่งขันฟุตบอลเสียงตามสาย"
-                },
-                {
-                    "small": "assets/images/fb/2.jpg",
-                    "medium": "assets/images/fb/2.jpg",
-                    "big": "assets/images/fb/2.jpg"
-                },
-                {
-                    "small": "assets/images/fb/3.jpg",
-                    "medium": "assets/images/fb/3.jpg",
-                    "big": "assets/images/fb/3.jpg"
-                },
-                {
-                    "small": "assets/images/fb/4.jpg",
-                    "medium": "assets/images/fb/4.jpg",
-                    "big": "assets/images/fb/4.jpg"
-                },
-                {
-                    "small": "assets/images/fb/5.jpg",
-                    "medium": "assets/images/fb/5.jpg",
-                    "big": "assets/images/fb/5.jpg"
-                },
-                {
-                    "small": "assets/images/fb/6.jpg",
-                    "medium": "assets/images/fb/6.jpg",
-                    "big": "assets/images/fb/6.jpg"
-                },
-                {
-                    "small": "assets/images/fb/7.jpg",
-                    "medium": "assets/images/fb/7.jpg",
-                    "big": "assets/images/fb/7.jpg"
-                },
-                {
-                    "small": "assets/images/fb/8.jpg",
-                    "medium": "assets/images/fb/8.jpg",
-                    "big": "assets/images/fb/8.jpg"
-                },
-                {
-                    "small": "assets/images/fb/9.jpg",
-                    "medium": "assets/images/fb/9.jpg",
-                    "big": "assets/images/fb/9.jpg"
-                },
-                {
-                    "small": "assets/images/fb/10.jpg",
-                    "medium": "assets/images/fb/10.jpg",
-                    "big": "assets/images/fb/10.jpg"
-                },
-                {
-                    "small": "assets/images/fb/11.jpg",
-                    "medium": "assets/images/fb/11.jpg",
-                    "big": "assets/images/fb/11.jpg"
-                },
-                {
-                    "small": "assets/images/fb/12.jpg",
-                    "medium": "assets/images/fb/12.jpg",
-                    "big": "assets/images/fb/12.jpg"
-                },
-                {
-                    "small": "assets/images/fb/13.jpg",
-                    "medium": "assets/images/fb/13.jpg",
-                    "big": "assets/images/fb/13.jpg"
-                },
-                {
-                    "small": "assets/images/fb/14.jpg",
-                    "medium": "assets/images/fb/14.jpg",
-                    "big": "assets/images/fb/14.jpg"
-                }
-            ]
-        },
-        {
-            "Option": [
-                {
-                    "image": false,
-                    "thumbnailsRemainingCount": true,
-                    "height": "212px",
-                    "thumbnailsColumns": 1,
-                    "previewfullWidth": true,
-                    "width": "100%"
-                },
-                {
-                    "breakpoint": 500,
-                    "width": "100%",
-                    "thumbnailsColumns": 2
-                }
-            ]
-        }
-    ],
-    "ประชุมสมาคมกีฬา": [
-        {
-            "Images": [
-                {
-                    "small": "assets/images/sp/30.jpg",
-                    "medium": "assets/images/sp/30.jpg",
-                    "big": "assets/images/sp/30.jpg",
-                    "description": "แข่งขันฟุตบอลเสียงตามสาย"
-                },
-                {
-                    "small": "assets/images/sp/2.jpg",
-                    "medium": "assets/images/sp/2.jpg",
-                    "big": "assets/images/sp/2.jpg"
-                },
-                {
-                    "small": "assets/images/sp/3.jpg",
-                    "medium": "assets/images/sp/3.jpg",
-                    "big": "assets/images/sp/3.jpg"
-                },
-                {
-                    "small": "assets/images/sp/4.jpg",
-                    "medium": "assets/images/sp/4.jpg",
-                    "big": "assets/images/sp/4.jpg"
-                },
-                {
-                    "small": "assets/images/sp/5.jpg",
-                    "medium": "assets/images/sp/5.jpg",
-                    "big": "assets/images/sp/5.jpg"
-                },
-                {
-                    "small": "assets/images/sp/6.jpg",
-                    "medium": "assets/images/sp/6.jpg",
-                    "big": "assets/images/sp/6.jpg"
-                },
-                {
-                    "small": "assets/images/sp/7.jpg",
-                    "medium": "assets/images/sp/7.jpg",
-                    "big": "assets/images/sp/7.jpg"
-                },
-                {
-                    "small": "assets/images/sp/8.jpg",
-                    "medium": "assets/images/sp/8.jpg",
-                    "big": "assets/images/sp/8.jpg"
-                },
-                {
-                    "small": "assets/images/sp/9.jpg",
-                    "medium": "assets/images/sp/9.jpg",
-                    "big": "assets/images/sp/9.jpg"
-                },
-                {
-                    "small": "assets/images/sp/10.jpg",
-                    "medium": "assets/images/sp/10.jpg",
-                    "big": "assets/images/sp/10.jpg"
-                },
-                {
-                    "small": "assets/images/sp/11.jpg",
-                    "medium": "assets/images/sp/11.jpg",
-                    "big": "assets/images/sp/11.jpg"
-                },
-                {
-                    "small": "assets/images/sp/12.jpg",
-                    "medium": "assets/images/sp/12.jpg",
-                    "big": "assets/images/sp/12.jpg"
-                },
-                {
-                    "small": "assets/images/sp/13.jpg",
-                    "medium": "assets/images/sp/13.jpg",
-                    "big": "assets/images/sp/13.jpg"
-                },
-                {
-                    "small": "assets/images/sp/14.jpg",
-                    "medium": "assets/images/sp/14.jpg",
-                    "big": "assets/images/sp/14.jpg"
-                }
-            ]
-        },
-        {
-            "Option": [
-                {
-                    "image": false,
-                    "thumbnailsRemainingCount": true,
-                    "height": "212px",
-                    "thumbnailsColumns": 1,
-                    "previewfullWidth": true,
-                    "width": "100%"
-                },
-                {
-                    "breakpoint": 500,
-                    "width": "100%",
-                    "thumbnailsColumns": 2
-                }
-            ]
-        }
-    ],
-    "อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด": [
-        {
-            "Images": [
-                {
-                    "small": "assets/images/mis/1.jpg",
-                    "medium": "assets/images/mis/1.jpg",
-                    "big": "assets/images/mis/1.jpg"
-                },
-                {
-                    "small": "assets/images/mis/2.jpg",
-                    "medium": "assets/images/mis/2.jpg",
-                    "big": "assets/images/mis/2.jpg"
-                },
-                {
-                    "small": "assets/images/mis/3.jpg",
-                    "medium": "assets/images/mis/3.jpg",
-                    "big": "assets/images/mis/3.jpg"
-                },
-                {
-                    "small": "assets/images/mis/4.jpg",
-                    "medium": "assets/images/mis/4.jpg",
-                    "big": "assets/images/mis/4.jpg"
-                },
-                {
-                    "small": "assets/images/mis/5.jpg",
-                    "medium": "assets/images/mis/5.jpg",
-                    "big": "assets/images/mis/5.jpg"
-                },
-                {
-                    "small": "assets/images/mis/6.jpg",
-                    "medium": "assets/images/mis/6.jpg",
-                    "big": "assets/images/mis/6.jpg"
-                },
-                {
-                    "small": "assets/images/mis/7.jpg",
-                    "medium": "assets/images/mis/7.jpg",
-                    "big": "assets/images/mis/7.jpg"
-                },
-                {
-                    "small": "assets/images/mis/8.jpg",
-                    "medium": "assets/images/mis/8.jpg",
-                    "big": "assets/images/mis/8.jpg"
-                }
-            ]
-        },
-        {
-            "Option": [
-                {
-                    "image": false,
-                    "thumbnailsRemainingCount": true,
-                    "height": "212px",
-                    "thumbnailsColumns": 1,
-                    "previewfullWidth": true,
-                    "width": "100%"
-                },
-                {
-                    "breakpoint": 500,
-                    "width": "50%",
-                    "thumbnailsColumns": 1
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "name": "กิจกรรมวันเกิดท่านประธาน",
+        "Images": [
+            {
+                "small": "assets/images/pmbd/30.jpg",
+                "medium": "assets/images/pmbd/30.jpg",
+                "big": "assets/images/pmbd/30.jpg",
+                "description": "Happy Birth Day To Big Boss"
+            },
+            {
+                "small": "assets/images/pmbd/2.jpg",
+                "medium": "assets/images/pmbd/2.jpg",
+                "big": "assets/images/pmbd/2.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/3.jpg",
+                "medium": "assets/images/pmbd/3.jpg",
+                "big": "assets/images/pmbd/3.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/4.jpg",
+                "medium": "assets/images/pmbd/4.jpg",
+                "big": "assets/images/pmbd/4.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/5.jpg",
+                "medium": "assets/images/pmbd/5.jpg",
+                "big": "assets/images/pmbd/5.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/6.jpg",
+                "medium": "assets/images/pmbd/6.jpg",
+                "big": "assets/images/pmbd/6.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/7.jpg",
+                "medium": "assets/images/pmbd/7.jpg",
+                "big": "assets/images/pmbd/7.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/7.jpg",
+                "medium": "assets/images/pmbd/7.jpg",
+                "big": "assets/images/pmbd/7.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/8.jpg",
+                "medium": "assets/images/pmbd/8.jpg",
+                "big": "assets/images/pmbd/8.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/9.jpg",
+                "medium": "assets/images/pmbd/9.jpg",
+                "big": "assets/images/pmbd/9.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/10.jpg",
+                "medium": "assets/images/pmbd/10.jpg",
+                "big": "assets/images/pmbd/10.jpg"
+            },
+            {
+                "small": "assets/images/pmbd/11.jpg",
+                "medium": "assets/images/pmbd/11.jpg",
+                "big": "assets/images/pmbd/11.jpg"
+            }
+        ]
+    },
+    {
+        "name": "แข่งขันฟุตบอลเสียงตามสาย",
+        "Images": [
+            {
+                "small": "assets/images/fb/30.jpg",
+                "medium": "assets/images/fb/30.jpg",
+                "big": "assets/images/fb/30.jpg",
+                "description": "แข่งขันฟุตบอลเสียงตามสาย"
+            },
+            {
+                "small": "assets/images/fb/2.jpg",
+                "medium": "assets/images/fb/2.jpg",
+                "big": "assets/images/fb/2.jpg"
+            },
+            {
+                "small": "assets/images/fb/3.jpg",
+                "medium": "assets/images/fb/3.jpg",
+                "big": "assets/images/fb/3.jpg"
+            },
+            {
+                "small": "assets/images/fb/4.jpg",
+                "medium": "assets/images/fb/4.jpg",
+                "big": "assets/images/fb/4.jpg"
+            },
+            {
+                "small": "assets/images/fb/5.jpg",
+                "medium": "assets/images/fb/5.jpg",
+                "big": "assets/images/fb/5.jpg"
+            },
+            {
+                "small": "assets/images/fb/6.jpg",
+                "medium": "assets/images/fb/6.jpg",
+                "big": "assets/images/fb/6.jpg"
+            },
+            {
+                "small": "assets/images/fb/7.jpg",
+                "medium": "assets/images/fb/7.jpg",
+                "big": "assets/images/fb/7.jpg"
+            },
+            {
+                "small": "assets/images/fb/8.jpg",
+                "medium": "assets/images/fb/8.jpg",
+                "big": "assets/images/fb/8.jpg"
+            },
+            {
+                "small": "assets/images/fb/9.jpg",
+                "medium": "assets/images/fb/9.jpg",
+                "big": "assets/images/fb/9.jpg"
+            },
+            {
+                "small": "assets/images/fb/10.jpg",
+                "medium": "assets/images/fb/10.jpg",
+                "big": "assets/images/fb/10.jpg"
+            },
+            {
+                "small": "assets/images/fb/11.jpg",
+                "medium": "assets/images/fb/11.jpg",
+                "big": "assets/images/fb/11.jpg"
+            },
+            {
+                "small": "assets/images/fb/12.jpg",
+                "medium": "assets/images/fb/12.jpg",
+                "big": "assets/images/fb/12.jpg"
+            },
+            {
+                "small": "assets/images/fb/13.jpg",
+                "medium": "assets/images/fb/13.jpg",
+                "big": "assets/images/fb/13.jpg"
+            }
+        ]
+    },
+    {
+        "name": "ประชุมสมาคมกีฬา",
+        "Images": [
+            {
+                "small": "assets/images/sp/30.jpg",
+                "medium": "assets/images/sp/30.jpg",
+                "big": "assets/images/sp/30.jpg",
+                "description": "แข่งขันฟุตบอลเสียงตามสาย"
+            },
+            {
+                "small": "assets/images/sp/2.jpg",
+                "medium": "assets/images/sp/2.jpg",
+                "big": "assets/images/sp/2.jpg"
+            },
+            {
+                "small": "assets/images/sp/3.jpg",
+                "medium": "assets/images/sp/3.jpg",
+                "big": "assets/images/sp/3.jpg"
+            },
+            {
+                "small": "assets/images/sp/4.jpg",
+                "medium": "assets/images/sp/4.jpg",
+                "big": "assets/images/sp/4.jpg"
+            },
+            {
+                "small": "assets/images/sp/5.jpg",
+                "medium": "assets/images/sp/5.jpg",
+                "big": "assets/images/sp/5.jpg"
+            },
+            {
+                "small": "assets/images/sp/6.jpg",
+                "medium": "assets/images/sp/6.jpg",
+                "big": "assets/images/sp/6.jpg"
+            },
+            {
+                "small": "assets/images/sp/7.jpg",
+                "medium": "assets/images/sp/7.jpg",
+                "big": "assets/images/sp/7.jpg"
+            },
+            {
+                "small": "assets/images/sp/8.jpg",
+                "medium": "assets/images/sp/8.jpg",
+                "big": "assets/images/sp/8.jpg"
+            },
+            {
+                "small": "assets/images/sp/9.jpg",
+                "medium": "assets/images/sp/9.jpg",
+                "big": "assets/images/sp/9.jpg"
+            },
+            {
+                "small": "assets/images/sp/10.jpg",
+                "medium": "assets/images/sp/10.jpg",
+                "big": "assets/images/sp/10.jpg"
+            },
+            {
+                "small": "assets/images/sp/11.jpg",
+                "medium": "assets/images/sp/11.jpg",
+                "big": "assets/images/sp/11.jpg"
+            },
+            {
+                "small": "assets/images/sp/12.jpg",
+                "medium": "assets/images/sp/12.jpg",
+                "big": "assets/images/sp/12.jpg"
+            },
+            {
+                "small": "assets/images/sp/13.jpg",
+                "medium": "assets/images/sp/13.jpg",
+                "big": "assets/images/sp/13.jpg"
+            }
+        ]
+    },
+    {
+        "name": "อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด",
+        "Images": [
+            {
+                "small": "assets/images/mis/1.jpg",
+                "medium": "assets/images/mis/1.jpg",
+                "big": "assets/images/mis/1.jpg"
+            },
+            {
+                "small": "assets/images/mis/2.jpg",
+                "medium": "assets/images/mis/2.jpg",
+                "big": "assets/images/mis/2.jpg"
+            },
+            {
+                "small": "assets/images/mis/3.jpg",
+                "medium": "assets/images/mis/3.jpg",
+                "big": "assets/images/mis/3.jpg"
+            },
+            {
+                "small": "assets/images/mis/4.jpg",
+                "medium": "assets/images/mis/4.jpg",
+                "big": "assets/images/mis/4.jpg"
+            },
+            {
+                "small": "assets/images/mis/5.jpg",
+                "medium": "assets/images/mis/5.jpg",
+                "big": "assets/images/mis/5.jpg"
+            },
+            {
+                "small": "assets/images/mis/6.jpg",
+                "medium": "assets/images/mis/6.jpg",
+                "big": "assets/images/mis/6.jpg"
+            },
+            {
+                "small": "assets/images/mis/7.jpg",
+                "medium": "assets/images/mis/7.jpg",
+                "big": "assets/images/mis/7.jpg"
+            },
+            {
+                "small": "assets/images/mis/8.jpg",
+                "medium": "assets/images/mis/8.jpg",
+                "big": "assets/images/mis/8.jpg"
+            }
+        ]
+    }
+]
