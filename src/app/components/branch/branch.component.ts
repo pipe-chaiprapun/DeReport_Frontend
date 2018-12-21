@@ -7,7 +7,7 @@ declare const App: any;
   styleUrls: ['./branch.component.css']
 })
 export class BranchComponent implements OnInit {
-  branchs:any = [];
+  branchs: any = [];
 
   constructor(private resAPI: AppserverService) { }
 
@@ -17,9 +17,10 @@ export class BranchComponent implements OnInit {
 
   onSubmit(value) {
     this.resAPI.getBranch(value.brh_id).subscribe(result => {
-      this.branchs = JSON.parse(JSON.stringify(result.data).replace(/"([^"]+)":/g, function($0,$1){return ('"'+$1.toLowerCase()+'":');}));
+      // tslint:disable-next-line:max-line-length
+      this.branchs = JSON.parse(JSON.stringify(result.data).replace(/"([^"]+)":/g, function($0, $1) { return ('"' + $1.toLowerCase() + '":'); }));
       console.log(result);
-    })
+    });
   }
 
 }
