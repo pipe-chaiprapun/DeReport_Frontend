@@ -18,23 +18,24 @@ export class GalleryComponent implements OnInit {
   public imgAlbum;
   public nameAlbum;
   public galleryFiles = [];
+  public galleryUpload = {};
   public detail: any;
   public imgpath;
   public optionGallery = [
     {
-        "image": false,
-        "thumbnailsRemainingCount": true,
-        "height": "212px",
-        "thumbnailsColumns": 1,
-        "previewfullWidth": true,
-        "width": "100%"
+      "image": false,
+      "thumbnailsRemainingCount": true,
+      "height": "212px",
+      "thumbnailsColumns": 1,
+      "previewfullWidth": true,
+      "width": "100%"
     },
     {
-        "breakpoint": 500,
-        "width": "50%",
-        "thumbnailsColumns": 1
+      "breakpoint": 500,
+      "width": "50%",
+      "thumbnailsColumns": 1
     }
-]
+  ]
 
 
   constructor(private http: HttpClient, private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
@@ -45,7 +46,6 @@ export class GalleryComponent implements OnInit {
     App.initLoadJquery();
     this.GetGallery();
     this.galleryDetail();
-    // this.imagePreview();
   }
 
   public GetGallery() {
@@ -97,27 +97,19 @@ export class GalleryComponent implements OnInit {
   }
 
   public getFileDetails(evt) {
-    var files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
+    var files = evt.target.files;
     for (var i = 0, f; f = files[i]; i++) {
       let menuDetail = {};
-      // Only process image files.
       if (!f.type.match('image.*')) {
         continue;
       }
-
       var reader = new FileReader();
-
-
       var self = this;
-      // Closure to capture the file information.
       reader.onloadend = (function (theFile) {
         return function (e) {
           menuDetail['img'] = e.target.result;
-          menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
+          // menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
           self.galleryFiles.push(menuDetail);
-          console.log(menuDetail);
           this.detail = document.createElement('div');
           this.detail.className = "col-md-4 col-xs-6";
           this.detail.innerHTML = ['<div class="card ml-4 mt-3" style="width: 18rem;"><img style="height: 220px;" class="card-img-top" src="', e.target.result,
@@ -125,12 +117,11 @@ export class GalleryComponent implements OnInit {
           document.getElementById('list').insertBefore(this.detail, null);
         };
       })(f);
-
-      // Read in the image file as a data URL.
       reader.readAsDataURL(f);
 
     }
     console.log(this.galleryFiles);
+    // this.albumUpload();
   }
 
   public clearFileDetail() {
@@ -143,33 +134,50 @@ export class GalleryComponent implements OnInit {
     console.log(this.detail)
   }
 
-  // public imagePreview() {
-  //     $('#ลบรูป').click(function(event) {
-  //       console.log(event)
-  //       alert('test')
-  //       $('.imagepreview').attr('src', $(this).find('img').attr('src'));
-  //       $('#imagemodal').modal('show');   
-  //     });
-  //   }
-
-  public getNameAlbum(evt) {
-    let galleryName = {};
-    galleryName['name'] = evt.target.value;
-    this.galleryFiles.push(galleryName);
-    console.log(this.galleryFiles);
-  }
+  // public getNameAlbum(evt) {
+  //   let textquery = $('#textAlbum').val();
+  //   console.log(textquery, "--textquery--")
+  //   let albumName = {}
+  //   albumName['name'] = evt.target.value;
+  //   this.galleryFiles.push(albumName);
+  //   this.albumUpload();
+  // }
 
   public getimg(val) {
     console.log(val);
     this.imgpath = val;
     $('.imagepreview').attr('src', this.imgpath);
-    $('#imagemodal').modal('show'); 
+    $('#imagemodal').modal('show');
   }
 
   public clearimgpreview() {
     this.imgpath = null;
     $('.imagepreview').attr('src', this.imgpath);
   }
-  
+
+
+  public albumUpload() {
+    let textquery = $('#textAlbum').val();
+    console.log(textquery, "--textquery--")
+    let albumName = {}
+    albumName['name'] = textquery;
+    this.galleryFiles.push(albumName);
+
+    const ret = this.galleryFiles.reduce((tmp, x) => {
+      if (x.img !== void 0) {
+        tmp.Images.push(x);
+        return tmp;
+      }
+      return {
+        ...tmp,
+
+        ...x,
+      };
+    }, {
+        Images: [],
+      });
+    console.log(ret);
+  }
+
 
 }

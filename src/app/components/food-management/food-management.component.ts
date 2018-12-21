@@ -14,7 +14,8 @@ declare const $;
 export class FoodManagementComponent implements OnInit {
 
 
-  public abc = this.__Appserver.foodmenu;
+  public getfood;
+  public getdatefood;
   public fileToUpload: File = null;
   public menuFiles = [];
   public sMsg: string = '';
@@ -28,8 +29,8 @@ export class FoodManagementComponent implements OnInit {
 
 
   ngOnInit() {
-    this.menudate();
     this.menuDateChange();
+    this.getDetailMenu();
   }
 
 
@@ -52,16 +53,6 @@ export class FoodManagementComponent implements OnInit {
       autoclose: true,
       todayHighlight: true
     });
-  }
-
-  private menudate() {
-    this.datepicker = this.__Appserver.foodMenuDate;
-    var dd = this.datepicker.getDate();
-    var day = this.days[this.datepicker.getDay()]
-    var mm = this.months[this.datepicker.getMonth()];
-    var yyyy = this.datepicker.getFullYear();
-    this.datepicker = "ประจำวัน"+ " " + day + " ที่" + "  " + dd +"  " + mm + "  " + yyyy;
-    (<HTMLInputElement>document.getElementById('startDate')).value = this.datepicker;
   }
 
   getFileDetails(evt) {
@@ -117,7 +108,21 @@ export class FoodManagementComponent implements OnInit {
 
   uploadFiles() {
     console.log(this.menuFiles)
+  }
 
+  public getDetailMenu() {
+    this.__Appserver.getFoodMenu().subscribe((res) => {
+      this.getfood = res.menu;
+      this.getdatefood = res.date;
+      this.datepicker = new Date(this.getdatefood);
+      console.log(this.datepicker,"--datepicker--")
+      var dd = this.datepicker.getDate();
+      var day = this.days[this.datepicker.getDay()]
+      var mm = this.months[this.datepicker.getMonth()];
+      var yyyy = this.datepicker.getFullYear();
+      this.datepicker = "ประจำวัน"+ " " + day + " ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+      (<HTMLInputElement>document.getElementById('startDate')).value = this.datepicker;
+    })
   }
 
 }

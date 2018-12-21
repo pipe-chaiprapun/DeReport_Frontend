@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   public today = new Date();
   public album;
   public header;
+  public datepicker;
   public optionGallery = [
     {
         "image": false,
@@ -53,12 +54,12 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.foodMenu = this.__appserverservice.foodmenu;
     this.sendNEWS();
     this.cardNEWS();
     this.menutDate();
     this.getGallery();
     this.getHeader();
+    this.getFoodMenu();
   }
 
 
@@ -119,14 +120,7 @@ export class HomeComponent implements OnInit {
   }
 
   public menutDate() {
-    this.foodDate = this.__appserverservice.foodMenuDate;
-    var dd = this.foodDate.getDate();
-    var day = this.days[this.foodDate.getDay()]
-    var mm = this.months[this.foodDate.getMonth()];
-    var yyyy = this.foodDate.getFullYear()+543;
-    this.foodDate = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
-    // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
-    console.log(this.foodDate);
+
   }
 
   // getGallery() {
@@ -156,5 +150,21 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  public getFoodMenu() {
+    this.__appserverservice.getFoodMenu().subscribe((res) => {
+      console.log(res,"---foodmenu---");
+      this.foodMenu = res.menu;
+      this.foodDate = res.date;
+      this.datepicker = new Date(this.foodDate);
+      console.log(typeof this.foodDate)
+      var dd = this.datepicker.getDate();
+      var day = this.days[this.datepicker.getDay()]
+      var mm = this.months[this.datepicker.getMonth()];
+      var yyyy = this.datepicker.getFullYear()+543;
+      this.datepicker = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+      // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
+      console.log(this.datepicker);
+    })
+  }
 
 }

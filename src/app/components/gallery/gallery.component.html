@@ -93,7 +93,8 @@
           <label class="control-label">อัพโหลดภาพ : </label>
           <input class="ml-3" #myInput input type="file" id="files" multiple (change)="getFileDetails($event)">
           <label class="control-label">ชื่ออัลบั้ม : </label>
-          <input class="ml-2" type="text" id="textAlbum" (change)="getNameAlbum($event)">
+          <input class="ml-2" type="text" id="textAlbum">
+          <!-- (change)="getNameAlbum($event)" -->
         </form>
         <div class="container-fluid">
           <div class="row" id="list"></div>
@@ -101,7 +102,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)='clearFileDetail()' data-dismiss="modal">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" (click)='uploadFiles()'>อัพโหลด</button>
+        <button type="button" class="btn btn-primary" (click)='albumUpload()'>อัพโหลด</button>
       </div>
     </div>
   </div>

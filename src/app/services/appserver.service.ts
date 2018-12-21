@@ -25,17 +25,10 @@ export class AppserverService {
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
-
-  public foodMenuDate = new Date('11-12-2018');
+  public foodMenuDate = new Date('12-25-2018');
+  public foodmenu = '../assets/json/foodMenu.json';
   public gallary = '../assets/json/gallery.json';
-  public foodmenu = [
-  { "name": "ยำสามกรอบ", "img": "../../../assets/images/food/ยำสามกรอบ.JPG" },
-  { "name": "ไข่ดาวลูกเขย", "img": "../../../assets/images/food/ไข่ดาวลูกเขย.JPG" },
-  { "name": "ต้มมะระกระดูกหมู", "img": "../../../assets/images/food/ต้มมะระหมูสับ.jpg" },
-  { "name": "คั่วกลิ้งหมู", "img": "../../../assets/images/food/คั่วกลิ้ง.jpg" },
-  { "name": "น้ำส้ม", "img": "../../../assets/images/food/น้ำส้ม.jpg" },
-  { "name": "ลูกจากลอยแก้ว", "img": "../../../assets/images/food/ลูกจากลอยแก้ว.jpg" }
-  ];
+
 
   constructor(private http: HttpClient) { }
 
@@ -102,6 +95,10 @@ export class AppserverService {
 
   getGallery(): Observable<any> {
     return this.http.get<any[]>(this.gallary, { headers: this.headers });
+  }
+
+  getFoodMenu(): Observable<any> {
+    return this.http.get<any[]>(this.foodmenu, { headers: this.headers });
   }
 
 }
