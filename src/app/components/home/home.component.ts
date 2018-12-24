@@ -97,8 +97,7 @@ export class HomeComponent implements OnInit {
 
   // ไปหน้าเนื้อหาข่าว
   public newscontent(titles, contents, categorys, images, startDates) {
-    // window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
-    // &image=${images}&startDate=${startDates}`)
+    window.open(`NEWSContent?title=${titles}`)
     this.newsTitle = titles;
     this.newsContent = contents;
     this.newsCategory = categorys;

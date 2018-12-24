@@ -22,6 +22,10 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 import { FoodManagementComponent } from './components/food-management/food-management.component';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -65,7 +69,11 @@ import { FoodManagementComponent } from './components/food-management/food-manag
     HttpClientModule,
     // RouterModule.forRoot(routes),
     SharedModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

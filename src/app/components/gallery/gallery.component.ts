@@ -34,6 +34,7 @@ export class GalleryComponent implements OnInit {
       "thumbnailsColumns": 1
     }
   ]
+  public needdle = 'อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด'
 
   constructor(private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
     this.url = this.__appserverservice.baseUrl;
@@ -43,6 +44,7 @@ export class GalleryComponent implements OnInit {
     App.initLoadJquery();
     this.GetGallery();
     this.galleryDetail();
+    this.get();
   }
 
   public GetGallery() {
@@ -176,4 +178,17 @@ export class GalleryComponent implements OnInit {
       });
     console.log(ret);
   }
+
+  public get() {
+    console.log("test!@")
+    this.__appserverservice.getGallery().subscribe((res) => {
+      for (var i = 0; i < res.length; i++) {
+        console.log(i)
+        if (res[i].name == this.needdle) {
+          console.log(res[i],"อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด????!");
+        }
+      }
+    })
+  }
+
 }
