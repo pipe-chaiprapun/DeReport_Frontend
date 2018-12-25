@@ -40,6 +40,7 @@ export class NewsContentComponent implements OnInit {
   public getContent() {
     this.__appserverservice.getNews().subscribe((res) => {
       for(let i=0;i<res.data.length;i++) {
+        console.log(i)
         if(res.data[i].title == this.newsTitle) {
           console.log(res.data[i]);
           this.newsContent = res.data[i].content;
