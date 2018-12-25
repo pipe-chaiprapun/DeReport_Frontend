@@ -1,0 +1,135 @@
+{
+    "status": "SUCCESS",
+    "data": [
+        {
+            "category": "สื่อการสอนเรื่องที่ 1",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/c8174af1-7494-47d3-93f0-c71094f1e74d/Image/b78bd01c7568e8e1318f59be9b1cf71a/database12cinteractive.png",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo01",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo02",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo03",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 2",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "assets/images/mis/3.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo01",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo02",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo03",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 3",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "http://www.daydayday.net/wp-content/uploads/2012/02/crmcrmcrm.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo01",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo02",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo03",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 4",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "https://ei.marketwatch.com/Multimedia/2016/11/09/Photos/ZH/MW-EZ870_gold_b_20161109130257_ZH.jpg?uuid=bea8a130-a6a6-11e6-a68e-001cc448aede",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo01",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo02",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo03",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 5",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "http://content.didimax.co.id/Upload/2018/11/21/zcvERBwM/20181121154142066.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo01",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo02",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo03",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/400/300/",
+                    "path" : "assets/videos/video01.mp4"
+                }
+            ]
+        }
+    ]
+}

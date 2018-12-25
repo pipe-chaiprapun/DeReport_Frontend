@@ -29,6 +29,7 @@ export class AppserverService {
   public foodMenuDate = new Date('12-25-2018');
   public foodmenu = '../assets/json/foodMenu.json';
   public gallary = '../assets/json/gallery.json';
+  public trainning = '../assets/json/video.json';
   // public foodmenu = [
   // { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
   // { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
@@ -107,6 +108,10 @@ export class AppserverService {
 
   getFoodMenu(): Observable<any> {
     return this.http.get<any[]>(this.foodmenu, { headers: this.headers });
+  }
+
+  getTrainning(): Observable<any> {
+    return this.http.get<any>(this.trainning, {headers : this.headers});
   }
   
 }
