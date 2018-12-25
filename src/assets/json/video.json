@@ -10,19 +10,25 @@
                 {
                     "name" : "vdo01",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/301/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
                     "name" : "vdo02",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/302/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
                     "name" : "vdo03",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/303/",
+                    "path" : "assets/videos/video01.mp4"
+                },
+                {
+                    "name" : "vdo04",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 4 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/403/300/",
                     "path" : "assets/videos/video01.mp4"
                 }
             ]
@@ -34,21 +40,15 @@
             "Instructor" : "อาจารย์ชาญศิลป์",
             "videos": [
                 {
-                    "name" : "vdo01",
+                    "name" : "vdo05",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/401/300/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo02",
+                    "name" : "vdo06",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
-                    "path" : "assets/videos/video01.mp4"
-                },
-                {
-                    "name" : "vdo03",
-                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/402/300/",
                     "path" : "assets/videos/video01.mp4"
                 }
             ]
@@ -60,21 +60,21 @@
             "Instructor" : "อาจารย์ชาญศิลป์",
             "videos": [
                 {
-                    "name" : "vdo01",
+                    "name" : "vdo07",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/305/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo02",
+                    "name" : "vdo08",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/306/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo03",
+                    "name" : "vdo09",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/307/",
                     "path" : "assets/videos/video01.mp4"
                 }
             ]
@@ -86,21 +86,21 @@
             "Instructor" : "อาจารย์ชาญศิลป์",
             "videos": [
                 {
-                    "name" : "vdo01",
+                    "name" : "vdo10",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/310/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo02",
+                    "name" : "vdo11",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/311/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo03",
+                    "name" : "vdo12",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/312/",
                     "path" : "assets/videos/video01.mp4"
                 }
             ]
@@ -112,21 +112,21 @@
             "Instructor" : "อาจารย์ชาญศิลป์",
             "videos": [
                 {
-                    "name" : "vdo01",
+                    "name" : "vdo13",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/420/300/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo02",
+                    "name" : "vdo14",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/330/",
                     "path" : "assets/videos/video01.mp4"
                 },
                 {
-                    "name" : "vdo03",
+                    "name" : "vdo15",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
-                    "poster" : "http://lorempixel.com/400/300/",
+                    "poster" : "http://lorempixel.com/400/311/",
                     "path" : "assets/videos/video01.mp4"
                 }
             ]
