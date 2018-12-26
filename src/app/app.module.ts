@@ -27,6 +27,7 @@ import {VgControlsModule} from 'videogular2/controls';
 import {VgOverlayPlayModule} from 'videogular2/overlay-play';
 import {VgBufferingModule} from 'videogular2/buffering';
 import { TrainningHomeComponent } from './components/trainning-home/trainning-home.component';
+import { TrainningContentComponent } from './components/trainning-content/trainning-content.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -62,7 +63,8 @@ import { TrainningHomeComponent } from './components/trainning-home/trainning-ho
     GalleryComponent,
     NewsContentComponent,
     FoodManagementComponent,
-    TrainningHomeComponent
+    TrainningHomeComponent,
+    TrainningContentComponent
   ],
   imports: [
     AppRouting,

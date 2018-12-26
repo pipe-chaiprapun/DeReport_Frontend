@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppserverService } from '../../services/appserver.service';
 
+
 @Component({
   selector: 'app-news-content',
   templateUrl: './news-content.component.html',

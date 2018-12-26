@@ -1,0 +1,78 @@
+<div class="overlay-bg bg">
+  <div class="container-fluid">
+
+
+    <div class="row ">
+      <div class="col-8">
+        <img id="newslogo" class="img-responsive float-left" src="../../../assets/images/logo/logogal.png" alt="">
+        <h1 class="ml-2 mt-5 text-white float-left" style=" font-family: 'Mali', cursive;font-size: 2.2rem;">สื่อการสอน
+          :
+          {{category}}</h1>
+      </div>
+      <div class="col-4">
+        <div class="mt-5" style="margin-right:90px;">
+          <i class="float-right fa fa-forward ml-4" id="forward" (click)= "Forward()"></i>
+          <i class="float-right fa fa-backward" id="backward" (click)= "Backward()"></i>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <hr>
+
+    <div class="row justify-content-center">
+      <div class="col-8" style="padding-left:1rem">
+        <div style="width:100%">
+          <vg-player>
+            <vg-overlay-play></vg-overlay-play>
+            <vg-buffering></vg-buffering>
+
+            <vg-scrub-bar>
+              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+
+            <vg-controls>
+              <vg-play-pause></vg-play-pause>
+              <vg-playback-button></vg-playback-button>
+
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+              <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+
+              <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+              <vg-track-selector></vg-track-selector>
+              <vg-mute></vg-mute>
+              <vg-volume></vg-volume>
+
+              <vg-fullscreen></vg-fullscreen>
+            </vg-controls>
+
+            <video [vgMedia]="media" #media id="singleVideo" preload="auto" poster="{{clipPoster}}" crossorigin>
+              <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+            </video>
+          </vg-player>
+        </div>
+
+      </div>
+
+      <div class="col-4 text-white">
+        <div class="card text-white bg-success mb-3" style="max-width: 530px">
+          <div class="card-header text-center" id="clipName" style="font-size:1.3rem;background-color: darkgreen">คลิป :
+            {{clipName}}</div>
+          <div class="card-body" style="font-size:1rem;">
+            <div style="overflow-x: visible" id="clipDatail">รายละเอียด : {{clipDetail}}</div>
+          </div>
+          <div class="card-footer">ประเภท : {{category}}</div>
+          <div class="card-footer">ผู้สอน : {{Instructor}}</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
