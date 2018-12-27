@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+
+
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-youtube-play" style="color: rgba(131, 4, 4, 1);"></i> หน้าจัดการสื่อการสอน</h1>
+      <p>หน้าจัดการสื่อการสอน</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-plus-square"> เพิ่มสื่อการสอน</i></button>
+    </ul>
+  </div>
+
+  <div class="row justify-content-md-center mt-4" *ngFor="let data of dataTrainning">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                  <div class="media">
+                      <img class="mr-3 border border-dark" src="{{data.poster}}" alt="Generic placeholder image" style="width:240px;height:200px">
+                      <div class="media-body">
+                          <h3 class="tile-title">{{data.category}}</h3>
+                          <p>ผู้สอน : {{data.Instructor}}</p>
+                          <p>รายละเอียด : {{data.detail}}</p>
+                      </div>
+                    </div>
+                    <div style="position: absolute;bottom: 30px;right: 0;">
+                        <button type="button" class="btn btn-outline-success"><i class="fa fa-plus-square"> เพิ่มวีดีโอ</i></button>
+                        <button type="button" class="btn btn-outline-dark ml-2"><i class="fa fa-edit"> แก้ไขข้อมูลสื่อการสอนนี้</i></button>
+                        <button type="button" class="btn btn-outline-danger ml-2"><i class="fa fa-trash-o"> ลบสื่อการสอนนี้</i></button>
+                    </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tile-body">
+          <div class="container-fluid" style="padding-bottom: 3%;" id="main">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let vdo of data.videos">
+              <div class="card">
+                <div class="containerIMG" id="playerICON">
+                    <img class="card-img-top" src="{{vdo.poster}}" alt="" style="height:180px;">
+                    <i class="centered fa fa-youtube-play"></i>
+                </div>
+                <div class="card-footer text-center">
+                  <h5>{{vdo.name}}</h5>
+                  <hr>
+                  <a href="#">รายละเอียด</a>
+                  <a class="ml-5" href="#">ลบวีดีโอนี้</a>
+                </div>
+              </div>                
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
