@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
-// import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { GalleryService } from '../../services/gallery.service';
 import 'hammerjs';
 declare const App;
@@ -107,13 +106,10 @@ export class GalleryComponent implements OnInit {
       reader.onloadend = (function (theFile) {
         return function (e) {
           menuDetail['img'] = e.target.result;
-          // menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
           self.galleryFiles.push(menuDetail);
           this.detail = document.createElement('div');
           this.detail.className = 'col-md-4 col-xs-6';
-          // tslint:disable-next-line:max-line-length
           this.detail.innerHTML = ['<div class="card ml-4 mt-3" style="width: 18rem;"><img style="height: 220px;" class="card-img-top" src="', e.target.result,
-            // tslint:disable-next-line:max-line-length
             '" title="', escape(theFile.name), '"/><div class="card-body" style="text-align: center;"><button type="button" id="PicDelete" class="btn btn-outline-danger">ลบรูป</button></div></div>'].join('');
           document.getElementById('list').insertBefore(this.detail, null);
         };
@@ -122,7 +118,6 @@ export class GalleryComponent implements OnInit {
 
     }
     console.log(this.galleryFiles);
-    // this.albumUpload();
   }
 
   public clearFileDetail() {
@@ -133,15 +128,6 @@ export class GalleryComponent implements OnInit {
     uploadIMG.value = null;
     console.log(this.detail);
   }
-
-  // public getNameAlbum(evt) {
-  //   let textquery = $('#textAlbum').val();
-  //   console.log(textquery, "--textquery--")
-  //   let albumName = {}
-  //   albumName['name'] = evt.target.value;
-  //   this.galleryFiles.push(albumName);
-  //   this.albumUpload();
-  // }
 
   public getimg(val) {
     console.log(val);

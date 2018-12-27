@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
 import 'hammerjs';
-// import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
   public foodMenu;
   public foodDate;
   public days = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
-  // tslint:disable-next-line:max-line-length
   public months = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
   public today = new Date();
   public album;
@@ -52,7 +50,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.cardNEWS();
-    this.menutDate();
     this.getGallery();
     this.getHeader();
     this.getFoodMenu();
@@ -98,16 +95,6 @@ export class HomeComponent implements OnInit {
     document.getElementById('myNav').style.width = '0%';
   }
 
-  public menutDate() {
-  }
-
-  // getGallery() {
-  //   fetch('../assets/json/gallery.json').then((res) => res.json())
-  //   .then((data) =>{
-  //     this.album = data;
-  //   })
-  // }
-
   public getHeader() {
     fetch('../../../assets/json/header.json').then((res) => res.json())
     .then((data) => {
@@ -140,7 +127,6 @@ export class HomeComponent implements OnInit {
       var mm = this.months[this.datepicker.getMonth()];
       var yyyy = this.datepicker.getFullYear()+543;
       this.datepicker = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
-      // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
       console.log(this.datepicker);
     })
   }
