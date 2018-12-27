@@ -13,6 +13,7 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 import { FoodManagementComponent } from './components/food-management/food-management.component';
+import { TrainningContentComponent } from './components/trainning-content/trainning-content.component';
 
 const RouteList: Routes = [
     { path: '', redirectTo: AppUrl.Home, pathMatch: 'full' },
@@ -29,7 +30,8 @@ const RouteList: Routes = [
     { path: AppUrl.Gallery, component: GalleryComponent },
     { path: AppUrl.Home, component: HomeComponent},
     { path: AppUrl.NEWSContent, component: NewsContentComponent},
-    { path: AppUrl.FoodManagement, component: FoodManagementComponent}
+    { path: AppUrl.FoodManagement, component: FoodManagementComponent},
+    { path: AppUrl.TrainningContent, component: TrainningContentComponent}
 ];
 
 export const AppRouting = RouterModule.forRoot(RouteList);

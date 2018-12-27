@@ -12,7 +12,7 @@
       <div class="row">
         <ng-container *ngFor="let train of category.videos">
           <div class="col-lg-3 col-md-4">
-            <div class="card mt-2">
+            <div class="card mt-2" (click)="openContent(train.name)" style="cursor:pointer">
               <div class="containerIMG">
                   <img class="card-img-top" src='{{train.poster}}' alt="Card image cap" style="height:225px">
                   <i class="centered fa fa-youtube-play" style="font-size: 4rem;color: rgba(255,255,255,0.5);"></i>

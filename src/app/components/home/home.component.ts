@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.sendNEWS();
     this.cardNEWS();
     this.menutDate();
     this.getGallery();
@@ -78,20 +77,6 @@ export class HomeComponent implements OnInit {
       }));
       console.log(this.newscategoryData);
 
-    });
-  }
-
-  public sendNEWS() {
-    // this.route.data.subscribe(v => console.log(v));
-    this.route.queryParams.subscribe(params => {
-      const id = params['title'];
-      const content = params['content'];
-      const category = params['category'];
-      const image = params['image'];
-      console.log(id); // Print the parameter to the console.
-      console.log(content);
-      console.log(category);
-      console.log(image);
     });
   }
 
