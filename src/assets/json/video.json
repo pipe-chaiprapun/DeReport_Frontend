@@ -11,25 +11,25 @@
                     "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 1",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญรายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/702/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 2",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/703/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "http://static.videogular.com/assets/videos/big_buck_bunny_720p_h264.mov"
                 },
                 {
                     "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 3",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/704/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "http://static.videogular.com/assets/videos/videogular.mp4"
                 },
                 {
                     "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 4",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 4 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/705/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 }
             ]
         },
@@ -43,13 +43,13 @@
                     "name" : "vdo05",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/706/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo06",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/707/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 }
             ]
         },
@@ -63,19 +63,19 @@
                     "name" : "vdo07",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/708/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo08",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/709/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo09",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/710/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 }
             ]
         },
@@ -89,19 +89,19 @@
                     "name" : "vdo10",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/712/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo11",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/722/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo12",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/732/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 }
             ]
         },
@@ -115,19 +115,19 @@
                     "name" : "vdo13",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/742/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo14",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/752/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 },
                 {
                     "name" : "vdo15",
                     "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
                     "poster" : "http://lorempixel.com/950/762/",
-                    "path" : "assets/videos/video01.mp4"
+                    "path" : "assets/videos/vdo01.mp4"
                 }
             ]
         }
