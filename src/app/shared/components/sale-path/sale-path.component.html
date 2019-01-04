@@ -15,10 +15,10 @@
         <label class="control-label">ข้อมูล</label>
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3">
-            <input class="form-control" id="startDtSalePath" #startDtSalePath type="text" placeholder="{{startMonth}}">
+            <input class="form-control" id="startDtSalePath" #startDtSalePath type="text" placeholder="{{startMonth}}" autocomplete="off">
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3">
-            <input class="form-control" id="endDtSalePath" #endDtSalePath type="text" placeholder="{{endMonth}}">
+            <input class="form-control" id="endDtSalePath" #endDtSalePath type="text" placeholder="{{endMonth}}" autocomplete="off">
           </div>
           <div class="col-lg-2 col-md-2 col-sm-3">
             <button class="btn btn-primary" id="submitDate" type="button" (click)="getPeriod(startDtSalePath, endDtSalePath)"><i
@@ -42,11 +42,11 @@
           <label class="control-label">สาขา</label>
           <div class="form-group">
               <div class="input-group">
-                <div class="input-group-prepend"><button id="previous" class="input-group-text" (click)="previous(txtBrh)" data-type="minus"
+                <div class="input-group-prepend"><button id="previous" class="input-group-text" (click)="previous()" data-type="minus"
                   data-field="quant[2]">ก่อนหน้า</button></div>
                 <input class="form-control" #txtBrh id="txtBrh" type="text" value="{{currentBrhTxt}}" onfocus="this.select();"
                 (change)="selectPath(txtBrh)">
-                <div class="input-group-append"><button id="next" class="input-group-text" (click)="next(txtBrh)" data-type="plus"
+                <div class="input-group-append"><button id="next" class="input-group-text" (click)="next()" data-type="plus"
                   data-field="quant[2]">ถัดไป</button></div>
               </div>
             </div>

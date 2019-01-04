@@ -13,17 +13,15 @@
   <h5 class="tile-title" id="first-title">ยอดขาย และยอดเก็บเงิน สาขา
     <div class="input-group">
       <span class="input-group-btn">
-        <!-- <button type="button" id="decrease" disabled class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]"
-          (click)="decrease(branchId)"> -->
-          <button type="button" id="decrease" disabled class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]">
+        <button type="button" id="decrease" disabled class="btn btn-danger btn-number" data-type="minus" data-field="quant[2]"
+          (click)="decrease()">
           <i class="fa fa-arrow-circle-left" style="margin-top:-15px;"></i>
         </button>
       </span>
       <input type="text" id="branchId" #branchId class="form-control input-number" onfocus="this.select();" (change)="selectBranch(branchId)">
       <span class="input-group-btn">
-        <!-- <button type="button" id="increase" disabled class="btn btn-success btn-number" data-type="plus" data-field="quant[2]"
-          (click)="increase(branchId)"> -->
-          <button type="button" id="increase" disabled class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
+        <button type="button" id="increase" disabled class="btn btn-success btn-number" data-type="plus" data-field="quant[2]"
+          (click)="increase()">
           <i class="fa fa-arrow-circle-right" style="margin-top:-15px;"></i>
         </button>
       </span>

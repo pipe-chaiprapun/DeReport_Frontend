@@ -178,7 +178,6 @@ export class GalleryComponent implements OnInit {
       });
     console.log(ret);
   }
-
   public get() {
     console.log("test!@")
     this.__appserverservice.getGallery().subscribe((res) => {
@@ -190,5 +189,5 @@ export class GalleryComponent implements OnInit {
       }
     })
   }
-
+  public uploadFiles() {}
 }

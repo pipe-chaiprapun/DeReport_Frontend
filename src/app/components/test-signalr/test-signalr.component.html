@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa fa-users"></i> {{name}}</h1>
+      <p>Signalr Testing</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <h3 class="tile-title">Chat</h3>
+        <div class="messanger">
+          <div class="messages">
+            <div *ngFor="let message of messages" class="message" [ngClass]="{'me': message.me == true}"><img src="{{message.image}}">
+              <p class="info">{{message.message}}</p>
+            </div>
+            <!-- <div class="message"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/tonypeterson/48.jpg">
+              <p class="info">Plachado: Hello there!<br>Good Morning</p>
+            </div>
+            <div class="message me"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg">
+              <p class="info">PIPE: Hi<br>Good Morning</p>
+            </div>
+            <div class="message"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/tonypeterson/48.jpg">
+              <p class="info">Plachado: How are you?</p>
+            </div>
+            <div class="message me"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg">
+              <p class="info">PIPE: I'm Fine.</p>
+            </div> -->
+          </div>
+          <div class="sender">
+            <input id="txtChat" type="text" placeholder="Send Message" disabled #txtChat (change)="send(txtChat)">
+            <button disabled id="btnChat" class="btn btn-primary" type="button" (click)="send(txtChat)"><i class="fa fa-lg fa-fw fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

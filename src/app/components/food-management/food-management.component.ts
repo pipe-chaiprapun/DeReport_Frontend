@@ -15,6 +15,7 @@ export class FoodManagementComponent implements OnInit {
   public getdatefood;
   public fileToUpload: File = null;
   public menuFiles = [];
+  public myFilesName = [];
   public sMsg = '';
   public detail: any;
   public datepicker;

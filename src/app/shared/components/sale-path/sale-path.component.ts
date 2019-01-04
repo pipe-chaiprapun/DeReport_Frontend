@@ -4,7 +4,6 @@ import { AppserverService } from '../../../services/appserver.service';
 import constant from '../../../services/color2.js';
 import { Library } from '../../../services/library';
 declare const $;
-declare const App;
 @Component({
   selector: 'app-sale-path',
   templateUrl: './sale-path.component.html',
@@ -34,7 +33,6 @@ export class SalePathComponent implements OnInit {
 
   ngOnInit() {
     this.initialLoadChart();
-    App.initLoadJquery();
   }
   private initialLoadChart() {
     this.library = new Library();
@@ -117,7 +115,7 @@ export class SalePathComponent implements OnInit {
     this.legend = [];
     this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
   }
-  next(data) {
+  next() {
     this.currentBrh++;
     this.currentBrhTxt = this.library.setPrefixZero(this.currentBrh);
     this.headers = [];
@@ -127,7 +125,7 @@ export class SalePathComponent implements OnInit {
     this.legend = [];
     this.getData(this.firstDay, this.lastDay, this.sortOption, this.filter);
   }
-  previous(data) {
+  previous() {
     this.currentBrh--;
     if (this.currentBrh < 1) {
       this.currentBrh = 1;

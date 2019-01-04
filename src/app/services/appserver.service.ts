@@ -28,6 +28,10 @@ export class AppserverService {
   private addThumbnail = `${this.baseUrl}/api/new/album`;
   public foodMenuDate = new Date('12-25-2018');
   public foodmenu = '../assets/json/foodMenu.json';
+  private tarAmtUrl = `${this.baseUrl}/api/information/getTarAmt`;
+  private payAmtUrl = `${this.baseUrl}/api/information/getPayAmt`;
+
+  public foodMenuDate = new Date('11-12-2018');
   public gallary = '../assets/json/gallery.json';
   public trainning = '../assets/json/video.json';
   // public foodmenu = [
@@ -64,6 +68,14 @@ export class AppserverService {
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;
     return this.http.get<any[]>(url, { headers: this.headers });
+  }
+
+  getTarAmt(year, sort = '%', branch = '%', filter = []): Observable<any> {
+    return this.http.get<any>(`${this.tarAmtUrl}?year=${year}&sort=${sort}&filter=${filter}&pBranch=${branch}`, { headers: this.headers });
+  }
+
+  getPayAmt(startDate, endDate, sort = '%', filter = []): Observable<any> {
+    return this.http.get<any>(`${this.payAmtUrl}?startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`);
   }
 
   getChart(brh_id: string): Observable<any> {

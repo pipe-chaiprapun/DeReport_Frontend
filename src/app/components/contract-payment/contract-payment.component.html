@@ -1,0 +1,77 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="material-icons">
+          file_copy
+        </i>เลขที่สัญญา {{con_no}}</h1>
+    </div>
+    <div>
+    </div>
+    <!-- <img width="35" height="35" src="../../../assets/images/logo/logo.png"
+            alt="User Image"> -->
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="tile">
+        <div class="tile-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+              <label class="control-label col-5">ชื่อ</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{cust_name}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">วันที่สัญญา</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{con_date}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">จำนวนเงิน</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{tot_amt}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">จำนวนงวด</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{period}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">งวดละ</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{pay_amt}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">ส่วนลด</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{discount}}>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-5">คงเหลือ</label>
+              <div class="col-7">
+                <input class="form-control" type="text" value={{balance}}>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="tile-footer">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+              <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>ชำระ</button>&nbsp;&nbsp;&nbsp;<a
+                class="btn btn-secondary" (click)="back()"><i class="fa fa-fw fa-lg fa-times-circle"></i>กลับ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="tile">
+            <object type="text/html" data="https://www.google.co.th"style="overflow:auto;">
+            </object>
+        </div> -->
+    </div>
+  </div>
+</main>

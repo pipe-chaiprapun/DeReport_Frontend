@@ -4,7 +4,6 @@ import { AppserverService } from '../../../services/appserver.service';
 import constant from '../../../services/color2.js';
 import { Library } from '../../../services/library';
 declare const $;
-declare const App;
 @Component({
   selector: 'app-sale',
   templateUrl: './sale.component.html',
@@ -30,7 +29,6 @@ export class SaleComponent implements OnInit {
 
   ngOnInit() {
     this.initialLoadChart();
-    App.initLoadJquery();
   }
   private initialLoadChart() {
     this.library = new Library();

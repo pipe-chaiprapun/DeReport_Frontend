@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<main class="app-content">
+  <div class="app-title">
+    <div class="row" style="align-items: center;">
+      <div class="col-lg-5 col-md-5 col-sm-12">
+        <div class="bs-component" style="margin-bottom: 0px;">
+          <label class="control-label">เรียงตาม</label>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary" *ngFor="let data of headers" (click)="sort(data)">
+              <input type="radio" name="options" autocomplete="off">{{data}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12">
+        <div class="row">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label class="control-label">ข้อมูลปี</label>
+            <input class="form-control" id="year" #year type="text" (keyup.enter)="inputYear(year)" onClick="this.select();">
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label class="control-label">สาขา</label>
+            <input class="form-control" id="branch" #branch type="text" (keyup.enter)="inputBranch(branch)">
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <div class="row"><label class="control-label">.</label></div>
+            <div class="row">
+            <button class="btn btn-primary" id="submitDate" type="button" (click)="getPeriod(year, branch)"><i
+                class="fa fa-fw fa-lg fa-check-circle"></i>ตกลง</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="align-items: center;">
+      <div class="col-lg-6 col-md-12 col-sm-12">
+        <label class="control-label">สาขา/สายบริการ</label>
+        <div class="bs-component" style="margin-bottom: 0px;">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label *ngFor="let branch of masterColumn" class="btn btn-primary active" id="selectBranch" #selectBranch
+              (click)="onChange($event)">
+              <input type="checkbox" autocomplete="off" checked>{{branch}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center justify-content-lg-center">
+    <div class="col-md-12 col-lg-12">
+      <div class="tile">
+        <h3 class="tile-title">{{title}}</h3>
+        <canvas class="embed-responsive-item" id="saleBrhChart"></canvas>
+      </div>
+    </div>
+  </div>
+</main>

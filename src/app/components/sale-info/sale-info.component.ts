@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare const App;
 @Component({
   selector: 'app-chart',
   templateUrl: './sale-info.component.html',
@@ -6,5 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaleInfoComponent implements OnInit {
   constructor() { }
-  ngOnInit() {}
+  ngOnInit() {
+    App.initLoadJquery();
+  }
 }
