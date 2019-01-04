@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://localhost:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://10.192.192.10:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
@@ -20,24 +20,28 @@ export class AppserverService {
   private getPath = `${this.baseUrl}/api/information/getPathInfo`;
   private getPathSaleInfoUrl = `${this.baseUrl}/api/information/getPathInfo2`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
-  private getnews = `${this.baseUrl}/api/news/getNews`;
+  // private getnews = `${this.baseUrl}/api/news/getNews`;
+  private getnews = '../assets/json/news.json';
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
+  public foodMenuDate = new Date('12-25-2018');
+  public foodmenu = '../assets/json/foodMenu.json';
   private tarAmtUrl = `${this.baseUrl}/api/information/getTarAmt`;
   private payAmtUrl = `${this.baseUrl}/api/information/getPayAmt`;
 
   public foodMenuDate = new Date('11-12-2018');
   public gallary = '../assets/json/gallery.json';
-  public foodmenu = [
-  { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
-  { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
-  { 'name': 'ต้มมะระกระดูกหมู', 'img': '../../../assets/images/food/ต้มมะระหมูสับ.jpg' },
-  { 'name': 'คั่วกลิ้งหมู', 'img': '../../../assets/images/food/คั่วกลิ้ง.jpg' },
-  { 'name': 'น้ำส้ม', 'img': '../../../assets/images/food/น้ำส้ม.jpg' },
-  { 'name': 'ลูกจากลอยแก้ว', 'img': '../../../assets/images/food/ลูกจากลอยแก้ว.jpg' }
-  ];
+  public trainning = '../assets/json/video.json';
+  // public foodmenu = [
+  // { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
+  // { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
+  // { 'name': 'ต้มมะระกระดูกหมู', 'img': '../../../assets/images/food/ต้มมะระหมูสับ.jpg' },
+  // { 'name': 'คั่วกลิ้งหมู', 'img': '../../../assets/images/food/คั่วกลิ้ง.jpg' },
+  // { 'name': 'น้ำส้ม', 'img': '../../../assets/images/food/น้ำส้ม.jpg' },
+  // { 'name': 'ลูกจากลอยแก้ว', 'img': '../../../assets/images/food/ลูกจากลอยแก้ว.jpg' }
+  // ];
 
   constructor(private http: HttpClient) { }
 
@@ -114,4 +118,12 @@ export class AppserverService {
     return this.http.get<any[]>(this.gallary, { headers: this.headers });
   }
 
+  getFoodMenu(): Observable<any> {
+    return this.http.get<any[]>(this.foodmenu, { headers: this.headers });
+  }
+
+  getTrainning(): Observable<any> {
+    return this.http.get<any>(this.trainning, {headers : this.headers});
+  }
+  
 }

@@ -1,47 +1,48 @@
-<div class="bg">
-<div class="main">
-  <!-- Page Content -->
-  <div class="container" style="background-color:white;">
+<div class="container-fluid bg">
+    <div class="main mb-5">
+      <!-- Page Content -->
+      <div class="container" style="background-color:white;">
 
-    <div class="row">
+        <div class="row">
 
-      <!-- Post Content Column -->
-      <div class="col-lg-12">
+          <!-- Post Content Column -->
+          <div class="col-lg-12">
 
-        <!-- Title -->
-        <div>
-          <div class="row">
-            <img id="newslogo" class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="">
-            <h1 class="mt-4" style=" font-family: 'Mali', cursive;font-size: 2.5rem;">{{newsTitle}}</h1>
+            <!-- Title -->
+            <div>
+              <div class="row">
+                <img id="newslogo" class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="">
+                <h1 class="mt-4" style=" font-family: 'Mali', cursive;font-size: 1.5rem;">{{newsTitle}}</h1>
+              </div>
+            </div>
+
+
+            <hr>
+
+            <!-- Preview Image -->
+            <img class="img-fluid mx-auto d-block" src='{{newsImage}}' alt="">
+
+            <hr>
+
+            <!-- Post Content -->
+            <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>
+
+
+            <!-- Date/Time -->
+            <div style="font-family: 'Mali', cursive;">ประเภท: &nbsp;&nbsp;{{newsCategory}}
+              <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div>
+            </div>
+
+
+
+
+
           </div>
+
         </div>
 
 
-        <hr>
-
-        <!-- Preview Image -->
-        <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt="">
-
-        <hr>
-
-        <!-- Post Content -->
-        <div style="font-size:1rem;padding: 1rem;font-family: 'Athiti', sans-serif;font-size: 1.5rem">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{newsContent}}</div>
-
-        
-        <!-- Date/Time -->
-        <div style="font-family: 'Mali', cursive;">ประเภท: &nbsp;&nbsp;{{newsCategory}}
-        <div style="float:right;font-family: 'Mali', cursive;">{{newsStartdate | date: 'dd/MM/yyyy'}}</div></div>
-
-        
-
-
-
       </div>
-
+      <!-- /.container -->
     </div>
-  
-
-  </div>
-  <!-- /.container -->
-</div>  
 </div>

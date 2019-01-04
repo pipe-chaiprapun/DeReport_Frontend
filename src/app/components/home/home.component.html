@@ -1,3 +1,9 @@
+<!-- <vg-player>
+  <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls poster="http://lorempixel.com/800/300">
+      <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+  </video>
+</vg-player> -->
+
 <!-- Content -->
 <div class="main">
 
@@ -35,13 +41,10 @@
       </div>
     </div>
   </div>
-
-
   <!-- End Slide Show -->
 
   <!-- NEWS -->
   <div>
-
     <div style="padding-top:3%" *ngFor="let category of newscategoryData">
       <div class="container-fluid  bgnews">
         <div class="container-fluid">
@@ -59,7 +62,8 @@
             <ng-container *ngFor="let item of category.values">
               <div class="col-md-4 col-sm-12 col-12" *ngIf="today < item.endDate" style="padding-top: 1%">
                 <div class="card" id="newscard" data-toggle="modal" data-target="#exampleModalLong" (click)='newscontent(item.title,item.content,item.category,item.image,item.startDate)'>
-                  <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap">
+                  <!-- <img class="card-img-top" src='{{url}}/img/{{item.image}}' alt="Card image cap"> -->
+                  <img class="card-img-top" src='{{item.image}}' alt="Card image cap">
                   <div class="card-body" style="margin-top: 0.5rem;">
                     <P style="text-decoration: underline;margin-left: 0.8em;font-family: 'Mali', cursive;font-size: 1.3rem;font-weight: bold;">{{item.title}}</P>
                     <p id="newscardcontent" class="card-text indent">&nbsp;&nbsp;&nbsp;&nbsp;{{item.content}}</p>
@@ -72,11 +76,8 @@
               </div>
               <!-- จบประกาศข่าว   -->
             </ng-container>
-
           </div>
         </div>
-
-
       </div>
       <!-- EndNEWS  -->
     </div>
@@ -97,12 +98,11 @@
             <div class="col-lg-3 col-md-4" *ngFor='let nameAlbums of album'>
               <div id="gallerycard" class="card" style="width:100%">
                 <div class="card-header" style="display:inline-flex;">
-                  <ngx-gallery [options]="nameAlbums.Option" [images]="nameAlbums.Images"></ngx-gallery>
+                  <ngx-gallery [options]="optionGallery" [images]="nameAlbums.Images"></ngx-gallery>
                 </div>
                 <p class="card-text" id="namealbum">{{nameAlbums.name}}</p>
               </div>
             </div>
-
 
           </div>
         </div>
@@ -111,52 +111,54 @@
   </div>
   <!-- EndGallary -->
 
-  <!-- Monday Menu -->
-  <div style="padding-top:3%">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="container-fluid  bgmondaymenu">
-            <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
-              <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
-              <div class="ml-2" id="bgmondaymenutextlogo">
-                เมนูอาหาร <div class="float-right">{{foodDate}}</div>
-              </div>
+  <app-trainning-home></app-trainning-home>
 
+
+<!-- Monday Menu -->
+<div style="padding-top:3%">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container-fluid  bgmondaymenu">
+          <div class="row" style="display:-webkit-inline-box;display:-webkit-inline-box;margin-left: 3%;margin-top: 1%;">
+            <img class="img-responsive" src="../../../assets/images/logo/logogal.png" alt="" id="newslogo">
+            <div class="ml-2" id="bgmondaymenutextlogo">
+              เมนูอาหาร <div class="float-right">{{datepicker}}</div>
             </div>
 
-            <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="row">
-                      <div class="col-lg-4 col-md-6 mt-2" *ngFor='let food of foodMenu;let i = index'>
-                        <div class="containerMonday">
-                          <img id="mondaypic" class="border border-white img-fluid" src="{{food.img}}" alt="Card image cap">
-                          <div class="text-block">
-                            <h4>{{i+1}}</h4>
-                          </div>
+          </div>
+
+          <div style="padding-top:1%;padding-bottom: 2%;text-align: center;">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-6 mt-2" *ngFor='let food of foodMenu;let i = index'>
+                      <div class="containerMonday">
+                        <img id="mondaypic" class="border border-white img-fluid" src="{{food.img}}" alt="Card image cap">
+                        <div class="text-block">
+                          <h4>{{i+1}}</h4>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="col-lg-12 col-md-12 mt-0">
-                      <table class="table table-bordered text-white" style="font-size:1.5rem">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">ชื่ออาหาร</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor='let food of foodMenu;let i = index'>
-                            <th scope="row">{{i+1}}</th>
-                            <td>{{food.name}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                </div>
+                <div class="col-6">
+                  <div class="col-lg-12 col-md-12 mt-0">
+                    <table class="table table-bordered text-white" style="font-size:1.5rem">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">ชื่ออาหาร</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor='let food of foodMenu;let i = index'>
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{food.name}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -166,7 +168,8 @@
       </div>
     </div>
   </div>
-  <!-- EndMonday Menu -->
+</div>
+<!-- EndMonday Menu -->
 </div>
 <!-- End Content -->
 
@@ -189,7 +192,8 @@
             <!-- Post Content Column -->
             <div class="col-lg-12">
               <!-- Preview Image -->
-              <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt="">
+              <img class="img-fluid mx-auto d-block" src='{{newsImage}}' alt="">
+              <!-- <img class="img-fluid mx-auto d-block" src='{{url}}/img/{{newsImage}}' alt=""> -->
               <hr>
               <!-- Post Content -->
               <h3 style="margin-left:2rem;">{{newsTitle}}</h3>

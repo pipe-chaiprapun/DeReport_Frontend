@@ -21,6 +21,13 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 import { FoodManagementComponent } from './components/food-management/food-management.component';
+import {VgCoreModule} from 'videogular2/core';
+import {VgControlsModule} from 'videogular2/controls';
+import {VgOverlayPlayModule} from 'videogular2/overlay-play';
+import {VgBufferingModule} from 'videogular2/buffering';
+import { TrainningHomeComponent } from './components/trainning-home/trainning-home.component';
+import { TrainningContentComponent } from './components/trainning-content/trainning-content.component';
+import { TrainningManagementComponent } from './components/trainning-management/trainning-management.component';
 import { TestSignalrComponent } from './components/test-signalr/test-signalr.component';
 import { MobileAppComponent } from './mobile-app/mobile-app.component';
 import { MobileComponent } from './components/mobile/mobile.component';
@@ -28,6 +35,7 @@ import { ContractComponent } from './components/contract/contract.component';
 import { ContractPaymentComponent } from './components/contract-payment/contract-payment.component';
 import { TargetReportComponent } from './components/target-report/target-report.component';
 import { PayReportComponent } from './components/pay-report/pay-report.component';
+
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -62,6 +70,9 @@ import { PayReportComponent } from './components/pay-report/pay-report.component
     GalleryComponent,
     NewsContentComponent,
     FoodManagementComponent,
+    TrainningHomeComponent,
+    TrainningContentComponent,
+    TrainningManagementComponent,
     TestSignalrComponent,
     MobileAppComponent,
     MobileComponent,
@@ -77,7 +88,11 @@ import { PayReportComponent } from './components/pay-report/pay-report.component
     HttpClientModule,
     // RouterModule.forRoot(routes),
     SharedModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

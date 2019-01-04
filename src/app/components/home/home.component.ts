@@ -27,7 +27,23 @@ export class HomeComponent implements OnInit {
   public today = new Date();
   public album;
   public header;
-
+  public datepicker;
+  public optionGallery = [
+    {
+        "image": false,
+        "thumbnailsRemainingCount": true,
+        "height": "212px",
+        "thumbnailsColumns": 1,
+        "previewfullWidth": true,
+        "width": "100%"
+    },
+    {
+        "breakpoint": 500,
+        "width": "50%",
+        "thumbnailsColumns": 1
+    }
+]
+ 
   constructor(private __appserverservice: AppserverService, private route: ActivatedRoute) {
     this.url = this.__appserverservice.baseUrl;
   }
@@ -35,12 +51,11 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.foodMenu = this.__appserverservice.foodmenu;
-    this.sendNEWS();
     this.cardNEWS();
     this.menutDate();
     this.getGallery();
     this.getHeader();
+    this.getFoodMenu();
   }
 
 
@@ -65,24 +80,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public sendNEWS() {
-    // this.route.data.subscribe(v => console.log(v));
-    this.route.queryParams.subscribe(params => {
-      const id = params['title'];
-      const content = params['content'];
-      const category = params['category'];
-      const image = params['image'];
-      console.log(id); // Print the parameter to the console.
-      console.log(content);
-      console.log(category);
-      console.log(image);
-    });
-  }
-
   // ไปหน้าเนื้อหาข่าว
   public newscontent(titles, contents, categorys, images, startDates) {
-    // window.open(`NEWSContent?title=${titles}&content=${contents}&category=${categorys}
-    // &image=${images}&startDate=${startDates}`)
+    window.open(`NEWSContent?title=${titles}`)
     this.newsTitle = titles;
     this.newsContent = contents;
     this.newsCategory = categorys;
@@ -99,14 +99,6 @@ export class HomeComponent implements OnInit {
   }
 
   public menutDate() {
-    this.foodDate = this.__appserverservice.foodMenuDate;
-    const dd = this.foodDate.getDate();
-    const day = this.days[this.foodDate.getDay()];
-    const mm = this.months[this.foodDate.getMonth()];
-    const yyyy = this.foodDate.getFullYear() + 543;
-    this.foodDate = 'ประจำวัน' + day + 'ที่' + '  ' + dd + '  ' + mm + '  ' + yyyy;
-    // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
-    console.log(this.foodDate);
   }
 
   // getGallery() {
@@ -124,11 +116,33 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getGallery() {
+  public getGallery() {
     this.__appserverservice.getGallery().subscribe((res) => {
-      this.album = res;
-    });
+      // this.album = res;
+      res = res.map(o => Object.assign(
+        {}, o,
+        { Images: o.Images.map(({ img }) => ({ small: img, medium: img, big: img })) }
+    ));
+    console.log(res)
+    this.album = res;
+    })
   }
 
+  public getFoodMenu() {
+    this.__appserverservice.getFoodMenu().subscribe((res) => {
+      console.log(res,"---foodmenu---");
+      this.foodMenu = res.menu;
+      this.foodDate = res.date;
+      this.datepicker = new Date(this.foodDate);
+      console.log(typeof this.foodDate)
+      var dd = this.datepicker.getDate();
+      var day = this.days[this.datepicker.getDay()]
+      var mm = this.months[this.datepicker.getMonth()];
+      var yyyy = this.datepicker.getFullYear()+543;
+      this.datepicker = "ประจำวัน"+ day + "ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+      // (<HTMLInputElement>document.getElementById('datefood')).value = this.foodDate;
+      console.log(this.datepicker);
+    })
+  }
 
 }

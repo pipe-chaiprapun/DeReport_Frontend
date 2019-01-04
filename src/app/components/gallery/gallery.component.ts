@@ -15,8 +15,26 @@ export class GalleryComponent implements OnInit {
   public albums;
   public imgAlbum;
   public nameAlbum;
-  public menuFiles = [];
+  public galleryFiles = [];
+  public galleryUpload = {};
   public detail: any;
+  public imgpath;
+  public optionGallery = [
+    {
+      "image": false,
+      "thumbnailsRemainingCount": true,
+      "height": "212px",
+      "thumbnailsColumns": 1,
+      "previewfullWidth": true,
+      "width": "100%"
+    },
+    {
+      "breakpoint": 500,
+      "width": "50%",
+      "thumbnailsColumns": 1
+    }
+  ]
+  public needdle = 'อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด'
 
   constructor(private __appserverservice: AppserverService, private __galleryservice: GalleryService, ) {
     this.url = this.__appserverservice.baseUrl;
@@ -26,7 +44,7 @@ export class GalleryComponent implements OnInit {
     App.initLoadJquery();
     this.GetGallery();
     this.galleryDetail();
-    this.imagePreview();
+    this.get();
   }
 
   public GetGallery() {
@@ -78,27 +96,19 @@ export class GalleryComponent implements OnInit {
   }
 
   public getFileDetails(evt) {
-    const files = evt.target.files; // FileList object
-
-    // Loop through the FileList and render image files as thumbnails.
-    for (let i = 0, f; f = files[i]; i++) {
-      const menuDetail = {};
-      // Only process image files.
+    var files = evt.target.files;
+    for (var i = 0, f; f = files[i]; i++) {
+      let menuDetail = {};
       if (!f.type.match('image.*')) {
         continue;
       }
-
-      const reader = new FileReader();
-
-
-      const self = this;
-      // Closure to capture the file information.
+      var reader = new FileReader();
+      var self = this;
       reader.onloadend = (function (theFile) {
         return function (e) {
           menuDetail['img'] = e.target.result;
-          menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, '');
-          self.menuFiles.push(menuDetail);
-          console.log(menuDetail);
+          // menuDetail['name'] = theFile.name.replace(/\.[^/.]+$/, "");
+          self.galleryFiles.push(menuDetail);
           this.detail = document.createElement('div');
           this.detail.className = 'col-md-4 col-xs-6';
           // tslint:disable-next-line:max-line-length
@@ -108,17 +118,15 @@ export class GalleryComponent implements OnInit {
           document.getElementById('list').insertBefore(this.detail, null);
         };
       })(f);
-
-
-      // Read in the image file as a data URL.
       reader.readAsDataURL(f);
 
     }
-    console.log(this.menuFiles);
+    console.log(this.galleryFiles);
+    // this.albumUpload();
   }
 
   public clearFileDetail() {
-    this.menuFiles = [];
+    this.galleryFiles = [];
     const uploadIMG = document.getElementById('files') as HTMLInputElement;
     const ltstFood = document.getElementById('list');
     ltstFood.innerHTML = null;
@@ -126,13 +134,60 @@ export class GalleryComponent implements OnInit {
     console.log(this.detail);
   }
 
-  public imagePreview() {
-    $('#ลบรูป').click(function (event) {
-      console.log(event);
-      alert('test');
-      $('.imagepreview').attr('src', $(this).find('img').attr('src'));
-      $('#imagemodal').modal('show');
-    });
+  // public getNameAlbum(evt) {
+  //   let textquery = $('#textAlbum').val();
+  //   console.log(textquery, "--textquery--")
+  //   let albumName = {}
+  //   albumName['name'] = evt.target.value;
+  //   this.galleryFiles.push(albumName);
+  //   this.albumUpload();
+  // }
+
+  public getimg(val) {
+    console.log(val);
+    this.imgpath = val;
+    $('.imagepreview').attr('src', this.imgpath);
+    $('#imagemodal').modal('show');
+  }
+
+  public clearimgpreview() {
+    this.imgpath = null;
+    $('.imagepreview').attr('src', this.imgpath);
+  }
+
+
+  public albumUpload() {
+    let textquery = $('#textAlbum').val();
+    console.log(textquery, "--textquery--")
+    let albumName = {}
+    albumName['name'] = textquery;
+    this.galleryFiles.push(albumName);
+
+    const ret = this.galleryFiles.reduce((tmp, x) => {
+      if (x.img !== void 0) {
+        tmp.Images.push(x);
+        return tmp;
+      }
+      return {
+        ...tmp,
+
+        ...x,
+      };
+    }, {
+        Images: [],
+      });
+    console.log(ret);
+  }
+  public get() {
+    console.log("test!@")
+    this.__appserverservice.getGallery().subscribe((res) => {
+      for (var i = 0; i < res.length; i++) {
+        console.log(i)
+        if (res[i].name == this.needdle) {
+          console.log(res[i],"อบรมโปรแกรมเจ้าหน้าใหม่ฝ่ายตลาด????!");
+        }
+      }
+    })
   }
   public uploadFiles() {}
 }

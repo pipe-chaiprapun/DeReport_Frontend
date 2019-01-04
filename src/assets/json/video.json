@@ -1,0 +1,135 @@
+{
+    "status": "SUCCESS",
+    "data": [
+        {
+            "category": "วิธีการใช้โปรแกรมระบบเช่าซื้อ",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆรายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆรายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆรายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆรายละเอียดประเภทการสอน",
+            "poster": "https://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/c8174af1-7494-47d3-93f0-c71094f1e74d/Image/b78bd01c7568e8e1318f59be9b1cf71a/database12cinteractive.png",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 1",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญรายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/702/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 2",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/703/",
+                    "path" : "http://static.videogular.com/assets/videos/big_buck_bunny_720p_h264.mov"
+                },
+                {
+                    "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 3",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/704/",
+                    "path" : "http://static.videogular.com/assets/videos/videogular.mp4"
+                },
+                {
+                    "name" : "วิธีการใช้โปรแกรมระบบเช่าซื้อ 4",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 4 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/705/",
+                    "path" : "assets/videos/vdo01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 2",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "assets/images/mis/3.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo05",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/706/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo06",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/707/",
+                    "path" : "assets/videos/vdo01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 3",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "http://www.daydayday.net/wp-content/uploads/2012/02/crmcrmcrm.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo07",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/708/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo08",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/709/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo09",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/710/",
+                    "path" : "assets/videos/vdo01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 4",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "https://ei.marketwatch.com/Multimedia/2016/11/09/Photos/ZH/MW-EZ870_gold_b_20161109130257_ZH.jpg?uuid=bea8a130-a6a6-11e6-a68e-001cc448aede",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo10",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/712/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo11",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/722/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo12",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/732/",
+                    "path" : "assets/videos/vdo01.mp4"
+                }
+            ]
+        },
+        {
+            "category": "สื่อการสอนเรื่องที่ 5",
+            "detail": "รายละเอียดประเภทการสอน วัตถุประสงค์ของการสอน คำแนะนำต่างๆ",
+            "poster": "http://content.didimax.co.id/Upload/2018/11/21/zcvERBwM/20181121154142066.jpg",
+            "Instructor" : "อาจารย์ชาญศิลป์",
+            "videos": [
+                {
+                    "name" : "vdo13",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 1 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/742/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo14",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 2 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/752/",
+                    "path" : "assets/videos/vdo01.mp4"
+                },
+                {
+                    "name" : "vdo15",
+                    "detail" :  "รายระเอียดของวีดีโอสื่อการสอนที่ 3 บอกความสำคัญ",
+                    "poster" : "http://lorempixel.com/950/762/",
+                    "path" : "assets/videos/vdo01.mp4"
+                }
+            ]
+        }
+    ]
+}

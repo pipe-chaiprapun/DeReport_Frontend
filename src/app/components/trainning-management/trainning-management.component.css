@@ -1,0 +1,28 @@
+.app-title {
+    margin-bottom: 10px;
+}
+
+.containerIMG {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+    /* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #playerICON {
+    font-size: 4rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  #playerICON:hover {
+    font-size: 4rem;
+    color: rgba(131, 4, 4, 1);
+    cursor: pointer;
+  }

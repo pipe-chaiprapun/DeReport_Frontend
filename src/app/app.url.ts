@@ -12,6 +12,8 @@ export const AppUrl = {
     Gallery: 'gallery',
     NEWSContent: 'NEWSContent',
     FoodManagement: 'foodManagement',
+    TrainningContent: 'trainningContent',
+    TrainningManagement: 'trainningManagement',
     Chat: 'chat',
     Mobile: 'mobile',
     Contract: 'contract',

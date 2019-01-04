@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 import { FoodManagementComponent } from './components/food-management/food-management.component';
+import { TrainningContentComponent } from './components/trainning-content/trainning-content.component';
+import { TrainningManagementComponent } from './components/trainning-management/trainning-management.component';
 import { TestSignalrComponent } from './components/test-signalr/test-signalr.component';
 import { MobileComponent } from './components/mobile/mobile.component';
 import { ContractComponent } from './components/contract/contract.component';
@@ -33,6 +35,8 @@ const RouteList: Routes = [
     { path: AppUrl.Gallery, component: GalleryComponent },
     { path: AppUrl.NEWSContent, component: NewsContentComponent},
     { path: AppUrl.FoodManagement, component: FoodManagementComponent},
+    { path: AppUrl.TrainningContent, component: TrainningContentComponent},
+    { path: AppUrl.TrainningManagement, component: TrainningManagementComponent},
     { path: AppUrl.Chat, component: TestSignalrComponent },
     { path: AppUrl.Mobile, component: MobileComponent },
     { path: AppUrl.Contract, component: ContractComponent },

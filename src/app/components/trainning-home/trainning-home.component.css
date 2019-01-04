@@ -1,0 +1,38 @@
+.bggallery {
+    height: 100%;
+    background: darkgreen; /* For browsers that do not support gradients */ 
+    background: linear-gradient(to bottom right, rgb(0,174,57), rgb(0,26,9)); 
+    border: #000;
+    border-width: 2%;   
+}
+
+#bggallerylogo {
+    position: relative;
+    font-size:66px;
+    color:rgb(250, 250, 250,1);
+    padding-top: 1.3%;
+    padding-left: 6%
+}
+
+#bggallerytextlogo {
+    padding-top:1.8%;
+    color: rgb(250, 250, 250,1);
+    padding-left:1.5%;
+    font-size: 320%;
+    position: relative;
+    /* font-family: 'Mali', cursive; */
+}
+
+.containerIMG {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+  /* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
