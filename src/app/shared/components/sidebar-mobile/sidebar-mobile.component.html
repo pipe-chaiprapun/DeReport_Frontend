@@ -1,0 +1,19 @@
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" width="48" height="48" src="../../../../assets/images/profile/48.jpg"
+      alt="User Image">
+    <div>
+      <p class="app-sidebar__user-name">N.Chaiprapun</p>
+      <p class="app-sidebar__user-designation">Backend Developer</p>
+    </div>
+  </div>
+  <ul class="app-menu">
+      <li><a class="app-menu__item" [routerLink]="['/', Url.Mobile]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa-dashboard"></i><span
+        class="app-menu__label">ข้อมูลผู้ใช้งาน</span></a></li>
+    <li><a class="app-menu__item" [routerLink]="['/', Url.Contract]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa fa-file-text"></i><span
+          class="app-menu__label">สัญญา</span></a></li>
+    <li><a class="app-menu__item" [routerLink]="['/', Url.Chat]" [routerLinkActive]="['active']"><i class="app-menu__icon fa fa-commenting-o"></i><span
+          class="app-menu__label">แจ้งเตือน</span></a></li>
+  </ul>
+</aside>

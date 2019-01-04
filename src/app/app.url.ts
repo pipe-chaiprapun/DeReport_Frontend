@@ -11,5 +11,11 @@ export const AppUrl = {
     Thumbnail: 'thumbnail',
     Gallery: 'gallery',
     NEWSContent: 'NEWSContent',
-    FoodManagement: 'foodManagement'
+    FoodManagement: 'foodManagement',
+    Chat: 'chat',
+    Mobile: 'mobile',
+    Contract: 'contract',
+    ContractPayment: 'contractpayment/:cust_name/:id/:con_date/:tot_amt/:period/:pay_amt/:discount/:balance',
+    TargetReport: 'targetreport',
+    PayReport: 'payreport'
 };

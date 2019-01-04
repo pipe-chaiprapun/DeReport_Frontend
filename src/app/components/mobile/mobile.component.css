@@ -1,0 +1,22 @@
+.app-content {
+    margin-top: 0px;
+   height: -webkit-fill-available;
+   background-color: whitesmoke;
+}
+.app-title {
+    flex-direction: unset;
+    background-color: whitesmoke;
+    background-image: url("../../../assets/images/logo/header-green.png");
+    color:white;
+    background-size: auto;
+    background-repeat: round;
+    height: 7.5rem;
+    box-shadow: none;
+   -webkit-box-shadow:none;
+}
+.app-title h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Mali', cursive;
+}

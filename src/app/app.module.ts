@@ -4,24 +4,30 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { IntroComponent } from './components/intro/intro.component';
+// import { IntroComponent } from './components/intro/intro.component';
 import { SaleInfoComponent } from './components/sale-info/sale-info.component';
-import { BranchComponent } from './components/branch/branch.component';
 
 import { AppRouting } from './app.routing';
 import { SummaryComponent } from './components/summary/summary.component';
 import { SharedModule } from './shared/shared.module';
-import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
+// import { ExamChartComponent } from './components/exam-chart/exam-chart.component';
 import { MonthlyMeetingComponent } from './components/monthly-meeting/monthly-meeting.component';
 import { NewsManagementComponent } from './components/news-management/news-management.component';
 import { NewsEditComponent } from './components/news-edit/news-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import 'hammerjs';
 import { NgxGalleryModule } from 'ngx-gallery';
-import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+// import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NewsContentComponent } from './components/news-content/news-content.component';
 import { FoodManagementComponent } from './components/food-management/food-management.component';
+import { TestSignalrComponent } from './components/test-signalr/test-signalr.component';
+import { MobileAppComponent } from './mobile-app/mobile-app.component';
+import { MobileComponent } from './components/mobile/mobile.component';
+import { ContractComponent } from './components/contract/contract.component';
+import { ContractPaymentComponent } from './components/contract-payment/contract-payment.component';
+import { TargetReportComponent } from './components/target-report/target-report.component';
+import { PayReportComponent } from './components/pay-report/pay-report.component';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -44,19 +50,25 @@ import { FoodManagementComponent } from './components/food-management/food-manag
     LoginComponent,
     // HomeComponent,
     // CardComponent,
-    IntroComponent,
+    // IntroComponent,
     SaleInfoComponent,
-    BranchComponent,
     SummaryComponent,
-    ExamChartComponent,
+    // ExamChartComponent,
     MonthlyMeetingComponent,
     NewsManagementComponent,
     NewsEditComponent,
     HomeComponent,
-    ThumbnailComponent,
+    // ThumbnailComponent,
     GalleryComponent,
     NewsContentComponent,
-    FoodManagementComponent
+    FoodManagementComponent,
+    TestSignalrComponent,
+    MobileAppComponent,
+    MobileComponent,
+    ContractComponent,
+    ContractPaymentComponent,
+    TargetReportComponent,
+    PayReportComponent
   ],
   imports: [
     AppRouting,

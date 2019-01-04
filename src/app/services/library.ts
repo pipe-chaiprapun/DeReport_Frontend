@@ -1,4 +1,6 @@
 export class Library {
+  // tslint:disable-next-line:max-line-length
+  private month = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
   public convertDateFormat(data) {
     const date = new Date(data);
     const year = date.getFullYear();
@@ -13,6 +15,36 @@ export class Library {
       strMonth = '0' + month;
     }
     return strDt + '/' + strMonth + '/' + year;
+  }
+  public convertDateFormat2(data) {
+    const date = new Date(data);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const dt = date.getDate();
+    let strDt = dt.toString();
+    let strMonth = month.toString();
+    if (dt < 10) {
+      strDt = '0' + dt.toString();
+    }
+    if (month < 10) {
+      strMonth = '0' + month;
+    }
+    return strDt + '-' + strMonth + '-' + year;
+  }
+  public convertFullDateFormat(data) {
+    const date = new Date(data);
+    const year = date.getFullYear() + 543;
+    const month = date.getMonth();
+    const dt = date.getDate();
+    let strDt = dt.toString();
+    let strMonth = month.toString();
+    if (dt < 10) {
+      strDt = '0' + dt.toString();
+    }
+    if (month < 10) {
+      strMonth = this.month[month];
+    }
+    return strDt + ' ' + strMonth + ' ' + year;
   }
   public devideMillion(data: number) {
     return (data / 1000000).toFixed(2);

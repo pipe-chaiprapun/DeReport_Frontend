@@ -1,0 +1,49 @@
+label.btn.btn-primary.active {
+    filter: brightness(0.9);
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+}
+.btn {
+    padding: 0.20rem 0.60rem;
+}
+/* .app-content {
+    padding:10px;
+} */
+.tile {
+    margin-bottom: 15px;
+    padding:5px 15px;
+}
+.bs-component {
+    display: grid;
+    margin-bottom:0px;
+}
+label {
+    margin-bottom: 0.1rem;
+}
+.btn {
+    font-size: 0.70rem;
+}
+.form-control {
+    font-size: 0.90rem;
+    padding: 0.3rem 0.1rem;
+    text-align: center;
+}
+.input-group {
+    width:15rem;
+}
+.input-group-text {
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 0px;
+}
+.app-title{
+    display:block;
+}

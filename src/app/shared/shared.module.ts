@@ -7,6 +7,8 @@ import { AppRouting } from '../app.routing';
 import { SaleComponent } from './components/sale/sale.component';
 import { SalePathComponent } from './components/sale-path/sale-path.component';
 import { MonthlyReportComponent } from './components/monthly-report/monthly-report.component';
+import { NavbarMobileComponent } from './components/navbar-mobile/navbar-mobile.component';
+import { SidebarMobileComponent } from './components/sidebar-mobile/sidebar-mobile.component';
 
 @NgModule({
   imports: [
@@ -14,14 +16,18 @@ import { MonthlyReportComponent } from './components/monthly-report/monthly-repo
     CommonModule
     // BsDropdownModule
   ],
-  declarations: [NavbarComponent, SidebarComponent, SaleComponent, SalePathComponent, MonthlyReportComponent],
+  // tslint:disable-next-line:max-line-length
+  declarations: [NavbarComponent, SidebarComponent, SaleComponent, SalePathComponent, MonthlyReportComponent,
+    NavbarMobileComponent, SidebarMobileComponent],
   exports: [
     NavbarComponent,
     SidebarComponent,
     // BsDropdownModule,
     SaleComponent,
     SalePathComponent,
-    MonthlyReportComponent
+    MonthlyReportComponent,
+    NavbarMobileComponent,
+    SidebarMobileComponent
   ]
 })
 export class SharedModule { }

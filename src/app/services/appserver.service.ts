@@ -9,7 +9,7 @@ import { Path } from '../models/path';
 })
 export class AppserverService {
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://10.192.192.10:8042`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://localhost:8042`;  // don't use local in case of cross domain or ip address
   private apiUrl = `${this.baseUrl}api/v2`;
   // private loginUrl = `${this.apiUrl}/login`;
   // private logoutUrl = `${this.apiUrl}/logout`;
@@ -25,6 +25,8 @@ export class AppserverService {
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
+  private tarAmtUrl = `${this.baseUrl}/api/information/getTarAmt`;
+  private payAmtUrl = `${this.baseUrl}/api/information/getPayAmt`;
 
   public foodMenuDate = new Date('11-12-2018');
   public gallary = '../assets/json/gallery.json';
@@ -62,6 +64,14 @@ export class AppserverService {
   getBranch(brh_id: string): Observable<any> {
     const url = this.branchUrl + `?branch_id=${brh_id}`;
     return this.http.get<any[]>(url, { headers: this.headers });
+  }
+
+  getTarAmt(year, sort = '%', branch = '%', filter = []): Observable<any> {
+    return this.http.get<any>(`${this.tarAmtUrl}?year=${year}&sort=${sort}&filter=${filter}&pBranch=${branch}`, { headers: this.headers });
+  }
+
+  getPayAmt(startDate, endDate, sort = '%', filter = []): Observable<any> {
+    return this.http.get<any>(`${this.payAmtUrl}?startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`);
   }
 
   getChart(brh_id: string): Observable<any> {
