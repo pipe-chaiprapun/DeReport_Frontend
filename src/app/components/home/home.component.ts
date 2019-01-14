@@ -117,9 +117,9 @@ export class HomeComponent implements OnInit {
 
   public getFoodMenu() {
     this.__appserverservice.getFoodMenu().subscribe((res) => {
-      console.log(res,"---foodmenu---");
-      this.foodMenu = res.menu;
-      this.foodDate = res.date;
+      console.log(res.data[0],"---foodmenu!!---");
+      this.foodMenu = res.data[0].menu;
+      this.foodDate = res.data[0].date;
       this.datepicker = new Date(this.foodDate);
       console.log(typeof this.foodDate)
       var dd = this.datepicker.getDate();

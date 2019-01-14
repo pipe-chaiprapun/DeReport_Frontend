@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppserverService } from '../../services/appserver.service';
+import { element } from '@angular/core/src/render3/instructions';
 declare const $;
 
 
@@ -18,6 +19,7 @@ export class FoodManagementComponent implements OnInit {
   public sMsg = '';
   public detail: any;
   public datepicker;
+  public newDate;
   public days = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
   // tslint:disable-next-line:max-line-length
   public months = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
@@ -31,9 +33,8 @@ export class FoodManagementComponent implements OnInit {
     this.getDetailMenu();
   }
 
-
-
   private menuDateChange() {
+    let env = this;
     $.fn.datepicker.dates['en'] = {
       days: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์'],
       daysShort: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส', 'อา'],
@@ -46,24 +47,22 @@ export class FoodManagementComponent implements OnInit {
       format: 'ประจำวัน DD ที่ dd MM yyyy',
       titleFormat: 'MM yyyy', /* Leverages same syntax as 'format' */
       weekStart: 0
-  };
+    };
     $('#startDate').datepicker({
       language: 'en',
       autoclose: true,
       todayHighlight: true
+    }).on('changeDate', function (ev) {
+      const sendDate = {
+        date: ev.date
+      };
+      console.log(ev.date, "DATE SENDING")
+      env.__Appserver.changeMenuDate(sendDate).subscribe((result) => {
+      })
     });
   }
 
-  private menudate() {
-    this.datepicker = this.__Appserver.foodMenuDate;
-    const dd = this.datepicker.getDate();
-    const day = this.days[this.datepicker.getDay()];
-    const mm = this.months[this.datepicker.getMonth()];
-    const yyyy = this.datepicker.getFullYear();
-    this.datepicker = 'ประจำวัน' + ' ' + day + ' ที่' + '  ' + dd + '  ' + mm + '  ' + yyyy;
-    (<HTMLInputElement>document.getElementById('startDate')).value = this.datepicker;
-  }
-  getFileDetails(evt) {
+  private getFileDetails(evt) {
     const files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
@@ -99,40 +98,57 @@ export class FoodManagementComponent implements OnInit {
       reader.readAsDataURL(f);
 
     }
-    console.log(this.menuFiles);
+    const upper = this;
+    console.log(this.menuFiles, "ส่งข้อมูล");
+    console.log(typeof this.menuFiles);
+    $('#uploadData').click(function () {
+      upper.__Appserver.uploadMenu(upper.menuFiles).subscribe((result) => {
+        console.log(result);
+        location.reload();
+      })
+    })
   }
 
-  clearFileDetail() {
-    this.menuFiles = [];
-    alert('aaaa');
-    const uploadIMG = document.getElementById('files') as HTMLInputElement;
-    const ltstFood = document.getElementById('list');
-    const form1 = document.getElementById('fileform');
-    ltstFood.innerHTML = null;
-    uploadIMG.value = null;
-    console.log(this.detail);
-  }
-
-
-
-
-  uploadFiles() {
-    console.log(this.menuFiles)
+  private clearFileDetail() {
+    // alert("ลบ");
+    // console.log(this.menuFiles.length);
+    // for(let i = 0; i < this.menuFiles.length; i++) {
+    //   this.menuFiles.shift()
+    // }
+    // const uploadIMG = document.getElementById('files') as HTMLInputElement;
+    // const ltstFood = document.getElementById('list');
+    // const form1 = document.getElementById('fileform');
+    // ltstFood.innerHTML = null;
+    // uploadIMG.value = null;
+    // console.log(this.detail);
+    location.reload();
   }
 
   public getDetailMenu() {
     this.__Appserver.getFoodMenu().subscribe((res) => {
-      this.getfood = res.menu;
-      this.getdatefood = res.date;
+      this.getfood = res.data[0].menu;
+      this.getdatefood = res.data[0].date;
+      console.log(typeof this.getdatefood)
       this.datepicker = new Date(this.getdatefood);
-      console.log(this.datepicker,"--datepicker--")
+      console.log(this.datepicker, "--datepicker--")
       var dd = this.datepicker.getDate();
       var day = this.days[this.datepicker.getDay()]
       var mm = this.months[this.datepicker.getMonth()];
       var yyyy = this.datepicker.getFullYear();
-      this.datepicker = "ประจำวัน"+ " " + day + " ที่" + "  " + dd +"  " + mm + "  " + yyyy;
+      this.datepicker = "ประจำวัน" + " " + day + " ที่" + "  " + dd + "  " + mm + "  " + yyyy;
       (<HTMLInputElement>document.getElementById('startDate')).value = this.datepicker;
     })
   }
 
+  private deleteMenu() {
+    if (confirm('ต้องการลบข้อมูลเมนูอาหารทั้งหมดใช่หรือไม่?')) {
+      this.__Appserver.deleteMenuData().subscribe((res) => {
+        location.reload();
+      })
+    } else {
+      // Do nothing!
+    }
+  }
+
 }
+

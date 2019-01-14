@@ -18,21 +18,23 @@
         <div class="tile-header">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-7"> <h3 class="tile-title ml-3">จัดการเมนูประจำสัปดาห์</h3></div>
+              <div class="col-6"> <h3 class="tile-title ml-3">จัดการเมนูประจำสัปดาห์</h3></div>
               <div class="col-3">
                 <!-- <input class="form-control" id="startDate" #startDate type="text" placeholder="ประจำวันที่"> -->
                 <div class="input-group mb-3" style="width:80%;float: right;">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1"><i class="	fa fa-calendar"></i></span>
                     </div>
-                    <input class="form-control calendarText" id="startDate" #startDate type="text" placeholder="ประจำวันที่" style="text-align:center;">
+                    <input class="form-control calendarText" id="startDate" #startDate type="text" placeholder="ประจำวันที่" style="text-align:center;" autocomplete="off">
                   </div>
               </div>
-              <div class="col-2">
-                  <a href="#" class="btn btn-outline-success  mr-1" data-toggle="modal" data-target="#exampleModalCenter" id="buttontext">เพิ่มเมนู</a><a href="#" class="btn btn-outline-danger  mr-1"  id="buttontext">ลบทั้งหมด</a> 
+              <div class="col-3">
+                  <button type="button" class="btn btn-outline-success mr-1" data-toggle="modal" data-target="#exampleModalCenter" id="buttontext"><i class="fa fa-plus-square"> เพิ่มเมนู</i></button><button type="button" class="btn btn-outline-danger mr-1" id="buttontext" (click)='deleteMenu()'><i class="fa fa-trash-o"> ลบทั้งหมด</i></button>
               </div>
             </div>
           </div>
+
+          <hr>
 
         </div>
         <div class="tile-body">
@@ -78,8 +80,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)='heroForm.reset()' data-dismiss="modal">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" (click)='uploadFiles()'>อัพโหลด</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" (click)='clearFileDetail()'>ยกเลิก</button>
+        <button type="button" class="btn btn-primary" id="uploadData">อัพโหลด</button>
       </div>
     </div>
   </div>

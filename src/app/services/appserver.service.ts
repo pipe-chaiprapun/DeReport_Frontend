@@ -20,28 +20,22 @@ export class AppserverService {
   private getPath = `${this.baseUrl}/api/information/getPathInfo`;
   private getPathSaleInfoUrl = `${this.baseUrl}/api/information/getPathInfo2`;
   private createNews = `${this.baseUrl}/api/news/createNews`;
-  // private getnews = `${this.baseUrl}/api/news/getNews`;
-  private getnews = '../assets/json/news.json';
+  private getnews = `${this.baseUrl}/api/news/getNews`;
+  // private getnews = '../assets/json/news.json';
   private getCate = `${this.baseUrl}/api/news/getCategory`;
   private delNews = `${this.baseUrl}/api/news/deleteNews`;
   private updateNews = `${this.baseUrl}/api/news/editNews`;
   private addThumbnail = `${this.baseUrl}/api/new/album`;
-  public foodMenuDate = new Date('12-25-2018');
-  public foodmenu = '../assets/json/foodMenu.json';
+  // public foodMenuDate = new Date('12-25-2018');
+  // public foodmenu = '../assets/json/foodMenu.json';
   public gallary = '../assets/json/gallery.json';
   public trainning = '../assets/json/video.json';
-  // public foodmenu = [
-  // { 'name': 'ยำสามกรอบ', 'img': '../../../assets/images/food/ยำสามกรอบ.JPG' },
-  // { 'name': 'ไข่ดาวลูกเขย', 'img': '../../../assets/images/food/ไข่ดาวลูกเขย.JPG' },
-  // { 'name': 'ต้มมะระกระดูกหมู', 'img': '../../../assets/images/food/ต้มมะระหมูสับ.jpg' },
-  // { 'name': 'คั่วกลิ้งหมู', 'img': '../../../assets/images/food/คั่วกลิ้ง.jpg' },
-  // { 'name': 'น้ำส้ม', 'img': '../../../assets/images/food/น้ำส้ม.jpg' },
-  // { 'name': 'ลูกจากลอยแก้ว', 'img': '../../../assets/images/food/ลูกจากลอยแก้ว.jpg' }
-  // ];
+  private foodData = `${this.baseUrl}/api/menu/getMenu`;
+  private changeFoodDate = `${this.baseUrl}/api/menu/changeDate`;
+  private deleteWeekend = `${this.baseUrl}/api/menu/clearMenu`;
+  private uploadFoodWeekend = `${this.baseUrl}/api/menu/uploadMenu`;
 
   constructor(private http: HttpClient) { }
-
-
 
   getBranchs(): Observable<any[]> {
     return this.http.get<any[]>(this.branchUrl, { headers: this.headers });
@@ -53,10 +47,12 @@ export class AppserverService {
   getSaleInfo(startDate, endDate): Observable<any> {
     return this.http.get<any[]>(`${this.saleInfoUrl}?startDate=${startDate}&endDate=${endDate}`, { headers: this.headers });
   }
+
   getSaleInfo2(startDate, endDate, sort = '%', filter = []): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this.http.get<any[]>(`${this.saleInfo2}?startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
   }
+
   getPathSaleInfo(brh, startDate, endDate, sort = '%', filter = []): Observable<any> {
     // tslint:disable-next-line:max-line-length
     return this.http.get<any[]>(`${this.getPathSaleInfoUrl}?branch_id=${brh}&startDate=${startDate}&endDate=${endDate}&sort=${sort}&filter=${filter}`, { headers: this.headers });
@@ -107,11 +103,23 @@ export class AppserverService {
   }
 
   getFoodMenu(): Observable<any> {
-    return this.http.get<any[]>(this.foodmenu, { headers: this.headers });
+    return this.http.get<any[]>(this.foodData, { headers: this.headers });
   }
 
   getTrainning(): Observable<any> {
     return this.http.get<any>(this.trainning, {headers : this.headers});
   }
-  
+
+  changeMenuDate(date: any): Observable<any> {
+    return this.http.post<any>(this.changeFoodDate, date, {headers : this.headers});
+  }
+
+  deleteMenuData(): Observable<any> {
+    return this.http.get<any>(this.deleteWeekend, {headers : this.headers});
+  }
+
+  uploadMenu(data: any): Observable<any> {
+    return this.http.post<any>(this.uploadFoodWeekend, data, {headers : this.headers})
+  }
+
 }
