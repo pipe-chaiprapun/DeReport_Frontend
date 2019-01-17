@@ -29,6 +29,8 @@ import {VgBufferingModule} from 'videogular2/buffering';
 import { TrainningHomeComponent } from './components/trainning-home/trainning-home.component';
 import { TrainningContentComponent } from './components/trainning-content/trainning-content.component';
 import { TrainningManagementComponent } from './components/trainning-management/trainning-management.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 // const routes: Routes = [
 //   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -66,7 +68,8 @@ import { TrainningManagementComponent } from './components/trainning-management/
     FoodManagementComponent,
     TrainningHomeComponent,
     TrainningContentComponent,
-    TrainningManagementComponent
+    TrainningManagementComponent,
+    FileSelectDirective
   ],
   imports: [
     AppRouting,

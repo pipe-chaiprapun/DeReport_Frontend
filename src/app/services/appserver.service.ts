@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpParams, HttpRequest, HttpEvent, HttpEventType, HttpResponse} from '@angular/common/http';
 import { Branch } from '../models/branch';
 import { Path } from '../models/path';
 
@@ -28,12 +29,16 @@ export class AppserverService {
   private addThumbnail = `${this.baseUrl}/api/new/album`;
   // public foodMenuDate = new Date('12-25-2018');
   // public foodmenu = '../assets/json/foodMenu.json';
-  public gallary = '../assets/json/gallery.json';
+  // public gallary = '../assets/json/gallery.json';
+  public gallary = `${this.baseUrl}/api/gallery/data`;
   public trainning = '../assets/json/video.json';
   private foodData = `${this.baseUrl}/api/menu/getMenu`;
   private changeFoodDate = `${this.baseUrl}/api/menu/changeDate`;
   private deleteWeekend = `${this.baseUrl}/api/menu/clearMenu`;
   private uploadFoodWeekend = `${this.baseUrl}/api/menu/uploadMenu`;
+  private newGallery = `${this.baseUrl}/api/gallery/addAlbum`
+  private deletePic = `${this.baseUrl}/api/gallery/deleteImg`
+  private deleteGallery = `${this.baseUrl}/api/gallery/deleteAlbum`
 
   constructor(private http: HttpClient) { }
 
@@ -122,4 +127,11 @@ export class AppserverService {
     return this.http.post<any>(this.uploadFoodWeekend, data, {headers : this.headers})
   }
 
+  removePic(data: any): Observable<any>  {
+    return this.http.post<any>(this.deletePic, data, {headers : this.headers})
+  }
+
+  removeGallery(name: any): Observable<any>  {
+    return this.http.post<any>(this.deleteGallery, name, {headers : this.headers})
+  }
 }

@@ -37,16 +37,17 @@
         <div class="tile-body">
           <div class="container-fluid" style="padding-bottom: 3%;" id="main">
             <div class="row">
-              <div class="col-lg-3 col-md-4" *ngFor='let album of albums'>
+              <div class="col-lg-3 col-md-4" *ngFor='let album of albums | keyvalue'>
                 <div class="card border-secondary">
-                  <img class="card-img-top" src="{{album.Images[0].img}}" alt="Card image cap" style="height:186px">
+                  <img class="card-img-top" src="{{url}}/pics/{{album.value[0].name}}/{{album.value[0].file[0].filename}}"
+                    alt="Card image cap" style="height:186px">
                   <div class="card-body">
-                    <h5 class="card-title text-center">{{album.name}}</h5>
+                    <h5 class="card-title text-center">{{album.key}}</h5>
                     <div class="row justify-content-center">
-                      <div class="col-md-6 text-center"><button type="button" class="btn btn-outline-primary albumDetail"
-                          (click)='getvalue(album.Images,album.name)'>ดูอัลบั้ม</button></div>
+                      <div class="col-md-6 text-center"><button type="button" id="albumDetail" class="btn btn-outline-primary"
+                          (click)='getvalue(album.key, album.name)' (click)='galleryDetail()'>ดูอัลบั้ม</button></div>
                       <div class="col-md-6 text-center"><button type="button" id="albumDelete" class="btn btn-outline-danger"
-                          (click)='deleteAlbum()'>ลบอัลบั้ม</button></div>
+                          (click)='deleteAlbum(album.value[0].name)'>ลบอัลบั้ม</button></div>
                     </div>
                   </div>
                 </div>
@@ -60,10 +61,12 @@
             <div class="row gallery">
               <div class="col-lg-3 col-md-4 mt-3" *ngFor='let gal of imgAlbum'>
                 <div class="card border-dark">
-                  <img class="card-img-top cursor" src="{{gal.img}}" alt="Card image cap" style="height:186px" (click)='getimg(gal.img)'>
+                  <img class="card-img-top cursor" src="{{url}}/pics/{{gal.name}}/{{gal.file[0].filename}}" alt="Card image cap"
+                    style="height:186px" (click)='getimg(gal.file[0].filename, gal.name)'>
                   <div class="card-body">
                     <div class="row justify-content-center">
-                      <div class="col-md-12 text-center "><button type="button" id="ลบรูป" class="btn btn-outline-danger" >ลบรูป</button></div>
+                      <div class="col-md-12 text-center "><button type="button" id="ลบรูป" class="btn btn-outline-danger"
+                          (click)='removePic(gal._id, gal.name, gal.file[0].filename)'>ลบรูป</button></div>
                     </div>
                   </div>
                 </div>
@@ -71,8 +74,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
@@ -89,32 +90,121 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #heroForm="ngForm">
-          <label class="control-label">อัพโหลดภาพ : </label>
-          <input class="ml-3" #myInput input type="file" id="files" multiple (change)="getFileDetails($event)">
-          <label class="control-label">ชื่ออัลบั้ม : </label>
-          <input class="ml-2" type="text" id="textAlbum">
-          <!-- (change)="getNameAlbum($event)" -->
-        </form>
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group">
+                <input type="file" class="form-control" name="multiple" ng2FileSelect [uploader]="uploader" multiple />
+              </div>
+            </div>
+            <div class="col-9" (change)='form()'>
+              <div class="row align-self-center">
+                <div class="col-4" style="margin-top: 0.3rem;">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">ชื่ออัลบั้ม</span>
+                    </div>
+                    <input type="text" id="name" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-4" style="margin-top: 0.3rem;">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">รายละเอียด</span>
+                    </div>
+                    <input type="text" id="detail" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-4" style="margin-top: 0.3rem;">
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">วันที่</span>
+                    </div>
+                    <input type="date" id="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="container-fluid">
-          <div class="row" id="list"></div>
+          <div class="row">
+            <div class="col-md-12">
+              จำนวณไฟล์: {{ uploader?.queue?.length }}
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item.file.name }}</strong></td>
+                    <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+                    <td>
+                      <div class="progress" style="margin-bottom: 0;">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i> ok </span>
+                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                      <button type="button" class="ml-2 btn btn-success btn-sm" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        Upload
+                      </button>
+                      <button type="button" class="ml-2 btn btn-warning btn-sm" (click)="item.cancel()" [disabled]="!item.isUploading">
+                        Cancel
+                      </button>
+                      <button type="button" class="ml-2 btn btn-danger btn-sm" (click)="item.remove()">
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div>
+                <div>
+                  % การอัพโหลด:
+                  <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="ml-2 btn btn-warning" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">เลิกส่ง</button>
+        <button type="button" class="ml-2 btn btn-danger" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">เคลียร์ไฟล์</button>
         <button type="button" class="btn btn-secondary" (click)='clearFileDetail()' data-dismiss="modal">ยกเลิก</button>
-        <button type="button" class="btn btn-primary" (click)='albumUpload()'>อัพโหลด</button>
+        <button name="gallery" type="button" class="btn btn-primary" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">อัพโหลด</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">              
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" (click)='clearimgpreview()'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <img src="" class="imagepreview" style="width: 100%;" >
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" (click)='clearimgpreview()'><span aria-hidden="true">&times;</span><span
+            class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;">
+      </div>
     </div>
   </div>
 </div>
