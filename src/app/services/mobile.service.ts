@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 export class MobileService {
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  public baseUrl = `http://localhost:58465`;  // don't use local in case of cross domain or ip address
+  // public baseUrl = `http://10.192.192.10:9090`;  // don't use local in case of cross domain or ip address
+  public baseUrl = `http://35.247.128.114`;  // don't use local in case of cross domain or ip address
   private profileUrl = `${this.baseUrl}/api/customer/profile`;
   private contractUrl = `${this.baseUrl}/api/customer/contract`;
   private contractPayment = `${this.baseUrl}/api/customer/payment`;
+  private newPaymentUrl = `${this.baseUrl}/api/payment/newpayment2`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +24,10 @@ export class MobileService {
   }
   getContractPayment(no): Observable<any> {
     return this.http.get<any[]>(`${this.contractPayment}?no=${no}`, { headers: this.headers });
+  }
+  createPayment(data: any): Observable<any> {
+    console.log(data);
+    return this.http.post<any>(this.newPaymentUrl, data, { headers: this.headers });
   }
 
 }

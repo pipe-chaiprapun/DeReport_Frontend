@@ -17,7 +17,8 @@ export const AppUrl = {
     Chat: 'chat',
     Mobile: 'mobile',
     Contract: 'contract',
-    ContractPayment: 'contractpayment/:cust_name/:id/:con_date/:tot_amt/:period/:pay_amt/:discount/:balance',
+    ContractPayment: 'contractpayment/:cust_no/:cust_name/:id/:con_date/:tot_amt/:period/:pay_amt/:discount/:balance',
     TargetReport: 'targetreport',
-    PayReport: 'payreport'
+    PayReport: 'payreport',
+    BankSelection: 'bankselection/:con_no/:cust_no/:pay_amt'
 };

@@ -20,6 +20,14 @@ export default {
         {
           'background': '#FF9EB3',
           'border': '#FF6E8E'
+        },
+        {
+          'background': '#D7DADE',
+          'border': '#BFC4CB'
+        },
+        {
+          'background': '#FFC47F',
+          'border': '#FF951A'
         }
       ]
   }

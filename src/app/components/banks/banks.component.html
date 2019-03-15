@@ -1,0 +1,117 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-money" aria-hidden="true"></i> ช่องทางการชำระ</h1>
+    </div>
+    <div>
+    </div>
+    <!-- <img width="35" height="35" src="../../../assets/images/logo/logo.png"
+            alt="User Image"> -->
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="list-group">
+        <a class="list-group-item" (click)="pay('internetbank_bbl')">
+          <div class="media col-3 align-middle">
+            <figure class="pull-left">
+              <img class="media-object img-rounded img-responsive" src="../../../assets/images/logo/bank/bk.png"
+                alt="placehold.it/350x250">
+            </figure>
+          </div>
+          <div class="col-8">
+            <h5 class="list-group-item-heading">ธนาคารกรุงเทพ</h5>
+            <label>Internet Banking</label>
+          </div>
+          <div class="col-1 text-center">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a class="list-group-item" data-toggle="modal" data-target="#inputPhone">
+          <div class="media col-3">
+            <figure class="pull-left">
+              <img class="media-object img-rounded img-responsive" src="../../../assets/images/logo/bank/kb.png"
+                alt="placehold.it/350x250">
+            </figure>
+          </div>
+          <div class="col-8">
+            <h5 class="list-group-item-heading">ธนาคารกสิกรไทย</h5>
+            <label>Mobile Banking</label>
+          </div>
+          <div class="col-1 text-center">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a class="list-group-item" (click)="pay('internetbank_bay')">
+          <div class="media col-3">
+            <figure class="pull-left">
+              <img class="media-object img-rounded img-responsive" src="../../../assets/images/logo/bank/krungsri.png"
+                alt="placehold.it/350x250">
+            </figure>
+          </div>
+          <div class="col-8">
+            <h5 class="list-group-item-heading">ธนาคารกรุงศรีอยุธยา</h5>
+            <label>Internet Banking</label>
+          </div>
+          <div class="col-1 text-center">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a class="list-group-item" (click)="pay('internetbank_ktb')">
+          <div class="media col-3">
+            <figure class="pull-left">
+              <img class="media-object img-rounded img-responsive" src="../../../assets/images/logo/bank/ktb.png"
+                alt="placehold.it/350x250">
+            </figure>
+          </div>
+          <div class="col-8">
+            <h5 class="list-group-item-heading">ธนาคารกรุงไทย</h5>
+            <label>Internet Banking</label>
+          </div>
+          <div class="col-1 text-center">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a class="list-group-item" (click)="pay('internetbank_scb')">
+          <div class="media col-3">
+            <figure class="pull-left">
+              <img class="media-object img-rounded img-responsive" src="../../../assets/images/logo/bank/scb.png"
+                alt="placehold.it/350x250">
+            </figure>
+          </div>
+          <div class="col-8">
+            <h5 class="list-group-item-heading">ธนาคารไทยพาณิช</h5>
+            <label>Internet Banking</label>
+          </div>
+          <div class="col-1 text-center">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="inputPhone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">K PLUS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="control-label">กรุณากรอกหมายเลขโทรศัพท์สำหรับบริการ K PLUS</label>
+          <input class="form-control" type="number" id="txtPhone" (click)="clear()">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-primary" (click)="pay('payplus_kbank')">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>

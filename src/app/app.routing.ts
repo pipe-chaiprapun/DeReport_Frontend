@@ -20,11 +20,14 @@ import { ContractComponent } from './components/contract/contract.component';
 import { ContractPaymentComponent } from './components/contract-payment/contract-payment.component';
 import { TargetReportComponent } from './components/target-report/target-report.component';
 import { PayReportComponent } from './components/pay-report/pay-report.component';
+import { BanksComponent } from './components/banks/banks.component';
 
 const RouteList: Routes = [
-    { path: '', redirectTo: AppUrl.Home, pathMatch: 'full' },
+    // { path: '', redirectTo: AppUrl.Home, pathMatch: 'full' },
+    // { path: '', redirectTo: AppUrl.Contract, pathMatch: 'full'},
     { path: AppUrl.Login, component: LoginComponent },
     { path: AppUrl.Summary, component: SummaryComponent },
+    { path: '', redirectTo: AppUrl.Summary, pathMatch: 'full' },
     { path: AppUrl.SaleInfo, component: SaleInfoComponent },
     // { path: AppUrl.ExamChart, component: ExamChartComponent },
     { path: AppUrl.MonthlyMeeting, component: MonthlyMeetingComponent },
@@ -42,7 +45,8 @@ const RouteList: Routes = [
     { path: AppUrl.Contract, component: ContractComponent },
     { path: AppUrl.ContractPayment, component: ContractPaymentComponent },
     { path: AppUrl.TargetReport, component: TargetReportComponent },
-    { path: AppUrl.PayReport, component: PayReportComponent }
+    { path: AppUrl.PayReport, component: PayReportComponent },
+    { path: AppUrl.BankSelection, component: BanksComponent }
 ];
 
 export const AppRouting = RouterModule.forRoot(RouteList);

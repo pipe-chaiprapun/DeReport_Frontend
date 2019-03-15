@@ -3,8 +3,9 @@ td {
 }
 
 .app-content {
+    position:absolute;
     margin-top: 0px;
-    height: -webkit-fill-available;
+    /* height: 100%; */
     /* background-color: whitesmoke; */
     background-image: url("../../../assets/images/logo/background6.jpg");
     background-size: cover;
@@ -22,6 +23,9 @@ td {
     height: 7.5rem;
     box-shadow: none;
     -webkit-box-shadow: none;
+    position:fixed;
+    width:100%;
+    z-index:1;
 }
 
 .app-title h1 {
@@ -30,6 +34,21 @@ td {
     font-weight: 400;
     font-family: 'Mali', cursive;
 }
+@font-face {
+    font-family: 'Mali';
+    src: url('../../../assets/fonts/mali/Mali-Bold.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-BoldItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-ExtraLight.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-ExtraLightItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Italic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Light.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-LightItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Medium.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-MediumItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Regular.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-SemiBold.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-SemiBoldItalic.ttf') format('truetype');
+  }
 
 .tile {
     background-image: url("../../../assets/images/logo/left.png");
@@ -37,7 +56,7 @@ td {
     background-repeat: no-repeat;
     font-family: 'Mali', cursive;
     font-weight: bold;
-    color:darkolivegreen;
+    color:darkgreen;
     /* color: #A2A523; */
     /* padding: 10px 20px; */
     padding-top: 10px;
@@ -50,3 +69,9 @@ td {
 p {
     margin-bottom: 5px;
 }
+@media (min-width: 768px) {
+    .app-content {
+      margin-left: 0px;
+      position: inherit;
+    }
+  }

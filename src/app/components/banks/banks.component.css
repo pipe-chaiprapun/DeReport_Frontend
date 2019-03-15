@@ -1,0 +1,81 @@
+a.list-group-item {
+    height:auto;
+    display:flex;
+    padding-left:0px;
+    opacity: 0.80;
+    color:#009688;
+}
+a.list-group-item.active{
+    background-color: darkslategray;
+    border-color: gray;
+}
+.stars {
+    margin:20px auto 1px;    
+}
+img {
+    width: 50px;
+    height: 50px;
+}
+@font-face {
+    font-family: 'Mali';
+    src: url('../../../assets/fonts/mali/Mali-Bold.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-BoldItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-ExtraLight.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-ExtraLightItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Italic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Light.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-LightItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Medium.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-MediumItalic.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-Regular.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-SemiBold.ttf') format('truetype'),
+    url('../../../assets/fonts/mali/Mali-SemiBoldItalic.ttf') format('truetype');
+  }
+.app-content {
+    position: absolute;
+    margin-top: 0px;
+    /* background-color: whitesmoke; */
+    background-image: url("../../../assets/images/logo/background6.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.app-title {
+    position: fixed;
+    flex-direction: unset;
+    /* background-color: whitesmoke; */
+    background-color: transparent;
+    background-image: url("../../../assets/images/logo/header-green.png");
+    color: white;
+    background-size: auto;
+    background-repeat: round;
+    height: 6.5rem;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 100%;
+    z-index: 1;
+    margin-bottom:1.5rem;  
+}
+.row {
+    display: inherit;
+}
+label {
+    color:darkgray;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 0.5; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+    opacity: 0.5;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
+    opacity: 0.5;
+  }
+.container {
+    margin-top:7rem;
+}

@@ -1,9 +1,7 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="material-icons">
-          file_copy
-        </i>เลขที่สัญญา {{con_no}}</h1>
+      <h5><i class="fa fa-file-text" aria-hidden="true"></i> เลขที่สัญญา {{con_no}}</h5>
     </div>
     <div>
     </div>
@@ -11,67 +9,242 @@
             alt="User Image"> -->
   </div>
   <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-md-12 col-sm-12">
       <div class="tile">
+        <h3 class="tile-title">ข้อมูลการชำระ</h3>
         <div class="tile-body">
           <form class="form-horizontal">
             <div class="form-group row">
-              <label class="control-label col-5">ชื่อ</label>
-              <div class="col-7">
+              <label class="control-label col-6 col-sm-6">ยอดเงินคงเหลือ</label>
+              <div class="col-6">
+                <input class="form-control" id="txtBal" type="text" disabled value={{balance}} style="text-align: right;">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-6 col-sm-6">ส่วนลด</label>
+              <div class="col-6">
+                <input class="form-control" type="text" disabled value={{discount}} style="text-align: right;">
+              </div>
+            </div>
+            
+          </form>
+        </div>
+        <div class="tile-footer" style="margin-top:0px;">
+          <!-- <div class="row"> -->
+          <form class="form-horizontal">
+              <div class="form-group row" style="margin-bottom:5px;">
+                  <label class="control-label col-6 col-sm-6">จำนวนเงินที่ต้องการชำระ</label>
+                  <div class="col-6">
+                    <input class="form-control" id="txtPayAmt" style="font-size:1.5rem;text-align:right;color:darkred;" type="text" value={{pay_amt}} (input)="onNumChange($event.target.value)" onClick="this.select();">
+                  </div>
+                </div>
+          </form>
+          <label class="control-label">โอนชำระผ่านธนาคาร</label>
+          <div class="row">
+            <div class="col-4 col-sm-4 col-md-3" style="margin-bottom:10px;">
+              <img class="media-object img-rounded img-responsive" [ngClass]="{'active': selectBank === 0 }" (click)="select(0)"
+                data-toggle="modal" data-target="#confirmPayment" src="../../../assets/images/logo/bank/bk.png" alt="placehold.it/350x250">
+            </div>
+            <div class="col-4 col-sm-4 col-md-3" style="margin-bottom:10px;">
+              <img class="media-object img-rounded img-responsive" [ngClass]="{'active': selectBank === 1 }" (click)="select(1)"
+                data-toggle="modal" data-target="#confirmPhone" src="../../../assets/images/logo/bank/kb.png" alt="placehold.it/350x250">
+            </div>
+            <div class="col-4 col-sm-4 col-md-3" style="margin-bottom:10px;">
+              <img class="media-object img-rounded img-responsive" [ngClass]="{'active': selectBank === 2 }" (click)="select(2)"
+                data-toggle="modal" data-target="#confirmPayment" src="../../../assets/images/logo/bank/krungsri.png"
+                alt="placehold.it/350x250">
+            </div>
+            <div class="col-4 col-sm-4 col-md-3" style="margin-bottom:10px;">
+              <img class="media-object img-rounded img-responsive" [ngClass]="{'active': selectBank === 3 }" (click)="select(3)"
+                data-toggle="modal" data-target="#confirmPayment" src="../../../assets/images/logo/bank/ktb.png" alt="placehold.it/350x250">
+            </div>
+            <div class="col-4 col-sm-4 col-md-3" style="margin-bottom:10px;">
+              <img class="media-object img-rounded img-responsive" [ngClass]="{'active': selectBank === 4 }" (click)="select(4)"
+                data-toggle="modal" data-target="#confirmPayment" src="../../../assets/images/logo/bank/scb2.png" alt="placehold.it/350x250">
+            </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-md-8 col-md-offset-3">
+                <button class="btn btn-success" type="button" (click)="pay()"><i class="fa fa-fw fa-lg fa fa-money"></i>ชำระ</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-info" (click)="back()"><i class="fa fa-fw fa-lg fa fa-arrow-circle-left"></i>กลับ</button>
+              </div>
+            </div> -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <div class="tile" style="margin-top:0px;">
+        <h3 class="tile-title">ข้อมูลสัญญา</h3>
+        <div class="tile-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+              <label class="control-label col-5 col-sm-5">ชื่อ</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{cust_name}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">วันที่สัญญา</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">วันที่สัญญา</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{con_date}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">จำนวนเงิน</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">จำนวนเงิน</label>
+              <div class="col-7 col-sm7">
                 <input class="form-control" type="text" value={{tot_amt}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">จำนวนงวด</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">จำนวนงวด</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{period}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">งวดละ</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">งวดละ</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{pay_amt}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">ส่วนลด</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">ส่วนลด</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{discount}}>
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-5">คงเหลือ</label>
-              <div class="col-7">
+              <label class="control-label col-5 col-sm-5">คงเหลือ</label>
+              <div class="col-7 col-sm-7">
                 <input class="form-control" type="text" value={{balance}}>
               </div>
             </div>
           </form>
         </div>
-        <div class="tile-footer">
-          <div class="row">
-            <div class="col-md-8 col-md-offset-3">
-              <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>ชำระ</button>&nbsp;&nbsp;&nbsp;<a
-                class="btn btn-secondary" (click)="back()"><i class="fa fa-fw fa-lg fa-times-circle"></i>กลับ</a>
-            </div>
-          </div>
-        </div>
       </div>
-      <!-- <div class="tile">
-            <object type="text/html" data="https://www.google.co.th"style="overflow:auto;">
-            </object>
-        </div> -->
     </div>
   </div>
 </main>
+<!-- Modal confirm phone -->
+<div class="modal fade" id="confirmPhone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">K PLUS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="control-label">กรุณากรอกหมายเลขโทรศัพท์สำหรับบริการ K PLUS</label>
+          <input class="form-control" type="tel" id="txtPhone" (click)="clear()">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmPayment">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal confirm pay -->
+<div class="modal fade" id="confirmPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ยืนยันการโอนชำระ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label class="control-label col-6 col-sm-6">สัญญา</label>
+            <div class="col-6 col-sm-6">
+              <input class="form-control" style="background-color: white;font-size:1rem;text-align: right;" type="text" value={{con_no}} disabled>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-6 col-sm-6">จำนวนเงิน</label>
+            <div class="col-6 col-sm-6">
+              <input class="form-control" style="background-color: white;font-size:1.5rem;text-align: right;color:darkred;" type="text" value={{confirmNum}} disabled>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="pay()">ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal notify from chillpay -->
+<div class="modal fade" id="notifyPaymentSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ชำระเงินสำเร็จ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <div class="col-12 col-sm-12" style="text-align: center">
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-12 col-sm-12" style="text-align: center">การโอนชำระสำเร็จ</label>
+          </div>
+          <div class="form-group row">
+              <label class="control-label col-12 col-sm-12" style="text-align: center">รายการโอนชำระค่าสินค้าของท่านได้รับการอนุมัติแล้ว</label>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" >ตกลง</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="notifyPaymentFail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ชำระเงินไม่สำเร็จ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+              <div class="col-12 col-sm-12" style="text-align: center">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-12 col-sm-12" style="text-align: center">การโอนไม่ชำระสำเร็จ</label>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-12 col-sm-12" style="text-align: center">รายการโอนชำระค่าสินค้าของท่านไม่ได้รับการอนุมัติ</label>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" >ตกลง</button>
+        </div>
+      </div>
+    </div>
+  </div>

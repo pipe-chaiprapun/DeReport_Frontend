@@ -35,6 +35,7 @@ import { ContractComponent } from './components/contract/contract.component';
 import { ContractPaymentComponent } from './components/contract-payment/contract-payment.component';
 import { TargetReportComponent } from './components/target-report/target-report.component';
 import { PayReportComponent } from './components/pay-report/pay-report.component';
+import { BanksComponent } from './components/banks/banks.component';
 
 
 // const routes: Routes = [
@@ -79,7 +80,8 @@ import { PayReportComponent } from './components/pay-report/pay-report.component
     ContractComponent,
     ContractPaymentComponent,
     TargetReportComponent,
-    PayReportComponent
+    PayReportComponent,
+    BanksComponent
   ],
   imports: [
     AppRouting,

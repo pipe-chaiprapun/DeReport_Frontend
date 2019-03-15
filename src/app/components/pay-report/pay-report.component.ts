@@ -71,8 +71,9 @@ export class PayReportComponent implements OnInit {
     // this.txtStartDate.value = this.today.getFullYear().toString();
     // this.txtEndDate.value = '%';
     this.sortOption = '%';
+    const res = this.library.getPeriodMonth(this.startMonth, this.endMonth);
     // tslint:disable-next-line:max-line-length
-    this.resAPI.getPayAmt(this.library.convertDateFormat2(this.firstDay), this.library.convertDateFormat2(this.lastDay), this.sortOption).subscribe(result => {
+    this.resAPI.getPayAmt(this.library.convertDateFormat2(res.firstDay), this.library.convertDateFormat2(res.lastDay), this.sortOption).subscribe(result => {
       console.log(result);
       this.title = result.title;
       result.data.forEach(element => this.headers.push(element.columnName));
